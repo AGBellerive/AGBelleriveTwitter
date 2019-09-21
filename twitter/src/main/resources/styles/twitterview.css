@@ -1,0 +1,48 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+}
+
+
+#homeBtn,#tweetBtn,#dmBtn{
+    -fx-background-size:100% 100%;
+    -fx-background-color: #15202b;
+    -fx-background-radius: 10px;
+}
+#homeBtn{
+    -fx-background-image: url("../images/homeIcon.png");
+    -fx-border-color:#1da1f2;
+    /*Source: https://www.iconfinder.com/icons/2330313/birdhouse_home_house_tweet_twitter_icon*/
+}
+#tweetBtn{
+    -fx-background-image: url("../images/tweetIcon.png");
+    /*Source : http://iconshow.me/compose-icon*/
+}
+#dmBtn{
+    -fx-background-image: url("../images/dmIcon.png");
+    /*Source: https://icon-library.net/icon/mail-icon-black-and-white-22.html */
+}
+Label,TextField {
+    -fx-text-fill:white;
+    -fx-font-style:oblique;
+}
+TextField {
+    -fx-text-fill:black;
+}
+
+BorderPane,HBox {
+    -fx-background-color: #15202b;
+}
+TextArea{
+    -fx-background-color:blueviolet;
+    -fx-text-fill:white;
+    -fx-control-inner-background:#15202b;
+}
+
+#sendTweetBtn,#sendDmBtn{
+    -fx-background-radius: 10px;
+    -fx-background-color:#1da1f2;
+    -fx-font-style:oblique;
+}

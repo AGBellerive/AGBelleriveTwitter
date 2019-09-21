@@ -3,7 +3,6 @@ package com.agbellerive.twitter.controller;
  * Sample Skeleton for 'MainTwitterView.fxml' Controller Class
  */
 
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -13,7 +12,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
 public class MainTwitterViewController {
-
+    
+    private final String BUTTON_BACKGROUND_COLOR = "#15202b";
+    private final String BUTTON_OUTLINE_COLOR = "#1da1f2";
+    
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -44,24 +46,32 @@ public class MainTwitterViewController {
     @FXML // fx:id="tweetPane"
     private BorderPane tweetPane; // Value injected by FXMLLoader
 
+    @FXML // fx:id="sendTweetBtn"
+    private Button sendTweetBtn; // Value injected by FXMLLoader
+
     @FXML // fx:id="dmPane"
     private BorderPane dmPane; // Value injected by FXMLLoader
+
+    @FXML // fx:id="sendDmBtn"
+    private Button sendDmBtn; // Value injected by FXMLLoaderjected by FXMLLoader
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+        assert buttonLayoutHbox != null : "fx:id=\"buttonLayoutHbox\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
         assert homeBtn != null : "fx:id=\"homeBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
         assert tweetBtn != null : "fx:id=\"tweetBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
         assert dmBtn != null : "fx:id=\"dmBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
         assert helpBtn != null : "fx:id=\"helpBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
-        
-        //#15202b
+        assert homePane != null : "fx:id=\"homePane\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+        assert tweetPane != null : "fx:id=\"tweetPane\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+        assert sendTweetBtn != null : "fx:id=\"sendTweetBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+        assert dmPane != null : "fx:id=\"dmPane\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+        assert sendDmBtn != null : "fx:id=\"sendDmBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+   
         homePane.setVisible(true);
-        //homePane.setStyle("-fx-background-color: #15202b;");
         tweetPane.setVisible(false);
-        //tweetPane.setStyle("-fx-background-color: #15202b;");
         dmPane.setVisible(false);
-        //dmPane.setStyle("-fx-background-color: #15202b;");
     }
     
     @FXML
@@ -69,6 +79,10 @@ public class MainTwitterViewController {
         homePane.setVisible(false);
         tweetPane.setVisible(false);
         dmPane.setVisible(true);
+       
+        dmBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
+        homeBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        tweetBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
     }
 
     @FXML
@@ -76,6 +90,10 @@ public class MainTwitterViewController {
         homePane.setVisible(true);
         tweetPane.setVisible(false);
         dmPane.setVisible(false);
+        
+        dmBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        homeBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
+        tweetBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
     }
 
     @FXML
@@ -83,5 +101,10 @@ public class MainTwitterViewController {
         homePane.setVisible(false);
         tweetPane.setVisible(true);
         dmPane.setVisible(false);
+        
+        dmBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        homeBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        tweetBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
+
     }
 }
