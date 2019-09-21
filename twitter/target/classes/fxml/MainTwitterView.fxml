@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agbellerive.twitter.controller.MainTwitterViewController">
+   <top>
+      <HBox fx:id="buttonLayoutHbox" alignment="CENTER" prefHeight="58.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#homeBtnClick" prefHeight="49.0" prefWidth="49.0" text="Home" />
+            <Button fx:id="tweetBtn" mnemonicParsing="false" onAction="#tweetBtnClick" prefHeight="49.0" prefWidth="49.0" text="Tweet" />
+            <Button fx:id="dmBtn" mnemonicParsing="false" onAction="#dmBtnClick" prefHeight="49.0" prefWidth="49.0" text="Message" />
+            <Button fx:id="helpBtn" mnemonicParsing="false" prefHeight="49.0" prefWidth="49.0" text="Help" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <BorderPane fx:id="homePane" prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <Label text="Home" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane fx:id="tweetPane" prefHeight="200.0" prefWidth="200.0">
+               <top>
+                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label text="Enter Your Tweet Bellow" />
+                     </children>
+                  </HBox>
+               </top>
+               <center>
+                  <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </center>
+               <bottom>
+                  <Button mnemonicParsing="false" text="Tweet!" BorderPane.alignment="CENTER" />
+               </bottom>
+            </BorderPane>
+            <BorderPane fx:id="dmPane" prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <Label text="Dm" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </children></StackPane>
+   </center>
+</BorderPane>
