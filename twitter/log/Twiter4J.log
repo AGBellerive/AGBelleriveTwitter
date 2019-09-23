@@ -1,0 +1,424 @@
+[DEBUG] 2019-09-23 19:28:03.802 [JavaFX Application Thread] MainTwitterViewController - TextArea result: 
+[DEBUG] 2019-09-23 19:28:03.812 [JavaFX Application Thread] TwitterEngine - createTweet: 
+[DEBUG] 2019-09-23 19:28:04.417 [JavaFX Application Thread] HttpClientImpl - Request: 
+[DEBUG] 2019-09-23 19:28:04.418 [JavaFX Application Thread] HttpClientImpl - POST https://api.twitter.com/1.1/statuses/update.json
+[DEBUG] 2019-09-23 19:28:04.420 [JavaFX Application Thread] OAuthAuthorization - OAuth base string: POST&https%3A%2F%2Fapi.twitter.com%2F1.1%2Fstatuses%2Fupdate.json&include_entities%3Dtrue%26include_ext_alt_text%3Dtrue%26oauth_consumer_key%3D4l2BURCEcNyeWitAqv6IjbiA5%26oauth_nonce%3D2985339290%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1569281284%26oauth_token%3D1165328280192507905-neSplIeuD7ubL4TnEnEiBt1QM3Mx12%26oauth_version%3D1.0%26status%3D%26tweet_mode%3Dextended
+[DEBUG] 2019-09-23 19:28:04.435 [JavaFX Application Thread] OAuthAuthorization - OAuth signature: 1DGpC3/wSyC4VdcFaiQhXg/6sj8=
+[DEBUG] 2019-09-23 19:28:04.436 [JavaFX Application Thread] HttpClientImpl - Authorization: ***************************************************************************************************************************************************************************************************************************************************************************************
+[DEBUG] 2019-09-23 19:28:04.437 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client-Version: 4.0.7
+[DEBUG] 2019-09-23 19:28:04.438 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client-URL: http://twitter4j.org/en/twitter4j-4.0.7.xml
+[DEBUG] 2019-09-23 19:28:04.438 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client: Twitter4J
+[DEBUG] 2019-09-23 19:28:04.438 [JavaFX Application Thread] HttpClientImpl - User-Agent: twitter4j http://twitter4j.org/ /4.0.7
+[DEBUG] 2019-09-23 19:28:04.439 [JavaFX Application Thread] HttpClientImpl - Accept-Encoding: gzip
+[DEBUG] 2019-09-23 19:28:04.439 [JavaFX Application Thread] HttpClientImpl - Post Params: status=&include_entities=true&include_ext_alt_text=true&tweet_mode=extended
+[DEBUG] 2019-09-23 19:28:05.604 [JavaFX Application Thread] HttpClientImpl - Response: 
+[DEBUG] 2019-09-23 19:28:05.605 [JavaFX Application Thread] HttpClientImpl - date: Mon, 23 Sep 2019 23:28:15 GMT
+[DEBUG] 2019-09-23 19:28:05.606 [JavaFX Application Thread] HttpClientImpl - HTTP/1.1 403 Forbidden
+[DEBUG] 2019-09-23 19:28:05.607 [JavaFX Application Thread] HttpClientImpl - server: tsa_b
+[DEBUG] 2019-09-23 19:28:05.607 [JavaFX Application Thread] HttpClientImpl - content-length: 98
+[DEBUG] 2019-09-23 19:28:05.608 [JavaFX Application Thread] HttpClientImpl - x-tsa-request-body-time: 4
+[DEBUG] 2019-09-23 19:28:05.608 [JavaFX Application Thread] HttpClientImpl - expires: Tue, 31 Mar 1981 05:00:00 GMT
+[DEBUG] 2019-09-23 19:28:05.609 [JavaFX Application Thread] HttpClientImpl - x-response-time: 13
+[DEBUG] 2019-09-23 19:28:05.610 [JavaFX Application Thread] HttpClientImpl - x-frame-options: SAMEORIGIN
+[DEBUG] 2019-09-23 19:28:05.610 [JavaFX Application Thread] HttpClientImpl - content-encoding: gzip
+[DEBUG] 2019-09-23 19:28:05.611 [JavaFX Application Thread] HttpClientImpl - x-transaction: 00fd8cd200f58736
+[DEBUG] 2019-09-23 19:28:05.611 [JavaFX Application Thread] HttpClientImpl - strict-transport-security: max-age=631138519
+[DEBUG] 2019-09-23 19:28:05.612 [JavaFX Application Thread] HttpClientImpl - pragma: no-cache
+[DEBUG] 2019-09-23 19:28:05.612 [JavaFX Application Thread] HttpClientImpl - set-cookie: guest_id=v1%3A156928129529217653; Max-Age=63072000; Expires=Wed, 22 Sep 2021 23:28:15 GMT; Path=/; Domain=.twitter.com
+[DEBUG] 2019-09-23 19:28:05.613 [JavaFX Application Thread] HttpClientImpl - set-cookie: lang=en; Path=/
+[DEBUG] 2019-09-23 19:28:05.614 [JavaFX Application Thread] HttpClientImpl - set-cookie: personalization_id="v1_jd7XrbgkNS9vzRq2nFT98w=="; Max-Age=63072000; Expires=Wed, 22 Sep 2021 23:28:15 GMT; Path=/; Domain=.twitter.com
+[DEBUG] 2019-09-23 19:28:05.615 [JavaFX Application Thread] HttpClientImpl - last-modified: Mon, 23 Sep 2019 23:28:15 GMT
+[DEBUG] 2019-09-23 19:28:05.616 [JavaFX Application Thread] HttpClientImpl - x-xss-protection: 0
+[DEBUG] 2019-09-23 19:28:05.617 [JavaFX Application Thread] HttpClientImpl - x-content-type-options: nosniff
+[DEBUG] 2019-09-23 19:28:05.617 [JavaFX Application Thread] HttpClientImpl - content-disposition: attachment; filename=json.json
+[DEBUG] 2019-09-23 19:28:05.618 [JavaFX Application Thread] HttpClientImpl - x-connection-hash: 20ee3ad2459c5d4ea2fb707eccc9fab0
+[DEBUG] 2019-09-23 19:28:05.619 [JavaFX Application Thread] HttpClientImpl - x-access-level: read-write-directmessages
+[DEBUG] 2019-09-23 19:28:05.619 [JavaFX Application Thread] HttpClientImpl - x-twitter-response-tags: BouncerCompliant
+[DEBUG] 2019-09-23 19:28:05.619 [JavaFX Application Thread] HttpClientImpl - content-type: application/json;charset=utf-8
+[DEBUG] 2019-09-23 19:28:05.620 [JavaFX Application Thread] HttpClientImpl - cache-control: no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+[DEBUG] 2019-09-23 19:28:05.621 [JavaFX Application Thread] HttpClientImpl - status: 403 Forbidden
+[DEBUG] 2019-09-23 19:28:05.630 [JavaFX Application Thread] HttpResponseImpl - {"errors":[{"code":170,"message":"Missing required parameter: status."}]}
+
+[ERROR] 2019-09-23 19:28:13.522 [JavaFX Application Thread] MainTwitterViewController - Unable to send Tweet
+twitter4j.TwitterException: 403:The request is understood, but it has been refused. An accompanying error message will explain why. This code is used when requests are being denied due to update limits (https://support.twitter.com/articles/15364-about-twitter-limits-update-api-dm-and-following).
+message - Missing required parameter: status.
+code - 170
+
+	at twitter4j.HttpClientImpl.handleRequest(HttpClientImpl.java:170) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.HttpClientBase.request(HttpClientBase.java:57) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.HttpClientBase.post(HttpClientBase.java:86) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.TwitterImpl.post(TwitterImpl.java:2120) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.TwitterImpl.updateStatus(TwitterImpl.java:228) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at com.agbellerive.twitter.business.TwitterEngine.createTweet(TwitterEngine.java:54) ~[classes/:?]
+	at com.agbellerive.twitter.controller.MainTwitterViewController.sendOutTweet(MainTwitterViewController.java:166) ~[classes/:?]
+	at com.agbellerive.twitter.controller.MainTwitterViewController.tweetBtnClick(MainTwitterViewController.java:136) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:567) ~[?:?]
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:76) ~[javafx-base-12.0.2-win.jar:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:567) ~[?:?]
+	at com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:273) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:83) ~[javafx-fxml-12.0.2-win.jar:?]
+	at javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1782) ~[javafx-fxml-12.0.2-win.jar:?]
+	at javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1670) ~[javafx-fxml-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8890) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:206) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3862) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1849) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2590) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:409) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:299) ~[javafx-graphics-12.0.2-win.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:389) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:447) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:411) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:446) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:556) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:942) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:174) ~[javafx-graphics-12.0.2-win.jar:?]
+	at java.lang.Thread.run(Thread.java:835) [?:?]
+[DEBUG] 2019-09-23 19:28:16.373 [JavaFX Application Thread] MainTwitterViewController - Direct Message result: Sent to : |||| with the message ||||
+[DEBUG] 2019-09-23 19:28:16.374 [JavaFX Application Thread] TwitterEngine - sendDirectMessage
+[DEBUG] 2019-09-23 19:28:16.375 [JavaFX Application Thread] HttpClientImpl - Request: 
+[DEBUG] 2019-09-23 19:28:16.375 [JavaFX Application Thread] HttpClientImpl - GET https://api.twitter.com/1.1/users/show.json?screen_name=&include_entities=true&include_ext_alt_text=true&tweet_mode=extended
+[DEBUG] 2019-09-23 19:28:16.376 [JavaFX Application Thread] OAuthAuthorization - OAuth base string: GET&https%3A%2F%2Fapi.twitter.com%2F1.1%2Fusers%2Fshow.json&include_entities%3Dtrue%26include_ext_alt_text%3Dtrue%26oauth_consumer_key%3D4l2BURCEcNyeWitAqv6IjbiA5%26oauth_nonce%3D135352647%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1569281296%26oauth_token%3D1165328280192507905-neSplIeuD7ubL4TnEnEiBt1QM3Mx12%26oauth_version%3D1.0%26screen_name%3D%26tweet_mode%3Dextended
+[DEBUG] 2019-09-23 19:28:16.377 [JavaFX Application Thread] OAuthAuthorization - OAuth signature: 1xNIHQPGjmkzOAmaYfWf5gBjdDM=
+[DEBUG] 2019-09-23 19:28:16.378 [JavaFX Application Thread] HttpClientImpl - Authorization: **********************************************************************************************************************************************************************************************************************************************************************************
+[DEBUG] 2019-09-23 19:28:16.379 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client-Version: 4.0.7
+[DEBUG] 2019-09-23 19:28:16.379 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client-URL: http://twitter4j.org/en/twitter4j-4.0.7.xml
+[DEBUG] 2019-09-23 19:28:16.379 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client: Twitter4J
+[DEBUG] 2019-09-23 19:28:16.380 [JavaFX Application Thread] HttpClientImpl - User-Agent: twitter4j http://twitter4j.org/ /4.0.7
+[DEBUG] 2019-09-23 19:28:16.380 [JavaFX Application Thread] HttpClientImpl - Accept-Encoding: gzip
+[DEBUG] 2019-09-23 19:28:16.570 [JavaFX Application Thread] HttpClientImpl - Response: 
+[DEBUG] 2019-09-23 19:28:16.570 [JavaFX Application Thread] HttpClientImpl - date: Mon, 23 Sep 2019 23:28:26 GMT
+[DEBUG] 2019-09-23 19:28:16.571 [JavaFX Application Thread] HttpClientImpl - HTTP/1.1 404 Not Found
+[DEBUG] 2019-09-23 19:28:16.571 [JavaFX Application Thread] HttpClientImpl - server: tsa_b
+[DEBUG] 2019-09-23 19:28:16.571 [JavaFX Application Thread] HttpClientImpl - content-length: 77
+[DEBUG] 2019-09-23 19:28:16.571 [JavaFX Application Thread] HttpClientImpl - expires: Tue, 31 Mar 1981 05:00:00 GMT
+[DEBUG] 2019-09-23 19:28:16.571 [JavaFX Application Thread] HttpClientImpl - x-response-time: 13
+[DEBUG] 2019-09-23 19:28:16.571 [JavaFX Application Thread] HttpClientImpl - x-frame-options: SAMEORIGIN
+[DEBUG] 2019-09-23 19:28:16.572 [JavaFX Application Thread] HttpClientImpl - content-encoding: gzip
+[DEBUG] 2019-09-23 19:28:16.572 [JavaFX Application Thread] HttpClientImpl - x-rate-limit-reset: 1569282206
+[DEBUG] 2019-09-23 19:28:16.573 [JavaFX Application Thread] HttpClientImpl - x-rate-limit-remaining: 899
+[DEBUG] 2019-09-23 19:28:16.574 [JavaFX Application Thread] HttpClientImpl - x-rate-limit-limit: 900
+[DEBUG] 2019-09-23 19:28:16.574 [JavaFX Application Thread] HttpClientImpl - x-transaction: 00c4f79f0094fb7a
+[DEBUG] 2019-09-23 19:28:16.574 [JavaFX Application Thread] HttpClientImpl - strict-transport-security: max-age=631138519
+[DEBUG] 2019-09-23 19:28:16.575 [JavaFX Application Thread] HttpClientImpl - pragma: no-cache
+[DEBUG] 2019-09-23 19:28:16.575 [JavaFX Application Thread] HttpClientImpl - set-cookie: guest_id=v1%3A156928130628782464; Max-Age=63072000; Expires=Wed, 22 Sep 2021 23:28:26 GMT; Path=/; Domain=.twitter.com
+[DEBUG] 2019-09-23 19:28:16.576 [JavaFX Application Thread] HttpClientImpl - set-cookie: lang=en; Path=/
+[DEBUG] 2019-09-23 19:28:16.576 [JavaFX Application Thread] HttpClientImpl - set-cookie: personalization_id="v1_7DUlDGHJOOiVy4+C88I1eQ=="; Max-Age=63072000; Expires=Wed, 22 Sep 2021 23:28:26 GMT; Path=/; Domain=.twitter.com
+[DEBUG] 2019-09-23 19:28:16.577 [JavaFX Application Thread] HttpClientImpl - last-modified: Mon, 23 Sep 2019 23:28:26 GMT
+[DEBUG] 2019-09-23 19:28:16.577 [JavaFX Application Thread] HttpClientImpl - x-xss-protection: 0
+[DEBUG] 2019-09-23 19:28:16.578 [JavaFX Application Thread] HttpClientImpl - x-content-type-options: nosniff
+[DEBUG] 2019-09-23 19:28:16.578 [JavaFX Application Thread] HttpClientImpl - content-disposition: attachment; filename=json.json
+[DEBUG] 2019-09-23 19:28:16.579 [JavaFX Application Thread] HttpClientImpl - x-connection-hash: 66510fe07fccdcb2bb9ff08cebcc9975
+[DEBUG] 2019-09-23 19:28:16.579 [JavaFX Application Thread] HttpClientImpl - x-twitter-response-tags: BouncerCompliant
+[DEBUG] 2019-09-23 19:28:16.579 [JavaFX Application Thread] HttpClientImpl - content-type: application/json; charset=utf-8
+[DEBUG] 2019-09-23 19:28:16.580 [JavaFX Application Thread] HttpClientImpl - cache-control: no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+[DEBUG] 2019-09-23 19:28:16.580 [JavaFX Application Thread] HttpClientImpl - status: 404 Not Found
+[DEBUG] 2019-09-23 19:28:16.582 [JavaFX Application Thread] HttpResponseImpl - {"errors":[{"code":50,"message":"User not found."}]}
+
+[ERROR] 2019-09-23 19:28:17.743 [JavaFX Application Thread] MainTwitterViewController - Unable to send direct message
+twitter4j.TwitterException: 404:The URI requested is invalid or the resource requested, such as a user, does not exists. Also returned when the requested format is not supported by the requested method.
+message - User not found.
+code - 50
+
+	at twitter4j.HttpClientImpl.handleRequest(HttpClientImpl.java:170) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.HttpClientBase.request(HttpClientBase.java:57) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.HttpClientBase.get(HttpClientBase.java:75) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.TwitterImpl.get(TwitterImpl.java:2084) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.TwitterImpl.showUser(TwitterImpl.java:1109) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.TwitterImpl.sendDirectMessage(TwitterImpl.java:616) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at com.agbellerive.twitter.business.TwitterEngine.sendDirectMessage(TwitterEngine.java:86) ~[classes/:?]
+	at com.agbellerive.twitter.controller.MainTwitterViewController.sendDm(MainTwitterViewController.java:177) ~[classes/:?]
+	at com.agbellerive.twitter.controller.MainTwitterViewController.dmBtnClick(MainTwitterViewController.java:112) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:567) ~[?:?]
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:76) ~[javafx-base-12.0.2-win.jar:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:567) ~[?:?]
+	at com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:273) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:83) ~[javafx-fxml-12.0.2-win.jar:?]
+	at javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1782) ~[javafx-fxml-12.0.2-win.jar:?]
+	at javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1670) ~[javafx-fxml-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8890) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:206) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3862) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1849) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2590) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:409) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:299) ~[javafx-graphics-12.0.2-win.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:389) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:447) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:411) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:446) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:556) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:942) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:174) ~[javafx-graphics-12.0.2-win.jar:?]
+	at java.lang.Thread.run(Thread.java:835) [?:?]
+[DEBUG] 2019-09-23 19:40:50.949 [JavaFX Application Thread] MainTwitterViewController - TextArea result: 
+[DEBUG] 2019-09-23 19:40:50.968 [JavaFX Application Thread] TwitterEngine - createTweet: 
+[DEBUG] 2019-09-23 19:40:51.537 [JavaFX Application Thread] HttpClientImpl - Request: 
+[DEBUG] 2019-09-23 19:40:51.537 [JavaFX Application Thread] HttpClientImpl - POST https://api.twitter.com/1.1/statuses/update.json
+[DEBUG] 2019-09-23 19:40:51.539 [JavaFX Application Thread] OAuthAuthorization - OAuth base string: POST&https%3A%2F%2Fapi.twitter.com%2F1.1%2Fstatuses%2Fupdate.json&include_entities%3Dtrue%26include_ext_alt_text%3Dtrue%26oauth_consumer_key%3D4l2BURCEcNyeWitAqv6IjbiA5%26oauth_nonce%3D811789071%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1569282051%26oauth_token%3D1165328280192507905-neSplIeuD7ubL4TnEnEiBt1QM3Mx12%26oauth_version%3D1.0%26status%3D%26tweet_mode%3Dextended
+[DEBUG] 2019-09-23 19:40:51.550 [JavaFX Application Thread] OAuthAuthorization - OAuth signature: UewtvdIo8sxrHbYt4gRhWx85SfM=
+[DEBUG] 2019-09-23 19:40:51.551 [JavaFX Application Thread] HttpClientImpl - Authorization: **********************************************************************************************************************************************************************************************************************************************************************************
+[DEBUG] 2019-09-23 19:40:51.552 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client-Version: 4.0.7
+[DEBUG] 2019-09-23 19:40:51.552 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client-URL: http://twitter4j.org/en/twitter4j-4.0.7.xml
+[DEBUG] 2019-09-23 19:40:51.553 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client: Twitter4J
+[DEBUG] 2019-09-23 19:40:51.553 [JavaFX Application Thread] HttpClientImpl - User-Agent: twitter4j http://twitter4j.org/ /4.0.7
+[DEBUG] 2019-09-23 19:40:51.553 [JavaFX Application Thread] HttpClientImpl - Accept-Encoding: gzip
+[DEBUG] 2019-09-23 19:40:51.554 [JavaFX Application Thread] HttpClientImpl - Post Params: status=&include_entities=true&include_ext_alt_text=true&tweet_mode=extended
+[DEBUG] 2019-09-23 19:40:52.800 [JavaFX Application Thread] HttpClientImpl - Response: 
+[DEBUG] 2019-09-23 19:40:52.801 [JavaFX Application Thread] HttpClientImpl - date: Mon, 23 Sep 2019 23:41:02 GMT
+[DEBUG] 2019-09-23 19:40:52.802 [JavaFX Application Thread] HttpClientImpl - HTTP/1.1 403 Forbidden
+[DEBUG] 2019-09-23 19:40:52.802 [JavaFX Application Thread] HttpClientImpl - server: tsa_b
+[DEBUG] 2019-09-23 19:40:52.803 [JavaFX Application Thread] HttpClientImpl - content-length: 98
+[DEBUG] 2019-09-23 19:40:52.803 [JavaFX Application Thread] HttpClientImpl - x-tsa-request-body-time: 53
+[DEBUG] 2019-09-23 19:40:52.804 [JavaFX Application Thread] HttpClientImpl - expires: Tue, 31 Mar 1981 05:00:00 GMT
+[DEBUG] 2019-09-23 19:40:52.804 [JavaFX Application Thread] HttpClientImpl - x-response-time: 12
+[DEBUG] 2019-09-23 19:40:52.805 [JavaFX Application Thread] HttpClientImpl - x-frame-options: SAMEORIGIN
+[DEBUG] 2019-09-23 19:40:52.805 [JavaFX Application Thread] HttpClientImpl - content-encoding: gzip
+[DEBUG] 2019-09-23 19:40:52.806 [JavaFX Application Thread] HttpClientImpl - x-transaction: 00472e7a00f765af
+[DEBUG] 2019-09-23 19:40:52.806 [JavaFX Application Thread] HttpClientImpl - strict-transport-security: max-age=631138519
+[DEBUG] 2019-09-23 19:40:52.807 [JavaFX Application Thread] HttpClientImpl - pragma: no-cache
+[DEBUG] 2019-09-23 19:40:52.807 [JavaFX Application Thread] HttpClientImpl - set-cookie: guest_id=v1%3A156928206249688888; Max-Age=63072000; Expires=Wed, 22 Sep 2021 23:41:02 GMT; Path=/; Domain=.twitter.com
+[DEBUG] 2019-09-23 19:40:52.808 [JavaFX Application Thread] HttpClientImpl - set-cookie: lang=en; Path=/
+[DEBUG] 2019-09-23 19:40:52.809 [JavaFX Application Thread] HttpClientImpl - set-cookie: personalization_id="v1_Ke8jcFcT7S7wA0PY7728MA=="; Max-Age=63072000; Expires=Wed, 22 Sep 2021 23:41:02 GMT; Path=/; Domain=.twitter.com
+[DEBUG] 2019-09-23 19:40:52.809 [JavaFX Application Thread] HttpClientImpl - last-modified: Mon, 23 Sep 2019 23:41:02 GMT
+[DEBUG] 2019-09-23 19:40:52.810 [JavaFX Application Thread] HttpClientImpl - x-xss-protection: 0
+[DEBUG] 2019-09-23 19:40:52.810 [JavaFX Application Thread] HttpClientImpl - x-content-type-options: nosniff
+[DEBUG] 2019-09-23 19:40:52.811 [JavaFX Application Thread] HttpClientImpl - content-disposition: attachment; filename=json.json
+[DEBUG] 2019-09-23 19:40:52.811 [JavaFX Application Thread] HttpClientImpl - x-connection-hash: d3c550532c4c827d22b9f1484ce6496c
+[DEBUG] 2019-09-23 19:40:52.812 [JavaFX Application Thread] HttpClientImpl - x-access-level: read-write-directmessages
+[DEBUG] 2019-09-23 19:40:52.812 [JavaFX Application Thread] HttpClientImpl - x-twitter-response-tags: BouncerCompliant
+[DEBUG] 2019-09-23 19:40:52.813 [JavaFX Application Thread] HttpClientImpl - content-type: application/json;charset=utf-8
+[DEBUG] 2019-09-23 19:40:52.813 [JavaFX Application Thread] HttpClientImpl - cache-control: no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+[DEBUG] 2019-09-23 19:40:52.814 [JavaFX Application Thread] HttpClientImpl - status: 403 Forbidden
+[DEBUG] 2019-09-23 19:40:52.823 [JavaFX Application Thread] HttpResponseImpl - {"errors":[{"code":170,"message":"Missing required parameter: status."}]}
+
+[ERROR] 2019-09-23 19:40:59.463 [JavaFX Application Thread] MainTwitterViewController - Unable to send Tweet
+twitter4j.TwitterException: 403:The request is understood, but it has been refused. An accompanying error message will explain why. This code is used when requests are being denied due to update limits (https://support.twitter.com/articles/15364-about-twitter-limits-update-api-dm-and-following).
+message - Missing required parameter: status.
+code - 170
+
+	at twitter4j.HttpClientImpl.handleRequest(HttpClientImpl.java:170) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.HttpClientBase.request(HttpClientBase.java:57) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.HttpClientBase.post(HttpClientBase.java:86) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.TwitterImpl.post(TwitterImpl.java:2120) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.TwitterImpl.updateStatus(TwitterImpl.java:228) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at com.agbellerive.twitter.business.TwitterEngine.createTweet(TwitterEngine.java:54) ~[classes/:?]
+	at com.agbellerive.twitter.controller.MainTwitterViewController.sendTweet(MainTwitterViewController.java:165) ~[classes/:?]
+	at com.agbellerive.twitter.controller.MainTwitterViewController.lambda$ListenersSetUp$2(MainTwitterViewController.java:151) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8890) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:206) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3862) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1849) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2590) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:409) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:299) ~[javafx-graphics-12.0.2-win.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:389) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:447) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:411) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:446) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:556) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:942) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:174) ~[javafx-graphics-12.0.2-win.jar:?]
+	at java.lang.Thread.run(Thread.java:835) [?:?]
+[DEBUG] 2019-09-23 19:41:01.348 [JavaFX Application Thread] MainTwitterViewController - Direct Message result: Sent to : |||| with the message ||||
+[DEBUG] 2019-09-23 19:41:01.349 [JavaFX Application Thread] TwitterEngine - sendDirectMessage
+[DEBUG] 2019-09-23 19:41:01.351 [JavaFX Application Thread] HttpClientImpl - Request: 
+[DEBUG] 2019-09-23 19:41:01.351 [JavaFX Application Thread] HttpClientImpl - GET https://api.twitter.com/1.1/users/show.json?screen_name=&include_entities=true&include_ext_alt_text=true&tweet_mode=extended
+[DEBUG] 2019-09-23 19:41:01.353 [JavaFX Application Thread] OAuthAuthorization - OAuth base string: GET&https%3A%2F%2Fapi.twitter.com%2F1.1%2Fusers%2Fshow.json&include_entities%3Dtrue%26include_ext_alt_text%3Dtrue%26oauth_consumer_key%3D4l2BURCEcNyeWitAqv6IjbiA5%26oauth_nonce%3D2074705992%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1569282061%26oauth_token%3D1165328280192507905-neSplIeuD7ubL4TnEnEiBt1QM3Mx12%26oauth_version%3D1.0%26screen_name%3D%26tweet_mode%3Dextended
+[DEBUG] 2019-09-23 19:41:01.355 [JavaFX Application Thread] OAuthAuthorization - OAuth signature: /6kTGQ4b8C77a0U3G5uzODY9kx8=
+[DEBUG] 2019-09-23 19:41:01.357 [JavaFX Application Thread] HttpClientImpl - Authorization: *************************************************************************************************************************************************************************************************************************************************************************************
+[DEBUG] 2019-09-23 19:41:01.358 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client-Version: 4.0.7
+[DEBUG] 2019-09-23 19:41:01.358 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client-URL: http://twitter4j.org/en/twitter4j-4.0.7.xml
+[DEBUG] 2019-09-23 19:41:01.359 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client: Twitter4J
+[DEBUG] 2019-09-23 19:41:01.359 [JavaFX Application Thread] HttpClientImpl - User-Agent: twitter4j http://twitter4j.org/ /4.0.7
+[DEBUG] 2019-09-23 19:41:01.360 [JavaFX Application Thread] HttpClientImpl - Accept-Encoding: gzip
+[DEBUG] 2019-09-23 19:41:01.937 [JavaFX Application Thread] HttpClientImpl - Response: 
+[DEBUG] 2019-09-23 19:41:01.938 [JavaFX Application Thread] HttpClientImpl - date: Mon, 23 Sep 2019 23:41:11 GMT
+[DEBUG] 2019-09-23 19:41:01.939 [JavaFX Application Thread] HttpClientImpl - HTTP/1.1 404 Not Found
+[DEBUG] 2019-09-23 19:41:01.939 [JavaFX Application Thread] HttpClientImpl - server: tsa_b
+[DEBUG] 2019-09-23 19:41:01.940 [JavaFX Application Thread] HttpClientImpl - content-length: 77
+[DEBUG] 2019-09-23 19:41:01.940 [JavaFX Application Thread] HttpClientImpl - expires: Tue, 31 Mar 1981 05:00:00 GMT
+[DEBUG] 2019-09-23 19:41:01.941 [JavaFX Application Thread] HttpClientImpl - x-response-time: 13
+[DEBUG] 2019-09-23 19:41:01.941 [JavaFX Application Thread] HttpClientImpl - x-frame-options: SAMEORIGIN
+[DEBUG] 2019-09-23 19:41:01.942 [JavaFX Application Thread] HttpClientImpl - content-encoding: gzip
+[DEBUG] 2019-09-23 19:41:01.942 [JavaFX Application Thread] HttpClientImpl - x-rate-limit-reset: 1569282206
+[DEBUG] 2019-09-23 19:41:01.943 [JavaFX Application Thread] HttpClientImpl - x-rate-limit-remaining: 898
+[DEBUG] 2019-09-23 19:41:01.944 [JavaFX Application Thread] HttpClientImpl - x-rate-limit-limit: 900
+[DEBUG] 2019-09-23 19:41:01.945 [JavaFX Application Thread] HttpClientImpl - x-transaction: 00844fd000e12350
+[DEBUG] 2019-09-23 19:41:01.945 [JavaFX Application Thread] HttpClientImpl - strict-transport-security: max-age=631138519
+[DEBUG] 2019-09-23 19:41:01.946 [JavaFX Application Thread] HttpClientImpl - pragma: no-cache
+[DEBUG] 2019-09-23 19:41:01.946 [JavaFX Application Thread] HttpClientImpl - set-cookie: guest_id=v1%3A156928207165992032; Max-Age=63072000; Expires=Wed, 22 Sep 2021 23:41:11 GMT; Path=/; Domain=.twitter.com
+[DEBUG] 2019-09-23 19:41:01.947 [JavaFX Application Thread] HttpClientImpl - set-cookie: lang=en; Path=/
+[DEBUG] 2019-09-23 19:41:01.947 [JavaFX Application Thread] HttpClientImpl - set-cookie: personalization_id="v1_5W3wRL4f9y/B33Y2C3kLBw=="; Max-Age=63072000; Expires=Wed, 22 Sep 2021 23:41:11 GMT; Path=/; Domain=.twitter.com
+[DEBUG] 2019-09-23 19:41:01.948 [JavaFX Application Thread] HttpClientImpl - last-modified: Mon, 23 Sep 2019 23:41:11 GMT
+[DEBUG] 2019-09-23 19:41:01.948 [JavaFX Application Thread] HttpClientImpl - x-xss-protection: 0
+[DEBUG] 2019-09-23 19:41:01.949 [JavaFX Application Thread] HttpClientImpl - x-content-type-options: nosniff
+[DEBUG] 2019-09-23 19:41:01.949 [JavaFX Application Thread] HttpClientImpl - content-disposition: attachment; filename=json.json
+[DEBUG] 2019-09-23 19:41:01.950 [JavaFX Application Thread] HttpClientImpl - x-connection-hash: 691f0cc0e5d62bc50164027d118bec02
+[DEBUG] 2019-09-23 19:41:01.950 [JavaFX Application Thread] HttpClientImpl - x-twitter-response-tags: BouncerCompliant
+[DEBUG] 2019-09-23 19:41:01.951 [JavaFX Application Thread] HttpClientImpl - content-type: application/json; charset=utf-8
+[DEBUG] 2019-09-23 19:41:01.951 [JavaFX Application Thread] HttpClientImpl - cache-control: no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+[DEBUG] 2019-09-23 19:41:01.952 [JavaFX Application Thread] HttpClientImpl - status: 404 Not Found
+[DEBUG] 2019-09-23 19:41:01.953 [JavaFX Application Thread] HttpResponseImpl - {"errors":[{"code":50,"message":"User not found."}]}
+
+[ERROR] 2019-09-23 19:41:03.349 [JavaFX Application Thread] MainTwitterViewController - Unable to send direct message
+twitter4j.TwitterException: 404:The URI requested is invalid or the resource requested, such as a user, does not exists. Also returned when the requested format is not supported by the requested method.
+message - User not found.
+code - 50
+
+	at twitter4j.HttpClientImpl.handleRequest(HttpClientImpl.java:170) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.HttpClientBase.request(HttpClientBase.java:57) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.HttpClientBase.get(HttpClientBase.java:75) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.TwitterImpl.get(TwitterImpl.java:2084) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.TwitterImpl.showUser(TwitterImpl.java:1109) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.TwitterImpl.sendDirectMessage(TwitterImpl.java:616) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at com.agbellerive.twitter.business.TwitterEngine.sendDirectMessage(TwitterEngine.java:86) ~[classes/:?]
+	at com.agbellerive.twitter.controller.MainTwitterViewController.sendDm(MainTwitterViewController.java:176) ~[classes/:?]
+	at com.agbellerive.twitter.controller.MainTwitterViewController.lambda$ListenersSetUp$3(MainTwitterViewController.java:152) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8890) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:206) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3862) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1849) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2590) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:409) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:299) ~[javafx-graphics-12.0.2-win.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:389) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:447) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:411) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:446) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:556) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:942) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:174) ~[javafx-graphics-12.0.2-win.jar:?]
+	at java.lang.Thread.run(Thread.java:835) [?:?]

@@ -13,6 +13,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -47,5 +49,25 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
+    public void startUpAlert() {
+        Alert warning = new Alert(AlertType.WARNING);
+        warning.setTitle("Warning ");
+        warning.setHeaderText("Tweet Character Warning");
+        warning.setContentText("You Have reached the max character limit");
+        warning.showAndWait();
+    }
+    
+    public void startUpWarning(){
+        Alert warning = new Alert(AlertType.ERROR);
+        warning.setWidth(500);//Choose a size 
+        warning.setTitle("Error");
+        warning.setHeaderText("Cannot complete your request");
+        warning.setContentText("An unexpected error has occured while trying to "
+                + "complete your request");
+        warning.showAndWait();
+    }
+    
+    
 
 }

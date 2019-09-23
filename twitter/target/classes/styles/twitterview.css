@@ -5,22 +5,22 @@
 .mainFxmlClass {
 }
 
-
-#homeBtn,#tweetBtn,#dmBtn{
+/*https://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html#imageview*/
+#homeIconBtn,#tweetIconBtn,#dmIconBtn{
     -fx-background-size:100% 100%;
     -fx-background-color: #15202b;
     -fx-background-radius: 10px;
 }
-#homeBtn{
+#homeIconBtn{
     -fx-background-image: url("../images/homeIcon.png");
     -fx-border-color:#1da1f2;
     /*Source: https://www.iconfinder.com/icons/2330313/birdhouse_home_house_tweet_twitter_icon*/
 }
-#tweetBtn{
+#tweetIconBtn{
     -fx-background-image: url("../images/tweetIcon.png");
     /*Source : http://iconshow.me/compose-icon*/
 }
-#dmBtn{
+#dmIconBtn{
     -fx-background-image: url("../images/dmIcon.png");
     /*Source: https://icon-library.net/icon/mail-icon-black-and-white-22.html */
 }

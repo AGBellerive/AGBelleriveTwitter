@@ -1,0 +1,22 @@
+Project
+
+During the first 10 weeks of the term you will work individually on a project that will demonstrate your achievement of the appropriate objectives in this course. The project will be broken into four phases.
+
+For Fall 2019 the project will be a Twitter client program. The four phases of this project will be:
+
+1)	Specify and implement a user interface
+	Due on September 29 11:59 PM
+2)	Design, implement, and unit test the Twitter access classes and data classes.
+	Due on October 20, 11:59 PM
+3)	Specify and implement the classes to access a database management system
+	Due on October 30, 11:59 AM
+4)	Package the application and include an 	integrated help system
+	Due on November 10, 11:59 PM
+	
+Phases 2 & 3 must include unit tests. These tests will remain a part of the project till the end.
+
+The project will be completed by November 10, 2019 or sooner. There will be no extension. Each phase is worth 8.75 marks of the total project mark of 35 marks. 
+
+If phases 1, 2 or 3 do not meet the requirements of that phase and receive a grade of less than 7 out of 8.75 then it may be resubmitted once as part of the next phase and can receive a maximum of 7 marks.
+
+Failure to achieve at least 17.5/35 for the project will result in a failure in the course with a final grade of 50% (ISEP June 6, 2018, section IV, subsection 6, Grading Scheme, fourth bullet point)
