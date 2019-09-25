@@ -52,6 +52,7 @@ public class MainApp extends Application {
     
     public void startUpAlert() {
         Alert warning = new Alert(AlertType.WARNING);
+        warning.getDialogPane().setMinWidth(500);
         warning.setTitle("Warning ");
         warning.setHeaderText("Tweet Character Warning");
         warning.setContentText("You Have reached the max character limit");
@@ -60,8 +61,9 @@ public class MainApp extends Application {
     
     public void startUpWarning(){
         Alert warning = new Alert(AlertType.ERROR);
-        warning.setWidth(500);//Choose a size 
+        warning.getDialogPane().setMinWidth(500);
         warning.setTitle("Error");
+        
         warning.setHeaderText("Cannot complete your request");
         warning.setContentText("An unexpected error has occured while trying to "
                 + "complete your request");
