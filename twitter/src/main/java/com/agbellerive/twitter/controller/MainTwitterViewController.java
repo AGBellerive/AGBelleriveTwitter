@@ -23,10 +23,11 @@ public class MainTwitterViewController {
     private final String BUTTON_BACKGROUND_COLOR = "#15202b";
     private final String BUTTON_OUTLINE_COLOR = "#1da1f2";
     private static final int MAX_TWEET = 280;
-    private final MainApp ma = new MainApp();
+    private final MainApp mainApp = new MainApp();
     private final TwitterEngine twitterEngine = new TwitterEngine();
     private final static Logger LOG = LoggerFactory.getLogger(MainTwitterViewController.class);
-     @FXML // ResourceBundle that was given to the FXMLLoader
+    
+    @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
@@ -78,7 +79,11 @@ public class MainTwitterViewController {
     private TextField dmReciver; // Value injected by FXMLLoader
 
 
-    @FXML // This method is called by the FXMLLoader when initialization is complete
+    @FXML 
+    /**
+     * This method is called by the FXMLLoader when initialization is complete 
+     * and it sets the initial visibility of the panes
+     */
     void initialize() {
         assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
         assert buttonLayoutHbox != null : "fx:id=\"buttonLayoutHbox\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
@@ -98,7 +103,14 @@ public class MainTwitterViewController {
         
         ListenersSetUp();
     }
-    
+    /**
+     * In the context of the dm icon is clicked 
+     * I decided to set all the other panes to be invisible
+     * to have the dm pane be the only visible pane at the moment
+     * as well as set the border color of the clicked button 
+     * to indicate that this icon was pressed
+     * @param event 
+     */
     @FXML
     private void dmIconBtnClick(ActionEvent event) {
         homePane.setVisible(false);
@@ -109,7 +121,14 @@ public class MainTwitterViewController {
         homeIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
     }
-
+    /**
+     * In the context of the home icon is clicked 
+     * I decided to set all the other panes to be invisible
+     * to have the home pane be the only visible pane at the moment
+     * as well as set the border color of the clicked button 
+     * to indicate that this icon was pressed
+     * @param event 
+     */
     @FXML
     private void homeIconBtnClick(ActionEvent event) {
         homePane.setVisible(true);
@@ -120,7 +139,15 @@ public class MainTwitterViewController {
         homeIconBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
         tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
     }
-
+    
+     /**
+     * In the context of the tweet icon is clicked 
+     * I decided to set all the other panes to be invisible
+     * to have the tweet pane be the only visible pane at the moment
+     * as well as set the border color of the clicked button 
+     * to indicate that this icon was pressed
+     * @param event 
+     */
     @FXML
     private void tweetIconBtnClick(ActionEvent event) {
         homePane.setVisible(false);
@@ -132,11 +159,22 @@ public class MainTwitterViewController {
         tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
     }
     
+    /**
+     * In the event the exit button is clicked the pane 
+     * closes itself
+     * @param event 
+     */
     @FXML
     private void exitBtnClick(ActionEvent event) {
          Platform.exit();
     }
     
+     /**
+     * In the event this class is called the initilize
+     * method calls this method to set up all the listeners
+     * needed to add functionality like checking character count
+     * and classes to send the tweet
+     */
     private void ListenersSetUp(){
         tweetTextArea.textProperty().addListener((textAreaBeingObserved, oldValue, newValue)
                 -> {
@@ -152,34 +190,51 @@ public class MainTwitterViewController {
         sendDmBtn.setOnAction(event->{sendDm();});
     }
     
+    /**
+     * In the event where the user starts writing in any of
+     * the TextAreas this method is called to constantly check if 
+     * the limit of characters is met, if it is it calls a method
+     * to display an error
+     * @param oldText
+     * @param limit 
+     */
     private void checkCharacterCount(String oldText,int limit) {
         int characters = tweetTextArea.getLength();
         if (characters >= limit) {
             tweetTextArea.setText(oldText);
-            ma.startUpAlert();
+            mainApp.startUpAlert();
         }
     }
+    /**
+     * In the event the sendTweetBtn is clicked
+     * this method will be called and if the requirements
+     * are met it will send the tweet with a method from the TwitterEngine class,
+     * if not an error will appear on the screen
+     */
     private void sendTweet(){
         try{
             LOG.debug("TextArea result: "+tweetTextArea.getText());
             twitterEngine.createTweet(tweetTextArea.getText());
         }
         catch (TwitterException ex){
-            ma.startUpWarning();
+            mainApp.startUpWarning();
             LOG.error("Unable to send Tweet",ex);
         }
     }
-    
+     /**
+     * In the event the sendDmBtn is clicked
+     * this method will be called and if the requirements
+     * are met it will send the dm with a method from the TwitterEngine class, 
+     * if not an error will appear on the screen
+     */
     private void sendDm(){
         try {
             LOG.debug("Direct Message result: Sent to : ||"+dmReciver.getText()+"|| with the message ||"+dmTextArea.getText()+"||");
             twitterEngine.sendDirectMessage(dmReciver.getText(), dmTextArea.getText());
         }
         catch (TwitterException ex) {
-            ma.startUpWarning();
+            mainApp.startUpWarning();
             LOG.error("Unable to send direct message", ex);
         }
-    }
-    
-    
+    } 
 }
