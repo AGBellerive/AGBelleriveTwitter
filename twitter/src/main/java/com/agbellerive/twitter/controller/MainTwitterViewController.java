@@ -78,6 +78,8 @@ public class MainTwitterViewController {
     @FXML // fx:id="dmReciver"
     private TextField dmReciver; // Value injected by FXMLLoader
 
+    @FXML // fx:id="helpPane"
+    private BorderPane helpPane; // Value injected by FXMLLoader
 
     @FXML 
     /**
@@ -96,12 +98,15 @@ public class MainTwitterViewController {
         assert sendTweetBtn != null : "fx:id=\"sendTweetBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
         assert dmPane != null : "fx:id=\"dmPane\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
         assert sendDmBtn != null : "fx:id=\"sendDmBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+        
         //This sets the homePane to be the default visible pane
         homePane.setVisible(true);
         tweetPane.setVisible(false);
         dmPane.setVisible(false);
+        helpPane.setVisible(false);
         
         ListenersSetUp();
+        LOG.info("Class fully initialized");
     }
     /**
      * In the context of the dm icon is clicked 
@@ -116,10 +121,13 @@ public class MainTwitterViewController {
         homePane.setVisible(false);
         tweetPane.setVisible(false);
         dmPane.setVisible(true);
+        helpPane.setVisible(false);
        
         dmIconBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
         homeIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        LOG.info("DmIcon Clicked");
     }
     /**
      * In the context of the home icon is clicked 
@@ -134,10 +142,13 @@ public class MainTwitterViewController {
         homePane.setVisible(true);
         tweetPane.setVisible(false);
         dmPane.setVisible(false);
+        helpPane.setVisible(false);
         
         dmIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         homeIconBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
         tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        LOG.info("HomeIcon Clicked");
     }
     
      /**
@@ -153,10 +164,13 @@ public class MainTwitterViewController {
         homePane.setVisible(false);
         tweetPane.setVisible(true);
         dmPane.setVisible(false);
+        helpPane.setVisible(false);
         
         dmIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         homeIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
+        helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        LOG.info("TweetIcon Clicked");
     }
     
     /**
@@ -166,8 +180,32 @@ public class MainTwitterViewController {
      */
     @FXML
     private void exitBtnClick(ActionEvent event) {
+         LOG.info("ExitIcon Clicked");
          Platform.exit();
     }
+    
+     /**
+     * In the context of the help icon is clicked 
+     * I decided to set all the other panes to be invisible
+     * to have the home pane be the only visible pane at the moment
+     * as well as set the border color of the clicked button 
+     * to indicate that this icon was pressed
+     * @param event 
+     */
+    @FXML
+    private void helpBtnClick(ActionEvent event) {
+        homePane.setVisible(false);
+        tweetPane.setVisible(false);
+        dmPane.setVisible(false);
+        helpPane.setVisible(true);
+        
+        dmIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        homeIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        helpBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
+        LOG.info("HelpIcon Clicked");
+    }
+
     
      /**
      * In the event this class is called the initilize
@@ -188,6 +226,7 @@ public class MainTwitterViewController {
         
         sendTweetBtn.setOnAction( event -> {sendTweet();});
         sendDmBtn.setOnAction(event->{sendDm();});
+        LOG.info("Event Listeners assigned by ListenersSetUp");
     }
     
     /**
@@ -213,7 +252,7 @@ public class MainTwitterViewController {
      */
     private void sendTweet(){
         try{
-            LOG.debug("TextArea result: "+tweetTextArea.getText());
+            LOG.info("TextArea result: "+tweetTextArea.getText());
             twitterEngine.createTweet(tweetTextArea.getText());
         }
         catch (TwitterException ex){
@@ -229,7 +268,7 @@ public class MainTwitterViewController {
      */
     private void sendDm(){
         try {
-            LOG.debug("Direct Message result: Sent to : ||"+dmReciver.getText()+"|| with the message ||"+dmTextArea.getText()+"||");
+            LOG.info("Direct Message result: Sent to : ||"+dmReciver.getText()+"|| with the message ||"+dmTextArea.getText()+"||");
             twitterEngine.sendDirectMessage(dmReciver.getText(), dmTextArea.getText());
         }
         catch (TwitterException ex) {
