@@ -1,5 +1,4 @@
 com\agbellerive\twitter\controller\MainTwitterViewController.class
 com\agbellerive\twitter\business\TwitterEngine.class
-com\agbellerive\twitter\beans\TwitterProperties.class
 com\agbellerive\twitter\controller\FormController.class
 com\agbellerive\twitter\presentation\MainApp.class

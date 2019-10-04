@@ -5,7 +5,6 @@
  */
 package com.agbellerive.twitter.presentation;
 
-import com.agbellerive.twitter.beans.TwitterProperties;
 import com.agbellerive.twitter.controller.FormController;
 import com.agbellerive.twitter.controller.MainTwitterViewController;
 import java.io.FileInputStream;
@@ -98,16 +97,10 @@ public class MainApp extends Application {
       */
      private boolean checkProperties() throws IOException{
          boolean fileFound = false;
-         TwitterProperties t4j = new TwitterProperties();
          Properties prop = new Properties();
          
         try(FileInputStream file = new FileInputStream("twitter4j.properties") ) {
             prop.load(file);
-            t4j.setConsumerKey(prop.getProperty("oauth.consumerKey"));
-            t4j.setConsumerSecret(prop.getProperty("oauth.consumerKey"));
-            t4j.setAcessToken(prop.getProperty("oauth.accessToken"));
-            t4j.setAcessTokenSecret(prop.getProperty("oauth.accessTokenSecret"));
-            
             fileFound = true;
             LOG.info("Properties File Found redirecting to Twitter");
         } 
