@@ -10,6 +10,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -56,6 +57,9 @@ public class MainTwitterViewController {
 
     @FXML // fx:id="homePane"
     private BorderPane homePane; // Value injected by FXMLLoader
+
+    @FXML // fx:id="tweetList"
+    private ListView<?> tweetList; // Value injected by FXMLLoader
 
     @FXML // fx:id="tweetPane"
     private BorderPane tweetPane; // Value injected by FXMLLoader
@@ -253,9 +257,10 @@ public class MainTwitterViewController {
     private void sendTweet(){
         try{
             LOG.info("TextArea result: "+tweetTextArea.getText());
-            twitterEngine.createTweet(tweetTextArea.getText());
+            //twitterEngine.createTweet(tweetTextArea.getText());
         }
-        catch (TwitterException ex){
+        // Exception is a place holder for TwitterException
+        catch (Exception ex){
             mainApp.startUpWarning();
             LOG.error("Unable to send Tweet",ex);
         }
@@ -269,9 +274,10 @@ public class MainTwitterViewController {
     private void sendDm(){
         try {
             LOG.info("Direct Message result: Sent to : ||"+dmReciver.getText()+"|| with the message ||"+dmTextArea.getText()+"||");
-            twitterEngine.sendDirectMessage(dmReciver.getText(), dmTextArea.getText());
+           // twitterEngine.sendDirectMessage(dmReciver.getText(), dmTextArea.getText());
         }
-        catch (TwitterException ex) {
+        // Exception is a place holder for TwitterException
+        catch (Exception ex) {
             mainApp.startUpWarning();
             LOG.error("Unable to send direct message", ex);
         }

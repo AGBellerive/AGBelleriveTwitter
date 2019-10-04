@@ -72,7 +72,7 @@ private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(FormControll
             prop.setProperty("oauth.acessToken", acessToken.getText().trim());
             prop.setProperty("oauth.acessTokenSecret", acessTokenSecret.getText().trim());
             
-            prop.store(output, null);
+            prop.store(output, "Twitter Properties file");
             switchScenes();
         }
         catch(IOException io){

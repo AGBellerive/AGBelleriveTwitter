@@ -96,8 +96,8 @@ public class MainApp extends Application {
       * @throws IOException 
       */
      private boolean checkProperties() throws IOException{
-         boolean fileFound = false;
-         Properties prop = new Properties();
+        boolean fileFound = false;
+        Properties prop = new Properties();
          
         try(FileInputStream file = new FileInputStream("twitter4j.properties") ) {
             prop.load(file);

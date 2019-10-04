@@ -1160,3 +1160,187 @@ Caused by: java.net.UnknownHostException: api.twitter.com
 [INFO ] 2019-10-03 22:12:46.745 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
 [INFO ] 2019-10-03 22:12:47.973 [JavaFX Application Thread] MainTwitterViewController - HelpIcon Clicked
 [INFO ] 2019-10-03 22:12:50.833 [JavaFX Application Thread] MainTwitterViewController - ExitIcon Clicked
+[INFO ] 2019-10-04 14:22:00.664 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-04 14:22:00.669 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-04 14:22:00.767 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-04 14:22:00.785 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-04 14:22:00.785 [JavaFX Application Thread] MainApp - Properties File Found redirecting to Twitter
+[INFO ] 2019-10-04 14:22:26.343 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-04 14:22:27.567 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-04 14:22:28.446 [JavaFX Application Thread] MainTwitterViewController - HelpIcon Clicked
+[INFO ] 2019-10-04 14:22:29.758 [JavaFX Application Thread] MainTwitterViewController - HomeIcon Clicked
+[INFO ] 2019-10-04 14:22:36.038 [JavaFX Application Thread] MainTwitterViewController - ExitIcon Clicked
+[INFO ] 2019-10-04 14:34:29.465 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-04 14:34:29.470 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-04 14:34:29.564 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-04 14:34:29.586 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-04 14:34:29.587 [JavaFX Application Thread] MainApp - Properties File Found redirecting to Twitter
+[INFO ] 2019-10-04 14:37:42.895 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-04 14:37:42.900 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-04 14:37:42.998 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-04 14:37:43.021 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-04 14:37:43.021 [JavaFX Application Thread] MainApp - Properties File Found redirecting to Twitter
+[INFO ] 2019-10-04 14:37:49.446 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-04 14:37:49.765 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-04 14:37:50.244 [JavaFX Application Thread] MainTwitterViewController - HelpIcon Clicked
+[INFO ] 2019-10-04 14:37:51.149 [JavaFX Application Thread] MainTwitterViewController - HomeIcon Clicked
+[INFO ] 2019-10-04 14:38:55.820 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-04 14:38:55.824 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-04 14:38:55.922 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-04 14:38:55.941 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-04 14:38:55.942 [JavaFX Application Thread] MainApp - Properties File Found redirecting to Twitter
+[INFO ] 2019-10-04 14:43:15.598 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-04 14:43:15.603 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-04 14:43:15.702 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-04 14:43:15.721 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-04 14:43:15.721 [JavaFX Application Thread] MainApp - Couldnt find properties file redirecting to Form
+[INFO ] 2019-10-04 14:43:57.877 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-04 14:43:57.877 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-04 14:43:57.882 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-04 14:43:57.893 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-04 14:43:57.905 [JavaFX Application Thread] MainApp - Properties File Found redirecting to Twitter
+[INFO ] 2019-10-04 14:48:42.696 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-04 14:48:42.700 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-04 14:48:42.805 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-04 14:48:42.822 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-04 14:48:42.823 [JavaFX Application Thread] MainApp - Properties File Found redirecting to Twitter
+[INFO ] 2019-10-04 14:48:44.502 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-04 14:48:45.453 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-04 14:48:46.076 [JavaFX Application Thread] MainTwitterViewController - HelpIcon Clicked
+[INFO ] 2019-10-04 14:48:46.756 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-04 14:48:47.357 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-04 14:48:50.604 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-04 14:48:52.989 [JavaFX Application Thread] MainTwitterViewController - HomeIcon Clicked
+[INFO ] 2019-10-04 14:48:53.581 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-04 14:48:54.196 [JavaFX Application Thread] MainTwitterViewController - HomeIcon Clicked
+[INFO ] 2019-10-04 14:49:17.053 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-04 14:51:37.510 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-04 14:51:37.638 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-04 14:51:37.659 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-04 14:51:37.659 [JavaFX Application Thread] MainApp - Properties File Found redirecting to Twitter
+[INFO ] 2019-10-04 14:52:10.214 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-04 14:52:11.213 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-04 14:52:12.445 [JavaFX Application Thread] MainTwitterViewController - HelpIcon Clicked
+[INFO ] 2019-10-04 14:52:13.324 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-04 14:52:19.317 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-04 14:54:46.821 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-04 14:54:46.826 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-04 14:54:46.930 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-04 14:54:46.948 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-04 14:54:46.948 [JavaFX Application Thread] MainApp - Properties File Found redirecting to Twitter
+[INFO ] 2019-10-04 14:55:04.614 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-04 14:55:06.029 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-04 14:55:07.605 [JavaFX Application Thread] MainTwitterViewController - HelpIcon Clicked
+[INFO ] 2019-10-04 14:55:09.181 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-04 14:55:10.581 [JavaFX Application Thread] MainTwitterViewController - TextArea result: 
+[DEBUG] 2019-10-04 14:55:10.581 [JavaFX Application Thread] TwitterEngine - createTweet: 
+[DEBUG] 2019-10-04 14:55:10.765 [JavaFX Application Thread] HttpClientImpl - Request: 
+[DEBUG] 2019-10-04 14:55:10.765 [JavaFX Application Thread] HttpClientImpl - POST https://api.twitter.com/1.1/statuses/update.json
+[DEBUG] 2019-10-04 14:55:10.766 [JavaFX Application Thread] OAuthAuthorization - OAuth base string: POST&https%3A%2F%2Fapi.twitter.com%2F1.1%2Fstatuses%2Fupdate.json&include_entities%3Dtrue%26include_ext_alt_text%3Dtrue%26oauth_consumer_key%3D4l2BURCEcNyeWitAqv6IjbiA5%26oauth_nonce%3D3173157639%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1570215310%26oauth_token%3D1165328280192507905-neSplIeuD7ubL4TnEnEiBt1QM3Mx12%26oauth_version%3D1.0%26status%3D%26tweet_mode%3Dextended
+[DEBUG] 2019-10-04 14:55:10.773 [JavaFX Application Thread] OAuthAuthorization - OAuth signature: W0a8Px6zUvBKhsN7pMr3n2qasU4=
+[DEBUG] 2019-10-04 14:55:10.773 [JavaFX Application Thread] HttpClientImpl - Authorization: ***********************************************************************************************************************************************************************************************************************************************************************************
+[DEBUG] 2019-10-04 14:55:10.774 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client-Version: 4.0.7
+[DEBUG] 2019-10-04 14:55:10.774 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client-URL: http://twitter4j.org/en/twitter4j-4.0.7.xml
+[DEBUG] 2019-10-04 14:55:10.774 [JavaFX Application Thread] HttpClientImpl - X-Twitter-Client: Twitter4J
+[DEBUG] 2019-10-04 14:55:10.774 [JavaFX Application Thread] HttpClientImpl - User-Agent: twitter4j http://twitter4j.org/ /4.0.7
+[DEBUG] 2019-10-04 14:55:10.774 [JavaFX Application Thread] HttpClientImpl - Accept-Encoding: gzip
+[DEBUG] 2019-10-04 14:55:10.774 [JavaFX Application Thread] HttpClientImpl - Post Params: status=&include_entities=true&include_ext_alt_text=true&tweet_mode=extended
+[DEBUG] 2019-10-04 14:55:11.153 [JavaFX Application Thread] HttpClientImpl - Response: 
+[DEBUG] 2019-10-04 14:55:11.154 [JavaFX Application Thread] HttpClientImpl - date: Fri, 04 Oct 2019 18:55:11 GMT
+[DEBUG] 2019-10-04 14:55:11.154 [JavaFX Application Thread] HttpClientImpl - HTTP/1.1 403 Forbidden
+[DEBUG] 2019-10-04 14:55:11.155 [JavaFX Application Thread] HttpClientImpl - server: tsa_b
+[DEBUG] 2019-10-04 14:55:11.155 [JavaFX Application Thread] HttpClientImpl - content-length: 98
+[DEBUG] 2019-10-04 14:55:11.155 [JavaFX Application Thread] HttpClientImpl - x-tsa-request-body-time: 0
+[DEBUG] 2019-10-04 14:55:11.155 [JavaFX Application Thread] HttpClientImpl - expires: Tue, 31 Mar 1981 05:00:00 GMT
+[DEBUG] 2019-10-04 14:55:11.156 [JavaFX Application Thread] HttpClientImpl - x-response-time: 21
+[DEBUG] 2019-10-04 14:55:11.156 [JavaFX Application Thread] HttpClientImpl - x-frame-options: SAMEORIGIN
+[DEBUG] 2019-10-04 14:55:11.156 [JavaFX Application Thread] HttpClientImpl - content-encoding: gzip
+[DEBUG] 2019-10-04 14:55:11.156 [JavaFX Application Thread] HttpClientImpl - x-transaction: 005061cf00dd2472
+[DEBUG] 2019-10-04 14:55:11.156 [JavaFX Application Thread] HttpClientImpl - strict-transport-security: max-age=631138519
+[DEBUG] 2019-10-04 14:55:11.157 [JavaFX Application Thread] HttpClientImpl - pragma: no-cache
+[DEBUG] 2019-10-04 14:55:11.157 [JavaFX Application Thread] HttpClientImpl - set-cookie: guest_id=v1%3A157021531110699620; Max-Age=63072000; Expires=Sun, 3 Oct 2021 18:55:11 GMT; Path=/; Domain=.twitter.com
+[DEBUG] 2019-10-04 14:55:11.157 [JavaFX Application Thread] HttpClientImpl - set-cookie: lang=en; Path=/
+[DEBUG] 2019-10-04 14:55:11.157 [JavaFX Application Thread] HttpClientImpl - set-cookie: personalization_id="v1_skv9UyAhQnx3PuqcgcaVkQ=="; Max-Age=63072000; Expires=Sun, 3 Oct 2021 18:55:11 GMT; Path=/; Domain=.twitter.com
+[DEBUG] 2019-10-04 14:55:11.157 [JavaFX Application Thread] HttpClientImpl - last-modified: Fri, 04 Oct 2019 18:55:11 GMT
+[DEBUG] 2019-10-04 14:55:11.158 [JavaFX Application Thread] HttpClientImpl - x-xss-protection: 0
+[DEBUG] 2019-10-04 14:55:11.158 [JavaFX Application Thread] HttpClientImpl - x-content-type-options: nosniff
+[DEBUG] 2019-10-04 14:55:11.158 [JavaFX Application Thread] HttpClientImpl - content-disposition: attachment; filename=json.json
+[DEBUG] 2019-10-04 14:55:11.158 [JavaFX Application Thread] HttpClientImpl - x-connection-hash: 445a28f3aba75bf6c74277dd4e652391
+[DEBUG] 2019-10-04 14:55:11.158 [JavaFX Application Thread] HttpClientImpl - x-access-level: read-write-directmessages
+[DEBUG] 2019-10-04 14:55:11.158 [JavaFX Application Thread] HttpClientImpl - x-twitter-response-tags: BouncerCompliant
+[DEBUG] 2019-10-04 14:55:11.159 [JavaFX Application Thread] HttpClientImpl - content-type: application/json;charset=utf-8
+[DEBUG] 2019-10-04 14:55:11.159 [JavaFX Application Thread] HttpClientImpl - cache-control: no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+[DEBUG] 2019-10-04 14:55:11.159 [JavaFX Application Thread] HttpClientImpl - status: 403 Forbidden
+[DEBUG] 2019-10-04 14:55:11.162 [JavaFX Application Thread] HttpResponseImpl - {"errors":[{"code":170,"message":"Missing required parameter: status."}]}
+
+[ERROR] 2019-10-04 14:55:13.491 [JavaFX Application Thread] MainTwitterViewController - Unable to send Tweet
+twitter4j.TwitterException: 403:The request is understood, but it has been refused. An accompanying error message will explain why. This code is used when requests are being denied due to update limits (https://support.twitter.com/articles/15364-about-twitter-limits-update-api-dm-and-following).
+message - Missing required parameter: status.
+code - 170
+
+	at twitter4j.HttpClientImpl.handleRequest(HttpClientImpl.java:170) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.HttpClientBase.request(HttpClientBase.java:57) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.HttpClientBase.post(HttpClientBase.java:86) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.TwitterImpl.post(TwitterImpl.java:2120) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at twitter4j.TwitterImpl.updateStatus(TwitterImpl.java:228) ~[twitter4j-core-4.0.7.jar:4.0.7]
+	at com.agbellerive.twitter.business.TwitterEngine.createTweet(TwitterEngine.java:54) ~[classes/:?]
+	at com.agbellerive.twitter.controller.MainTwitterViewController.sendTweet(MainTwitterViewController.java:260) ~[classes/:?]
+	at com.agbellerive.twitter.controller.MainTwitterViewController.lambda$ListenersSetUp$2(MainTwitterViewController.java:231) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8890) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:206) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-12.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-12.0.2-win.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3862) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1849) ~[javafx-graphics-12.0.2-win.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2590) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:409) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:299) ~[javafx-graphics-12.0.2-win.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:389) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:447) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:411) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:446) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:556) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:942) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[javafx-graphics-12.0.2-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:174) ~[javafx-graphics-12.0.2-win.jar:?]
+	at java.lang.Thread.run(Thread.java:835) [?:?]
+[INFO ] 2019-10-04 14:55:27.204 [JavaFX Application Thread] MainTwitterViewController - ExitIcon Clicked
+[INFO ] 2019-10-04 14:56:05.671 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-04 14:56:05.675 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-04 14:56:05.797 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-04 14:56:05.816 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-04 14:56:05.816 [JavaFX Application Thread] MainApp - Properties File Found redirecting to Twitter
+[INFO ] 2019-10-04 14:56:16.295 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-04 14:56:17.645 [JavaFX Application Thread] MainTwitterViewController - TextArea result: 
+[INFO ] 2019-10-04 14:56:20.932 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-04 14:56:22.260 [JavaFX Application Thread] MainTwitterViewController - Direct Message result: Sent to : |||| with the message ||||
+[INFO ] 2019-10-04 14:56:28.244 [JavaFX Application Thread] MainTwitterViewController - HelpIcon Clicked
+[INFO ] 2019-10-04 14:56:28.997 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-04 14:56:35.805 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
