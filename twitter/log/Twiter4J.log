@@ -1129,3 +1129,25 @@ Caused by: java.net.UnknownHostException: api.twitter.com
 [INFO ] 2019-10-02 22:07:47.430 [JavaFX Application Thread] MainTwitterViewController - HelpIcon Clicked
 [INFO ] 2019-10-02 22:07:50.051 [JavaFX Application Thread] MainTwitterViewController - HomeIcon Clicked
 [INFO ] 2019-10-02 22:07:53.458 [JavaFX Application Thread] MainTwitterViewController - ExitIcon Clicked
+[INFO ] 2019-10-03 16:55:16.586 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-03 16:55:16.597 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-03 16:55:16.916 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-03 16:55:16.970 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-03 16:55:16.972 [JavaFX Application Thread] MainApp - Properties File Found redirecting to Twitter
+[INFO ] 2019-10-03 16:55:29.455 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-03 16:55:29.955 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-03 16:55:32.041 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-03 16:55:34.312 [JavaFX Application Thread] MainTwitterViewController - HelpIcon Clicked
+[INFO ] 2019-10-03 16:55:36.637 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-03 16:55:42.876 [JavaFX Application Thread] MainTwitterViewController - ExitIcon Clicked
+[INFO ] 2019-10-03 17:40:31.807 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-03 17:40:31.820 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-03 17:40:32.124 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-03 17:40:32.187 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-03 17:40:32.189 [JavaFX Application Thread] MainApp - Couldnt find properties file redirecting to Form
+[INFO ] 2019-10-03 17:41:17.036 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-03 17:41:17.037 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-03 17:41:17.117 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-03 17:41:17.185 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-03 17:41:17.193 [JavaFX Application Thread] MainApp - Properties File Found redirecting to Twitter
+[INFO ] 2019-10-03 17:41:28.463 [JavaFX Application Thread] MainTwitterViewController - ExitIcon Clicked
