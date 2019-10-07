@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/twitterview.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agbellerive.twitter.controller.FormController">
+   <top>
+      <Label prefHeight="41.0" prefWidth="483.0" text="We see that you do not have a file called &quot;twitter4j.properties&quot;. Heres a forum to fix that" BorderPane.alignment="CENTER" />
+   </top>
+   <bottom>
+      <Button fx:id="createFile" mnemonicParsing="false" onAction="#createFileClick" text="Create!" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <HBox alignment="CENTER" prefHeight="59.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="274.0" prefWidth="382.0">
+               <children>
+                  <Label text="ConsumerKey" />
+                  <TextField fx:id="consumerKey" promptText="Enter Key" />
+                  <Label text="ConsumerSecret" />
+                  <TextField fx:id="consumerSecret" promptText="Enter Key" />
+                  <Label text="AccessToken" />
+                  <TextField fx:id="acessToken" promptText="Enter Key" />
+                  <Label text="AccessTokenSecret" />
+                  <TextField fx:id="acessTokenSecret" promptText="Enter Key" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
