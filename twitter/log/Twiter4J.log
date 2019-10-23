@@ -1344,3 +1344,26 @@ code - 170
 [INFO ] 2019-10-04 14:56:28.244 [JavaFX Application Thread] MainTwitterViewController - HelpIcon Clicked
 [INFO ] 2019-10-04 14:56:28.997 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
 [INFO ] 2019-10-04 14:56:35.805 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-04 22:12:25.269 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-04 22:12:25.279 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-04 22:12:25.661 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-04 22:12:25.715 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-04 22:12:25.728 [JavaFX Application Thread] MainApp - Properties File Found redirecting to Twitter
+[INFO ] 2019-10-04 22:12:31.298 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-04 22:12:39.150 [JavaFX Application Thread] MainTwitterViewController - Direct Message result: Sent to : ||dawson_agb|| with the message ||test||
+[INFO ] 2019-10-04 22:13:55.004 [JavaFX Application Thread] MainTwitterViewController - ExitIcon Clicked
+[INFO ] 2019-10-17 13:06:03.258 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-17 13:06:03.271 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-17 13:06:03.563 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-17 13:06:03.614 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-17 13:06:03.618 [JavaFX Application Thread] MainApp - Properties File Found redirecting to Twitter
+[INFO ] 2019-10-17 13:06:44.398 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-17 13:06:45.953 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-17 13:06:46.649 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-17 13:06:47.506 [JavaFX Application Thread] MainTwitterViewController - HelpIcon Clicked
+[INFO ] 2019-10-17 13:06:48.363 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-17 13:06:53.751 [JavaFX Application Thread] MainTwitterViewController - HomeIcon Clicked
+[INFO ] 2019-10-17 13:07:00.103 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-17 13:07:06.756 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-17 13:07:22.556 [JavaFX Application Thread] MainTwitterViewController - HelpIcon Clicked
+[INFO ] 2019-10-17 13:07:31.788 [JavaFX Application Thread] MainTwitterViewController - ExitIcon Clicked

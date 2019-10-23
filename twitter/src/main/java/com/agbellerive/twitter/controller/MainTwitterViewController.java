@@ -109,7 +109,7 @@ public class MainTwitterViewController {
         dmPane.setVisible(false);
         helpPane.setVisible(false);
         
-        ListenersSetUp();
+        listenersSetUp();
         LOG.info("Class fully initialized");
     }
     /**
@@ -217,7 +217,7 @@ public class MainTwitterViewController {
      * needed to add functionality like checking character count
      * and classes to send the tweet
      */
-    private void ListenersSetUp(){
+    private void listenersSetUp(){
         tweetTextArea.textProperty().addListener((textAreaBeingObserved, oldValue, newValue)
                 -> {
                 checkCharacterCount(oldValue,MAX_TWEET);
