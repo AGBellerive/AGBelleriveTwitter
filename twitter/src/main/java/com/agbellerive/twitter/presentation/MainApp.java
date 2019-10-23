@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -69,6 +70,7 @@ public class MainApp extends Application {
         this.MTViewController = loader.getController();
         Parent root = (BorderPane) loader.load();
         Scene scene = new Scene(root);
+        loader.setResources(ResourceBundle.getBundle("MessageBundle"));
         LOG.info("Twitter Scene Built");
         return scene;
     }

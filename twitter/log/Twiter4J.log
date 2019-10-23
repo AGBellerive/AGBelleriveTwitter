@@ -1367,3 +1367,12 @@ code - 170
 [INFO ] 2019-10-17 13:07:06.756 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
 [INFO ] 2019-10-17 13:07:22.556 [JavaFX Application Thread] MainTwitterViewController - HelpIcon Clicked
 [INFO ] 2019-10-17 13:07:31.788 [JavaFX Application Thread] MainTwitterViewController - ExitIcon Clicked
+[INFO ] 2019-10-23 15:31:58.684 [JavaFX Application Thread] MainTwitterViewController - Event Listeners assigned by ListenersSetUp
+[INFO ] 2019-10-23 15:31:58.695 [JavaFX Application Thread] MainTwitterViewController - Class fully initialized
+[INFO ] 2019-10-23 15:31:58.998 [JavaFX Application Thread] MainApp - Twitter Scene Built
+[INFO ] 2019-10-23 15:31:59.058 [JavaFX Application Thread] MainApp - Forum Scene Built
+[INFO ] 2019-10-23 15:31:59.060 [JavaFX Application Thread] MainApp - Properties File Found redirecting to Twitter
+[INFO ] 2019-10-23 15:32:07.851 [JavaFX Application Thread] MainTwitterViewController - TweetIcon Clicked
+[INFO ] 2019-10-23 15:32:09.393 [JavaFX Application Thread] MainTwitterViewController - DmIcon Clicked
+[INFO ] 2019-10-23 15:32:10.813 [JavaFX Application Thread] MainTwitterViewController - HelpIcon Clicked
+[INFO ] 2019-10-23 15:32:12.320 [JavaFX Application Thread] MainTwitterViewController - ExitIcon Clicked

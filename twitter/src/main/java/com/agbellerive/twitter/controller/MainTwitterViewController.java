@@ -257,10 +257,10 @@ public class MainTwitterViewController {
     private void sendTweet(){
         try{
             LOG.info("TextArea result: "+tweetTextArea.getText());
-            //twitterEngine.createTweet(tweetTextArea.getText());
+            twitterEngine.createTweet(tweetTextArea.getText());
         }
         // Exception is a place holder for TwitterException
-        catch (Exception ex){
+        catch (TwitterException ex){
             mainApp.startUpWarning();
             LOG.error("Unable to send Tweet",ex);
         }
@@ -274,10 +274,10 @@ public class MainTwitterViewController {
     private void sendDm(){
         try {
             LOG.info("Direct Message result: Sent to : ||"+dmReciver.getText()+"|| with the message ||"+dmTextArea.getText()+"||");
-           // twitterEngine.sendDirectMessage(dmReciver.getText(), dmTextArea.getText());
+            twitterEngine.sendDirectMessage(dmReciver.getText(), dmTextArea.getText());
         }
         // Exception is a place holder for TwitterException
-        catch (Exception ex) {
+        catch (TwitterException ex) {
             mainApp.startUpWarning();
             LOG.error("Unable to send direct message", ex);
         }
