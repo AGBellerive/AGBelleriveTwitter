@@ -5,6 +5,7 @@
  */
 package com.agbellerive.twitter.presentation;
 
+import com.agbellerive.twitter.beans.TwitterProperties;
 import com.agbellerive.twitter.controller.FormController;
 import com.agbellerive.twitter.controller.MainTwitterViewController;
 import java.io.FileInputStream;
@@ -25,31 +26,38 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
- * @author 1733565
+ * http://twitter4j.org/en/code-examples.html
+ * @author Alex Bellerive
  */
 public class MainApp extends Application {
     
     private final static Logger LOG = LoggerFactory.getLogger(MainApp.class);
+    
     private MainTwitterViewController MTViewController;
+    BorderPane masterLayout;
+    
     private FormController FormController;
-    private Stage stage;
+    private Stage primaryStage;
+    
+    private TwitterProperties userKeys;
     
     @Override
     public void start(Stage primaryStage)throws Exception  {
-        this.stage = primaryStage;
-        Scene twitter = createTwitter();
-        Scene form = createForm();
+        this.primaryStage = primaryStage;
         
         if(!checkProperties()){
-            this.stage.setScene(form);
+            createForm();
         }
         else{
-            this.stage.setScene(twitter);
+            createTwitter();
         }
-        this.stage.getIcons().add(new Image("/images/Twitter_Logo_Blue.png"));
-        this.stage.setTitle("Twitter");
-        this.stage.show();
+        
+        Scene scene = new Scene(this.masterLayout);
+        this.primaryStage.setScene(scene);
+        
+        this.primaryStage.getIcons().add(new Image("/images/Twitter_Logo_Blue.png"));
+        this.primaryStage.setTitle("Twitter");
+        this.primaryStage.show();
     }
      /**
      * @param args the command line arguments
@@ -65,14 +73,16 @@ public class MainApp extends Application {
      * @return Scene
      * @throws Exception 
      */
-    private Scene createTwitter() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainTwitterView.fxml"));
-        this.MTViewController = loader.getController();
-        Parent root = (BorderPane) loader.load();
-        Scene scene = new Scene(root);
-        loader.setResources(ResourceBundle.getBundle("MessageBundle"));
-        LOG.info("Twitter Scene Built");
-        return scene;
+    private void createTwitter() throws IOException {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainTwitterView.fxml"));
+            loader.setResources(ResourceBundle.getBundle("MessagesBundle"));
+        
+            this.masterLayout =(BorderPane)loader.load();
+            this.MTViewController = loader.getController();
+        
+            this.MTViewController.setMainView(masterLayout);
+        
+            LOG.info("Twitter Scene Built");
     }
      /**
       * This method creates the form that is going to be 
@@ -80,13 +90,14 @@ public class MainApp extends Application {
       * @return Scene
       * @throws Exception 
       */
-     private Scene createForm() throws Exception{
+     private void createForm() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/form.fxml"));
+        loader.setResources(ResourceBundle.getBundle("MessagesBundle"));
+        
+        this.masterLayout = (BorderPane) loader.load();
         this.FormController = loader.getController();
-        Parent root = (BorderPane) loader.load();
-        Scene scene = new Scene(root);
-        LOG.info("Forum Scene Built");
-        return scene;
+        
+        LOG.info("Forum Scene Built");  
      }
      
      /**
@@ -100,9 +111,15 @@ public class MainApp extends Application {
      private boolean checkProperties() throws IOException{
         boolean fileFound = false;
         Properties prop = new Properties();
-         
+        this.userKeys = new TwitterProperties(); 
         try(FileInputStream file = new FileInputStream("twitter4j.properties") ) {
-            prop.load(file);
+           prop.load(file);
+            
+           userKeys.setConsumerKey(prop.getProperty("oauth.consumerKey"));
+           userKeys.setConsumerSecret(prop.getProperty("oauth.consumerKey"));
+           userKeys.setAcessToken(prop.getProperty("oauth.accessToken"));
+           userKeys.setAcessTokenSecret(prop.getProperty("oauth.accessTokenSecret"));
+            
             fileFound = true;
             LOG.info("Properties File Found redirecting to Twitter");
         } 
