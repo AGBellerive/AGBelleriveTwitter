@@ -1,9 +1,13 @@
 C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\beans\TwitterProperties.java
-C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\controller\DmViewController.java
+C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\business\TwitterStatusInfo.java
 C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\business\TwitterEngine.java
 C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\controller\ProfileViewController.java
-C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\controller\MainTwitterViewController.java
 C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\controller\TweetViewController.java
+C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\business\TwitterTimelineTask.java
+C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\controller\DmViewController.java
+C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\business\TwitterInfoCell.java
+C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\controller\MainTwitterViewController.java
 C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\controller\FeedViewController.java
+C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\controller\UserProfileViewController.java
 C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\presentation\MainApp.java
 C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\src\main\java\com\agbellerive\twitter\controller\FormController.java

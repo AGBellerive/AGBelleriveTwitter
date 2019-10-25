@@ -4,14 +4,29 @@
 
 package com.agbellerive.twitter.controller;
 
+import com.agbellerive.twitter.business.TwitterInfoCell;
+import com.agbellerive.twitter.business.TwitterStatusInfo;
+import com.agbellerive.twitter.business.TwitterTimelineTask;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FeedViewController {
-
+    private final static Logger LOG = LoggerFactory.getLogger(FeedViewController.class);
+    private TwitterTimelineTask timeLineTask;
+    
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -22,12 +37,60 @@ public class FeedViewController {
     private BorderPane homePane; // Value injected by FXMLLoader
 
     @FXML // fx:id="tweetList"
-    private ListView<?> tweetList; // Value injected by FXMLLoader
+    private ListView<TwitterStatusInfo> tweetList; // Value injected by FXMLLoader
+    
+    @FXML // fx:id="refreshBtn"
+    private Button refreshBtn; // Value injected by FXMLLoader
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert homePane != null : "fx:id=\"homePane\" was not injected: check your FXML file 'FeedView.fxml'.";
         assert tweetList != null : "fx:id=\"tweetList\" was not injected: check your FXML file 'FeedView.fxml'.";
-
+        assert refreshBtn != null : "fx:id=\"refreshBtn\" was not injected: check your FXML file 'FeedView.fxml'.";
+        
+        homePane.setCenter(getHBoxView());
+        //If i want it to load up and everything is there make a refresh click with no params and call refreshClick
     }
+    
+    @FXML
+    void refreshClick(ActionEvent event) {
+        tweetList.getItems().clear();
+        if (timeLineTask == null) {
+            timeLineTask = new TwitterTimelineTask(tweetList.getItems());
+        }
+        try {
+            timeLineTask.fillTimeLine();
+        } catch (Exception ex) {
+            LOG.error("Unable to display timeline", ex);
+        }
+    }
+    
+    private Node getHBoxView() {
+        HBox hBox = new HBox();
+        
+        ObservableList<TwitterStatusInfo> list = FXCollections.observableArrayList();
+        tweetList.setItems(list);
+        tweetList.setPrefWidth(800);
+        tweetList.setCellFactory(p -> new TwitterInfoCell());
+        hBox.getChildren().addAll(tweetList);
+
+        // Event handler when a cell is selected
+        
+        /*
+        tweetList.getSelectionModel().selectedItemProperty()
+                .addListener((ObservableValue<? extends TwitterStatusInfo> ov, TwitterStatusInfo t, TwitterStatusInfo t1) -> {
+                    if (t != null) {
+                        LOG.debug("Previous handle: " + t.getHandle());
+                    }
+                    if (t1 != null) {
+                        LOG.debug("New handle: " + t1.getHandle());
+                    }
+                });
+        */
+        return hBox;
+    }
+    
+    
+    
+    
 }

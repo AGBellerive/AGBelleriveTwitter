@@ -146,7 +146,6 @@ public class MainTwitterViewController {
     private void profileBtnClick(ActionEvent event) {
         this.mainPane.setCenter(this.profileView);
         
-        
         dmIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         homeIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
@@ -273,6 +272,7 @@ public class MainTwitterViewController {
         this.profileViewController.setUpView();
         
     }
+    
     
     
 }

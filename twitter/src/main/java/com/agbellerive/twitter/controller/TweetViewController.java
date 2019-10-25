@@ -5,13 +5,19 @@
 package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterEngine;
+import com.agbellerive.twitter.business.TwitterStatusInfo;
 import com.agbellerive.twitter.presentation.MainApp;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import twitter4j.TwitterException;
@@ -89,4 +95,6 @@ public class TweetViewController {
         sendTweetBtn.setOnAction( event -> {sendTweet();});
         LOG.info("Tweet Listners assigned by ListenersSetUp");
     }
+     
+
 }

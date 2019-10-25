@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import twitter4j.DirectMessage;
+import twitter4j.Paging;
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Status;
@@ -117,6 +118,16 @@ public class TwitterEngine {
         }).forEachOrdered((s) -> {
             System.out.println("Text: " + s.getSource());
         });
+    }
+    
+    public List<Status> getTimeLine(int page) throws TwitterException {
+        LOG.debug("getTimeLine");
+        Twitter twitter = getTwitterinstance();
+        Paging paging = new Paging();
+        paging.setCount(30);
+        paging.setPage(page);
+        List<Status> statuses = twitter.getHomeTimeline(paging);
+        return statuses;
     }
 
 }
