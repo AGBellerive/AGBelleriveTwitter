@@ -124,7 +124,7 @@ public class TwitterEngine {
         LOG.debug("getTimeLine");
         Twitter twitter = getTwitterinstance();
         Paging paging = new Paging();
-        paging.setCount(30);
+        paging.setCount(10);
         paging.setPage(page);
         List<Status> statuses = twitter.getHomeTimeline(paging);
         return statuses;

@@ -98,4 +98,10 @@ public class DmViewController {
         }
     }
     
+    public void presetDmName(String user){
+        this.dmReciver.setText(user);
+        this.dmReciver.setEditable(false);
+        LOG.info("User : "+user +" has been preset as the sender");
+    }
+    
 }

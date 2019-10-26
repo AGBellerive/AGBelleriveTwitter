@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import twitter4j.AccountSettings;
 import twitter4j.Status;
+import twitter4j.StatusUpdate;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
@@ -32,6 +33,7 @@ public class TwitterStatusInfo {
     public TwitterStatusInfo(Status status) {
         this.status = status;
         this.twitter = engine.getTwitterinstance();
+        LOG.info("TwitterStatus Instantiated");
     }
 
     public String getName() {
@@ -91,9 +93,22 @@ public class TwitterStatusInfo {
     public void reTweet() throws TwitterException{
         twitter.retweetStatus(status.getId());
     }
+    public boolean isFavorited(){
+        return this.status.isFavorited();
+    }
     
-    public void makeComment(){
+    public void makeComment(String reply) throws TwitterException{
+       StatusUpdate tweetReply = new StatusUpdate(reply);
+       tweetReply.inReplyToStatusId(this.status.getId());
+       
+       Status statusRepliedTo = twitter.updateStatus(tweetReply);
+       
         //http://www.tothenew.com/blog/reply-to-a-user-tweet-using-twitter4j/
     }
+    
+    public Long getTweetId(){
+        return this.status.getId();
+    }
+    
 }
 //http://twitter4j.org/oldjavadocs/2.2.6/twitter4j/api/UserMethods.html

@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -23,6 +24,14 @@ import org.slf4j.LoggerFactory;
 import twitter4j.TwitterException;
 
 public class TweetViewController {
+    
+    private final TwitterEngine twitterEngine = new TwitterEngine();
+    private final static Logger LOG = LoggerFactory.getLogger(TweetViewController.class);
+    private final MainApp mainApp = new MainApp();
+    private static final int MAX_TWEET = 280;
+    
+    private TwitterStatusInfo userInfo;
+    private Long tweetId;
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -33,16 +42,14 @@ public class TweetViewController {
     @FXML // fx:id="tweetPane"
     private BorderPane tweetPane; // Value injected by FXMLLoader
 
+    @FXML // fx:id="tweetPrompt"
+    private Label tweetPrompt; // Value injected by FXMLLoader
+
     @FXML // fx:id="tweetTextArea"
     private TextArea tweetTextArea; // Value injected by FXMLLoader
 
     @FXML // fx:id="sendTweetBtn"
     private Button sendTweetBtn; // Value injected by FXMLLoader
-    
-    private final TwitterEngine twitterEngine = new TwitterEngine();
-    private final static Logger LOG = LoggerFactory.getLogger(TweetViewController.class);
-    private final MainApp mainApp = new MainApp();
-    private static final int MAX_TWEET = 280;
     
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -61,8 +68,23 @@ public class TweetViewController {
      */
     private void sendTweet(){
         try{
+            if(this.sendTweetBtn.getText().equals("Tweet!")){
             LOG.info("TextArea result: "+tweetTextArea.getText());
             twitterEngine.createTweet(tweetTextArea.getText());
+            }
+            else if(this.sendTweetBtn.getText().equals("Retweet!")){
+                if(this.tweetTextArea.getText().isEmpty()){
+                    this.userInfo.reTweet();
+                }
+                else{
+                   String statusBeingRetweeted = "https://twitter.com/"+this.userInfo.getHandle()+"/status/"+this.userInfo.getTweetId();
+                   twitterEngine.createTweet(tweetTextArea.getText() +" " +statusBeingRetweeted);
+                }
+            }
+            else if (this.sendTweetBtn.getText().equals("Reply!")){
+                this.userInfo.makeComment(tweetTextArea.getText());
+            }
+
         }
         // Exception is a place holder for TwitterException
         catch (TwitterException ex){
@@ -95,6 +117,27 @@ public class TweetViewController {
         sendTweetBtn.setOnAction( event -> {sendTweet();});
         LOG.info("Tweet Listners assigned by ListenersSetUp");
     }
+     public void actionOnTweet(TwitterStatusInfo user,String action){
+         if(action.equals("Retweet")){
+             reTweeting(user);
+         }
+         else if(action.equals("Reply")){
+             replying(user);
+         }
+     }
      
+     public void reTweeting(TwitterStatusInfo user){
+         this.tweetId = user.getTweetId();
+         this.userInfo = user;
+         this.tweetPrompt.setText("Enter Your Retweet Bellow");
+         this.sendTweetBtn.setText("Retweet!");
+     }
+     
+     public void replying(TwitterStatusInfo user){
+         this.tweetId = user.getTweetId();
+         this.userInfo = user;
+         this.tweetPrompt.setText("Enter Your Reply Bellow");
+         this.sendTweetBtn.setText("Reply!");
+     }     
 
 }

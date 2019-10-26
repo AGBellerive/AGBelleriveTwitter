@@ -1,5 +1,6 @@
 package com.agbellerive.twitter.business;
 
+import com.agbellerive.twitter.controller.RetweetViewController;
 import com.agbellerive.twitter.controller.TweetViewController;
 import com.agbellerive.twitter.controller.UserProfileViewController;
 import java.io.IOException;
@@ -43,6 +44,14 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
     // Real programmers use logging, not System.out.println
     private final static Logger LOG = LoggerFactory.getLogger(TwitterInfoCell.class);
     private TweetViewController tweetViewController;
+    
+    private UserProfileViewController userProvileViewController;
+    private RetweetViewController retweetViewController;
+    
+    private Stage popUpUser;
+    private Stage popUpRetweet;
+    private Stage popUpReply;
+    
     /**
      * This method is called when ever cells need to be updated
      *
@@ -61,7 +70,11 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
             setText(null);
             setGraphic(null);
         } else {
-            setGraphic(getTwitterInfoCell(item));
+            try {
+                setGraphic(getTwitterInfoCell(item));
+            } catch (IOException | TwitterException ex) {
+                java.util.logging.Logger.getLogger(TwitterInfoCell.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -72,14 +85,19 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
      * @param info
      * @return The node to be placed into the ListView
      */
-    private Node getTwitterInfoCell(TwitterStatusInfo info) {
+    private Node getTwitterInfoCell(TwitterStatusInfo info) throws IOException, TwitterException {
+        controllerLoader();
+        this.popUpUser = userProvileViewController.loadUsersProfile(info);
+        this.popUpRetweet = retweetViewController.loadRetweetView(info);
+        this.popUpReply = retweetViewController.loadReplyView(info);
+        
+        
         HBox hBox = new HBox();
         hBox.setSpacing(10);
         
         HBox actions = new HBox();
         actions.setSpacing(10);
         
-        TwitterInfoCell tic = new TwitterInfoCell();
         
         Button userImage = new Button();
         userImage.setStyle("-fx-background-image: url("+info.getImageURL()+");");
@@ -89,13 +107,17 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
         Text text = new Text(info.getText());
         text.setFill(Color.WHITE);
         
-        text.setWrappingWidth(800);
+        text.setWrappingWidth(600);
         
         Button reTweet = new Button("Retweet " + info.getRetweetCount());
         Button reply = new Button("Reply");
         Button like = new Button("Like "+info.getLikeCount());
         
-        listnerSetUp(info,reTweet,like,userImage);
+        try {
+            listnerSetUp(info,reTweet,like,userImage,reply);
+        } catch (TwitterException ex) {
+            java.util.logging.Logger.getLogger(TwitterInfoCell.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         actions.getChildren().addAll(reply,reTweet,like);
         
@@ -106,56 +128,60 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
         return hBox;
     }
     
-    private void listnerSetUp(TwitterStatusInfo info,Button reTweet,Button like,Button userImage){
+    private void listnerSetUp(TwitterStatusInfo info,Button reTweet,Button like,Button userImage,Button reply)throws IOException, TwitterException{
         reTweet.setOnAction(event ->{
-            try{
-                info.reTweet();
-            }
-            catch(TwitterException ex){
-                LOG.error("Tweet Was not able to be retweeted");
-            }
+                displayRetweet();
         });
         
        like.setOnAction(event->{
             try {
                 info.likeTweet();
+                if(info.isFavorited()){
+                    like.setDisable(true);
+                }
             } catch (TwitterException ex) {
                 LOG.info("Tweet Was Already liked");
             }
         });
        
+       reply.setOnAction(event -> {
+                displayReply();
+       });
+       
        userImage.setOnAction(event-> {
-            try {
-                //tweetViewController.
-                        display(info);
-                LOG.info("Image Clicked");
-            } catch (IOException ex) {
-                java.util.logging.Logger.getLogger(TwitterInfoCell.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
+            displayUser();
         });
         
     }
-    //MOVE THIS METHOD SOMWEHRE ELSE
-    public void display(TwitterStatusInfo info) throws IOException {
-        Stage popupStage = new Stage();
-        popupStage.initModality(Modality.APPLICATION_MODAL);
+    
+    public void displayUser(){
+        this.popUpUser.showAndWait();
+    }
+    
+    public void displayRetweet(){
+        //retweetViewController.setRetweetText();
+        popUpRetweet.showAndWait();
+    }
+    
+    public void displayReply(){
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserProfileView.fxml"));
-        loader.setResources(ResourceBundle.getBundle("MessagesBundle"));
+        popUpReply.showAndWait();
+    }
+    
+    private void controllerLoader() throws IOException{
+        FXMLLoader retweetFXML = new FXMLLoader(getClass().getResource("/fxml/RetweetView.fxml"));
+        retweetFXML.setResources(ResourceBundle.getBundle("MessagesBundle"));
         
-        BorderPane userProfile = (BorderPane)loader.load();
-        UserProfileViewController userProfileViewController = loader.getController();
+        BorderPane reTweetView = (BorderPane)retweetFXML.load();
+        retweetViewController = retweetFXML.getController();
         
-        userProfileViewController.setUpView(info);
+        FXMLLoader userFXML = new FXMLLoader(getClass().getResource("/fxml/UserProfileView.fxml"));
+        userFXML.setResources(ResourceBundle.getBundle("MessagesBundle"));
         
-        Scene scene = new Scene(userProfile);
+        BorderPane userProfile = (BorderPane)userFXML.load();
+        this.userProvileViewController = userFXML.getController();
         
-        popupStage.getIcons().add(new Image("/images/Twitter_Logo_Blue.png"));
-        popupStage.setTitle("Twitter Profile Of " + info.getName());
-        
-        popupStage.setScene(scene);
-        popupStage.showAndWait();
         
     }
+    
 }

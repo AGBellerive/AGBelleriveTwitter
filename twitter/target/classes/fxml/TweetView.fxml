@@ -11,7 +11,7 @@
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="%TweetPrompt" />
+            <Label fx:id="tweetPrompt" text="%TweetPrompt" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

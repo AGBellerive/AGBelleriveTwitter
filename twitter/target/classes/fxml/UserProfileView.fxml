@@ -14,23 +14,23 @@
             <ImageView fx:id="profileImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
             <VBox prefHeight="100.0" prefWidth="501.0" spacing="5.0">
                <children>
-                  <Label fx:id="name" text="Name" />
-                  <Label fx:id="userName" text="\@UserName" />
-                  <Label fx:id="following" text="Folowing" />
-                  <Label fx:id="followers" text="Follwers" />
-                  <Label fx:id="description" text="Description" />
+                  <Label fx:id="name" text="Name" wrapText="true" />
+                  <Label fx:id="userName" text="\@UserName" wrapText="true" />
+                  <Label fx:id="following" text="Folowing" wrapText="true" />
+                  <Label fx:id="followers" text="Follwers" wrapText="true" />
+                  <Label fx:id="description" text="Description" wrapText="true" />
                </children>
             </VBox>
          </children>
       </HBox>
    </top>
    <center>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <BorderPane fx:id="displayPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <top>
             <HBox alignment="CENTER" prefHeight="42.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="followBtn" mnemonicParsing="false" text="Follow" />
-                  <Button fx:id="messageBtn" mnemonicParsing="false" text="Message" />
+                  <Button fx:id="followBtn" mnemonicParsing="false" onAction="#followClick" text="Follow" />
+                  <Button fx:id="messageBtn" mnemonicParsing="false" onAction="#messageClick" text="Message" />
                </children>
             </HBox>
          </top>

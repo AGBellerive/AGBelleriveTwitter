@@ -1,4 +1,5 @@
 com\agbellerive\twitter\controller\MainTwitterViewController.class
+com\agbellerive\twitter\controller\RetweetViewController.class
 com\agbellerive\twitter\business\TwitterEngine.class
 com\agbellerive\twitter\business\TwitterStatusInfo.class
 com\agbellerive\twitter\controller\FeedViewController.class

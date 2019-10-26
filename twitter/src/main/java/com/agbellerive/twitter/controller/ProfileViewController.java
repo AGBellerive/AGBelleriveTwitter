@@ -74,8 +74,6 @@ public class ProfileViewController {
     
     private void setProfilePicture(){
         Image image = new Image(this.authenticatedUser.get400x400ProfileImageURL());
-        
-        LOG.info(this.authenticatedUser.get400x400ProfileImageURL() +"");
         this.profileImageView.imageProperty().set(image);
     }
     
