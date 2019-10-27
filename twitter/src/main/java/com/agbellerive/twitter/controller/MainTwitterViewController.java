@@ -37,6 +37,9 @@ public class MainTwitterViewController {
     private ProfileViewController profileViewController;
     private BorderPane profileView;
     
+    private SearchViewController searchViewController;
+    private BorderPane searchView;
+    
     
     private final String BUTTON_BACKGROUND_COLOR = "#15202b";
     private final String BUTTON_OUTLINE_COLOR = "#1da1f2";
@@ -76,6 +79,9 @@ public class MainTwitterViewController {
     @FXML // fx:id="helpBtn"
     private Button helpBtn; // Value injected by FXMLLoader
 
+    @FXML // fx:id="searchBtn"
+    private Button searchBtn; // Value injected by FXMLLoader
+
     @FXML // fx:id="exitBtn"
     private Button exitBtn; // Value injected by FXMLLoader
 
@@ -99,6 +105,7 @@ public class MainTwitterViewController {
         createDmView();
         createFeedView();
         createProfileView();
+        createSearchView();
         
         this.mainPane.setCenter(this.feedView);
         LOG.info("Class fully initialized");
@@ -120,6 +127,8 @@ public class MainTwitterViewController {
        tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
+       searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+       
        LOG.info("DmIcon Clicked");
     }
     /**
@@ -139,6 +148,8 @@ public class MainTwitterViewController {
         tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
+        searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        
         LOG.info("HomeIcon Clicked");
     }
     
@@ -151,6 +162,8 @@ public class MainTwitterViewController {
         tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         profileBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";-fx-background-image: url("+url+");");
+        searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        
         LOG.info("ProfileIcon Cliked");
     }
     
@@ -171,9 +184,28 @@ public class MainTwitterViewController {
        homeIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
        helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
-        profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
+       profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
+       searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+       
        LOG.info("TweetIcon Clicked");
     }
+    
+    @FXML
+    private void searchClick(ActionEvent event) {
+        
+        this.mainPane.setCenter(this.searchView);
+        
+        dmIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        homeIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
+        searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+       
+       LOG.info("SearchIcon Clicked");
+    }
+    
+    
     
     /**
      * In the event the exit button is clicked the pane 
@@ -200,7 +232,10 @@ public class MainTwitterViewController {
         dmIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         homeIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
-        helpBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";-fx-background-image: url("+url+");");
+        helpBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
+        profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
+        searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+       
         LOG.info("HelpIcon Clicked");
     }
     
@@ -253,7 +288,6 @@ public class MainTwitterViewController {
     private void createProfileView() throws TwitterException{
         User loggedInUser = twitter.showUser(twitter.getId());
         url = loggedInUser.get400x400ProfileImageURL();
-        //profileViewController.setUser(loggedInUser);
         this.profileBtn.setStyle("-fx-background-image: url("+url+");");
         
         try{            
@@ -266,11 +300,24 @@ public class MainTwitterViewController {
         }
         catch(IOException ex){
             LOG.error("Could not load ProfileView",ex);
-            Platform.exit();
         }
         this.profileViewController.setUser();
         this.profileViewController.setUpView();
         
+    }
+    
+    private void createSearchView(){
+        try{
+            FXMLLoader searchViewFXML = new FXMLLoader (getClass().getResource("/fxml/SearchView.fxml"));
+            searchViewFXML.setResources(ResourceBundle.getBundle("MessagesBundle"));
+            this.searchView = (BorderPane) searchViewFXML.load();
+            this.searchViewController = searchViewFXML.getController();
+            
+            LOG.info("Search view Sucessfully created");
+        } 
+        catch (IOException ex) {
+            LOG.error("Could not load SearchView",ex);
+        }
     }
     
     

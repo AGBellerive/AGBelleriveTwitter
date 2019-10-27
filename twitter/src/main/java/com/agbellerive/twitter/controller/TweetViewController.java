@@ -69,20 +69,23 @@ public class TweetViewController {
     private void sendTweet(){
         try{
             if(this.sendTweetBtn.getText().equals("Tweet!")){
-            LOG.info("TextArea result: "+tweetTextArea.getText());
+            LOG.info("TextArea result: "+tweetTextArea.getText() +" Has been tweeted");
             twitterEngine.createTweet(tweetTextArea.getText());
             }
             else if(this.sendTweetBtn.getText().equals("Retweet!")){
                 if(this.tweetTextArea.getText().isEmpty()){
                     this.userInfo.reTweet();
+                    LOG.info("TextArea result is empty so a regular retweet");
                 }
                 else{
                    String statusBeingRetweeted = "https://twitter.com/"+this.userInfo.getHandle()+"/status/"+this.userInfo.getTweetId();
                    twitterEngine.createTweet(tweetTextArea.getText() +" " +statusBeingRetweeted);
+                   LOG.info("TextArea result: "+tweetTextArea.getText() +" Has been attached to the retweet");
                 }
             }
             else if (this.sendTweetBtn.getText().equals("Reply!")){
                 this.userInfo.makeComment(tweetTextArea.getText());
+                LOG.info("A reply has been made with the content: "+tweetTextArea.getText() );
             }
 
         }

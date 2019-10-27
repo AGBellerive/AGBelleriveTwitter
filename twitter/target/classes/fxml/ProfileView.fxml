@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/twitterview.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agbellerive.twitter.controller.ProfileViewController">
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" BorderPane.alignment="CENTER">
@@ -26,13 +25,13 @@
       </HBox>
    </top>
    <center>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <BorderPane fx:id="lowerPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <top>
             <HBox alignment="CENTER" prefHeight="42.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
                <children>
                   <Button mnemonicParsing="false" text="Tweets" />
                   <Button mnemonicParsing="false" text="Retweets" />
-                  <Button mnemonicParsing="false" text="Mentioned" />
+                  <Button fx:id="mentionedBtn" mnemonicParsing="false" onAction="#mentionedClick" text="Mentioned" />
                </children>
             </HBox>
          </top>

@@ -5,13 +5,19 @@
 package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterEngine;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import twitter4j.Query;
@@ -25,6 +31,9 @@ public class ProfileViewController {
     private User authenticatedUser;
     private final static TwitterEngine engine = new TwitterEngine();
     private final Twitter twitter = engine.getTwitterinstance();
+    
+    private MentionedViewController mentionedViewController;
+    private BorderPane mentionedView;
 
     private final static Logger LOG = LoggerFactory.getLogger(ProfileViewController.class);
     
@@ -52,6 +61,12 @@ public class ProfileViewController {
     @FXML // fx:id="description"
     private Label description; // Value injected by FXMLLoader
 
+    @FXML // fx:id="lowerPane"
+    private BorderPane lowerPane; // Value injected by FXMLLoader
+
+    @FXML // fx:id="mentionedBtn"
+    private Button mentionedBtn; // Value injected by FXMLLoader
+
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert profileImageView != null : "fx:id=\"profileImageView\" was not injected: check your FXML file 'ProfileView.fxml'.";
@@ -61,7 +76,9 @@ public class ProfileViewController {
         assert following != null : "fx:id=\"following\" was not injected: check your FXML file 'ProfileView.fxml'.";
     }
     
-    public void setUpView(){
+    public void setUpView() throws TwitterException{
+        loadMentionedView();
+        loadSelfMentioned();
         setProfilePicture();
         setDescription();
         setHandle();
@@ -101,6 +118,30 @@ public class ProfileViewController {
         Query search = new Query(this.authenticatedUser.getName());
         QueryResult mentionsQuerry = twitter.search(search);
         List<Status> mentions = mentionsQuerry.getTweets();
+    }
+    
+    private void loadMentionedView(){
+        try{
+            FXMLLoader mentionedFXML = new FXMLLoader(getClass().getResource("/fxml/MentionedView.fxml"));
+            mentionedFXML.setResources(ResourceBundle.getBundle("MessagesBundle"));
+            this.mentionedView = (BorderPane) mentionedFXML.load();
+            this.mentionedViewController = mentionedFXML.getController();
+            LOG.info("MentionedView sucessfully created");
+        }
+        catch(IOException ex){
+            LOG.error("Could not load MentionedView",ex);
+            Platform.exit();
+        }
+    }
+    
+    private void loadSelfMentioned() throws TwitterException{
+        LOG.info(this.authenticatedUser.getName());
+    }
+    
+    @FXML
+    private void mentionedClick(ActionEvent event) {
+        lowerPane.setCenter(this.mentionedView);
+        LOG.info("Mentioned Button Clicked");
     }
     
 }
