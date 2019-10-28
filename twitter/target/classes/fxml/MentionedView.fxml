@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agbellerive.twitter.controller.MentionedViewController">
+   <center>
+      <ListView fx:id="mentionedList" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/twitterview.css" />
+   </center>
+</BorderPane>

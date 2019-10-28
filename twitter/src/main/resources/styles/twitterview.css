@@ -6,7 +6,7 @@
 }
 
 /*https://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html#imageview*/
-#homeIconBtn,#tweetIconBtn,#dmIconBtn,#exitBtn,#helpBtn{
+#homeIconBtn,#tweetIconBtn,#dmIconBtn,#exitBtn,#helpBtn,#profileBtn,#reTweetBtn,#likeBtn,#replyBtn,#searchBtn,#refreshBtn{
     -fx-background-size:100% 100%;
     -fx-background-color: #15202b;
     -fx-background-radius: 10px;
@@ -32,7 +32,29 @@
     -fx-background-image: url("../images/questionmarkIconInverted.png");
     /*Source: https://www.stickpng.com/img/icons-logos-emojis/question-marks/large-question-mark */
 }
-Label,TextField {
+#searchBtn{
+    -fx-background-image: url("../images/searchIconInverted.png");
+}
+
+#reTweetBtn{
+    -fx-background-image: url("../images/reTweetIconInverted.png");
+    -fx-text-fill: #1da1f2;
+    /*https://icon-library.net/icon/twitter-retweet-icon-24.html*/
+}
+#replyBtn{
+    -fx-background-image: url("../images/replyIconInverted.png");
+    -fx-text-fill: #1da1f2;
+    /*https://thenounproject.com/term/reply/1330/*/
+}
+#likeBtn{
+    -fx-background-image: url("../images/likeIcon.png");
+    -fx-text-fill: #1da1f2;
+    /*https://picsart.com/i/sticker-twitter-love-button-like-271343896036211*/
+}
+#refreshBtn{
+     -fx-background-image: url("../images/refreshIconInverted.png");
+}
+Label,TextField,ListView {
     -fx-text-fill:white;
     -fx-font-style:oblique;
 }
@@ -49,8 +71,13 @@ TextArea{
     -fx-control-inner-background:#15202b;
 }
 
-#sendTweetBtn,#sendDmBtn{
+#sendTweetBtn,#sendDmBtn,#searchTermBtn{
     -fx-background-radius: 10px;
     -fx-background-color:#1da1f2;
     -fx-font-style:oblique;
+}
+ListView{
+    -fx-background-color:blueviolet;
+    -fx-text-fill:white;
+    -fx-control-inner-background:#15202b;
 }
