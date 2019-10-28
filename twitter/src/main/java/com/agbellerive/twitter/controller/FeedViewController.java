@@ -49,14 +49,29 @@ public class FeedViewController {
         assert refreshBtn != null : "fx:id=\"refreshBtn\" was not injected: check your FXML file 'FeedView.fxml'.";
         
         homePane.setCenter(getHBoxView());
-        //If i want it to load up and everything is there make a refresh click with no params and call refreshClick
+        loadTweets();
+        LOG.info("FeedViewContoller Initilized, view has been loaded");
+    }
+    /**
+     * This method gets called when the user clicks on the refresh button
+     * @param event 
+     */
+    @FXML
+    private void refreshClick(ActionEvent event) {
+        loadTweets();
+        LOG.info("Refresh button clicked");
     }
     
-    @FXML
-    void refreshClick(ActionEvent event) {
+    /**
+     * This method is called when the view is loaded and it 
+     * displays all the tweets and when this is called it removes the old 
+     * tweets being displayed
+     */
+    private void loadTweets(){
         tweetList.getItems().clear();
         if (timeLineTask == null) {
             timeLineTask = new TwitterTimelineTask(tweetList.getItems());
+            LOG.info("Tweets have been loaded");
         }
         try {
             timeLineTask.fillTimeLine();
@@ -65,6 +80,10 @@ public class FeedViewController {
         }
     }
     
+    /**
+     * This method creates the Hbox view for all the tweets
+     * @return Node
+     */
     private Node getHBoxView() {
         HBox hBox = new HBox();
         
@@ -73,24 +92,6 @@ public class FeedViewController {
         tweetList.setPrefWidth(800);
         tweetList.setCellFactory(p -> new TwitterInfoCell());
         hBox.getChildren().addAll(tweetList);
-
-        // Event handler when a cell is selected
-        
-        /*
-        tweetList.getSelectionModel().selectedItemProperty()
-                .addListener((ObservableValue<? extends TwitterStatusInfo> ov, TwitterStatusInfo t, TwitterStatusInfo t1) -> {
-                    if (t != null) {
-                        LOG.debug("Previous handle: " + t.getHandle());
-                    }
-                    if (t1 != null) {
-                        LOG.debug("New handle: " + t1.getHandle());
-                    }
-                });
-        */
         return hBox;
     }
-    
-    
-    
-    
 }

@@ -97,7 +97,12 @@ public class DmViewController {
             mainApp.startUpAlert();
         }
     }
-    
+    /**
+     * If the dm name has to be preset in the case of looking 
+     * at the users profile this method is called to set that
+     * up and prevents the user to remove that users name
+     * @param user 
+     */
     public void presetDmName(String user){
         this.dmReciver.setText(user);
         this.dmReciver.setEditable(false);

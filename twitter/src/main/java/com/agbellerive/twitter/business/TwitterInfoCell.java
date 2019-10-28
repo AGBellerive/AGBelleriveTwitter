@@ -32,8 +32,7 @@ import twitter4j.TwitterException;
  * @author Ken Fogel
  */
 public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
-
-    // Real programmers use logging, not System.out.println
+    
     private final static Logger LOG = LoggerFactory.getLogger(TwitterInfoCell.class);
     private TweetViewController tweetViewController;
     
@@ -43,7 +42,6 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
     private Stage popUpUser;
     private Stage popUpRetweet;
     private Stage popUpReply;
-    
     /**
      * This method is called when ever cells need to be updated
      *
@@ -71,8 +69,9 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
     }
 
     /**
-     * This method determines what the cell will look like. Here is where you
-     * can add buttons or any additional information
+     * This method determines what the cell will look like. 
+     * This sets the image for the user and initilizes all the
+     * needed controllers for the popup windows
      *
      * @param info
      * @return The node to be placed into the ListView
@@ -93,7 +92,7 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
         
         Button userImage = new Button();
         userImage.setStyle("-fx-background-image: url("+info.getImageURL()+");");
-        userImage.setPrefSize(42, 42);
+        userImage.setPrefSize(48, 48);
         
         Label header = new Label(info.getName() +"  @" +info.getHandle() +" "+ info.getPostedDate());
         Text text = new Text(info.getText());
@@ -101,9 +100,17 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
         
         text.setWrappingWidth(600);
         
-        Button reTweet = new Button("Retweet " + info.getRetweetCount());
-        Button reply = new Button("Reply");
-        Button like = new Button("Like "+info.getLikeCount());
+        Button reTweet = new Button(""+info.getRetweetCount());
+        reTweet.setId("reTweetBtn");
+        reTweet.setPrefSize(42, 42);
+        
+        Button reply = new Button();
+        reply.setPrefSize(42, 42);
+        reply.setId("replyBtn");
+        
+        Button like = new Button(""+info.getLikeCount());
+        like.setPrefSize(42, 42);
+        like.setId("likeBtn");
         
         try {
             listnerSetUp(info,reTweet,like,userImage,reply);
@@ -119,7 +126,18 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
         
         return hBox;
     }
-    
+    /**
+     * This method attaches all the required listners for the buttons the user
+     * can interact with
+     * 
+     * @param info
+     * @param reTweet
+     * @param like
+     * @param userImage
+     * @param reply
+     * @throws IOException
+     * @throws TwitterException 
+     */
     private void listnerSetUp(TwitterStatusInfo info,Button reTweet,Button like,Button userImage,Button reply)throws IOException, TwitterException{
         reTweet.setOnAction(event ->{
                 displayRetweet();
@@ -146,26 +164,39 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
         
     }
     
+    /**
+     * This method displays the pop up window to show the user profile
+     */
     public void displayUser(){
         this.popUpUser.showAndWait();
     }
     
+    /**
+     * This method displays the pop up window to show the retweet window
+     */
+    
     public void displayRetweet(){
-        //retweetViewController.setRetweetText();
-        popUpRetweet.showAndWait();
+        this.popUpRetweet.showAndWait();
     }
     
+    /**
+     * This method displays the pop up window to show the reply window
+     */
     public void displayReply(){
-        
-        popUpReply.showAndWait();
+        this.popUpReply.showAndWait();
     }
+    /**
+     * This method loads all the controllers that are needed to 
+     * properly use the pop up windows
+     * @throws IOException 
+     */
     
     private void controllerLoader() throws IOException{
         FXMLLoader retweetFXML = new FXMLLoader(getClass().getResource("/fxml/RetweetView.fxml"));
         retweetFXML.setResources(ResourceBundle.getBundle("MessagesBundle"));
         
         BorderPane reTweetView = (BorderPane)retweetFXML.load();
-        retweetViewController = retweetFXML.getController();
+        this.retweetViewController = retweetFXML.getController();
         
         FXMLLoader userFXML = new FXMLLoader(getClass().getResource("/fxml/UserProfileView.fxml"));
         userFXML.setResources(ResourceBundle.getBundle("MessagesBundle"));

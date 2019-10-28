@@ -4,6 +4,7 @@
 
 package com.agbellerive.twitter.controller;
 
+import com.agbellerive.twitter.business.TwitterEngine;
 import com.agbellerive.twitter.business.TwitterInfoCell;
 import com.agbellerive.twitter.business.TwitterStatusInfo;
 import com.agbellerive.twitter.business.TwitterTimelineTask;
@@ -19,11 +20,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
 public class MentionedViewController {
     private TwitterTimelineTask timeLineTask;
     private final static Logger LOG = LoggerFactory.getLogger(MentionedViewController.class);
+    
+    private final static TwitterEngine engine = new TwitterEngine();
+    private final Twitter twitter = engine.getTwitterinstance();
+    
     
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -38,12 +44,18 @@ public class MentionedViewController {
     private ListView<TwitterStatusInfo> mentionedList; // Value injected by FXMLLoader
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
-    void initialize() {
+    void initialize() throws TwitterException {
         assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file 'MentionedView.fxml'.";
         assert mentionedList != null : "fx:id=\"mentionedList\" was not injected: check your FXML file 'MentionedView.fxml'.";
         this.mainPane.setCenter(getHBoxView());
+        loadSelfMentionedList(twitter.showUser(twitter.getId()).getScreenName());
         LOG.info("MentionedView initilized");
     }
+    
+    /**
+     * This method creates the Hbox view for all the tweets
+     * @return Node
+     */
     
     private Node getHBoxView() {
         HBox hBox = new HBox();
@@ -56,7 +68,11 @@ public class MentionedViewController {
         LOG.info("getHBoxView compleated");
         return hBox;
     }
-    
+    /**
+     * This method loads all the mentions of the specific users handle
+     * @param user
+     * @throws TwitterException 
+     */
     public void loadSelfMentionedList(String user) throws TwitterException {
         mentionedList.getItems().clear();
         if (timeLineTask == null) {

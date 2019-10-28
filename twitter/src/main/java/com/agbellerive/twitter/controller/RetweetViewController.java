@@ -62,16 +62,19 @@ public class RetweetViewController {
 
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
-    void initialize() {
+    private void initialize() {
         assert userImage != null : "fx:id=\"userImage\" was not injected: check your FXML file 'RetweetView.fxml'.";
         assert headerLabel != null : "fx:id=\"headerLabel\" was not injected: check your FXML file 'RetweetView.fxml'.";
         assert tweetText != null : "fx:id=\"tweetText\" was not injected: check your FXML file 'RetweetView.fxml'.";
         assert likeBtn != null : "fx:id=\"likeBtn\" was not injected: check your FXML file 'RetweetView.fxml'.";
 
     }
-    
+    /**
+     * This method gets launched when the user clicks the like button
+     * @param event 
+     */
     @FXML
-    void likeBtnClick(ActionEvent event) {
+    private void likeBtnClick(ActionEvent event) {
         try {
             this.currentUser.likeTweet();
             LOG.info("Tweet Liked");
@@ -81,6 +84,10 @@ public class RetweetViewController {
         }
     }
     
+    /**
+     * This method sets up the view of the pop up
+     * @param action 
+     */
     public void setUpView(String action){
         setProfilePicture();
         setHeader();
@@ -89,29 +96,47 @@ public class RetweetViewController {
         setTweetArea(action);
     }
     
+    /**
+     * This method sets up the private variable of the current user
+     * @param user 
+     */
     public void setUpUser(TwitterStatusInfo user){
         this.currentUser = user;
     }
     
+    /**
+     * This method sets up the profile picture of the user
+     */
     private void setProfilePicture(){
         Image image = new Image(this.currentUser.getLargeProfileImageURL());
         this.userImage.imageProperty().set(image);
     }
-    
+    /**
+     * This method sets up the text next to the users name
+     */
     private void setHeader(){
         this.headerLabel.setText(this.currentUser.getName() +"  @" +this.currentUser.getHandle() +" "+ this.currentUser.getPostedDate());
     }
-    
+    /**
+     * This method sets the tweet of the user going to be retweeted
+     */
     private void setText(){
         this.tweetText.setText(this.currentUser.getText());
         this.tweetText.setWrappingWidth(500);
     }
     
+    /**
+     * This method uses the TweetView fxml and replaces strings on the screen
+     * to indicate you are in the retweetview
+     * @param action 
+     */
     private void setTweetArea(String action){
         this.tweetViewController.actionOnTweet(this.currentUser,action);
         this.lowerBorderPane.setCenter(this.tweetView);
     }
-    
+    /**
+     * This method initilizes the tweet view that is being used
+     */
     private void initializeTweetView(){
         try {
             FXMLLoader tweetFxml = new FXMLLoader(getClass().getResource("/fxml/TweetView.fxml"));
@@ -123,7 +148,12 @@ public class RetweetViewController {
             java.util.logging.Logger.getLogger(UserProfileViewController.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
-    
+    /**
+     * This method returns a Stage so it can be used as a pop up
+     * @param info
+     * @return
+     * @throws IOException 
+     */
     public Stage loadRetweetView(TwitterStatusInfo info) throws IOException{
         Stage popUpRetweet = new Stage();
         popUpRetweet.initModality(Modality.APPLICATION_MODAL);
@@ -145,7 +175,13 @@ public class RetweetViewController {
         popUpRetweet.setScene(scene);
         return popUpRetweet;
     }
-    
+    /**
+     * This method returns the reply view changing information to indicate the 
+     * user is about to reply
+     * @param info
+     * @return
+     * @throws IOException 
+     */
     public Stage loadReplyView(TwitterStatusInfo info) throws IOException{
         Stage popUpReply = loadRetweetView(info);
         popUpReply.initModality(Modality.APPLICATION_MODAL);

@@ -85,7 +85,10 @@ public class UserProfileViewController {
         assert followBtn != null : "fx:id=\"followBtn\" was not injected: check your FXML file 'UserProfileView.fxml'.";
         assert messageBtn != null : "fx:id=\"messageBtn\" was not injected: check your FXML file 'UserProfileView.fxml'.";
     }
-    
+    /**
+     * This method sets up the view for the user youre looking at
+     * @throws TwitterException 
+     */
     public void setUpView() throws TwitterException{
         initilizeFollowBtnStatus();
         initializeDmView();
@@ -96,11 +99,21 @@ public class UserProfileViewController {
         LOG.info("UserProfileViewController set up");
     }
     
+    /**
+     * This method sets up the user 
+     * @param info 
+     */
     public void setUpUser(TwitterStatusInfo info){
         this.currentUser = info;
         LOG.info("currentUser initilized");
     }
     
+    /**
+     * This method is called when the user clicks on the follow button
+     * following or unfollowing that specific user
+     * @param event
+     * @throws TwitterException 
+     */
     @FXML
     private void followClick(ActionEvent event) throws TwitterException {
         if(followBtn.getText().equals("Follow")){
@@ -114,7 +127,11 @@ public class UserProfileViewController {
             LOG.info("You Unfollowed " +this.currentUser.getHandle());
         }
     }
-
+    
+    /**
+     * This method is called when the user clicks on message
+     * @param event 
+     */
     @FXML
     private void messageClick(ActionEvent event) {
         this.dmViewController.presetDmName(this.currentUser.getHandle());
@@ -122,26 +139,43 @@ public class UserProfileViewController {
         LOG.info("Displaying Dm view");
     }
     
+    /**
+     * This method sets up the users profile
+     */
     private void setProfilePicture(){
         Image image = new Image(this.currentUser.getLargeProfileImageURL());
         this.profileImageView.imageProperty().set(image);
     }
     
+    /**
+     * This method sets up the users description
+     */
     private void setDescription(){
         this.description.setText(this.currentUser.getDescription());
     }
     
+    /**
+     * This method sets the users handle
+     */
     private void setHandle(){
         this.name.setText(this.currentUser.getName());
         this.userName.setText("@"+this.currentUser.getScreenName());
     }
     
+    /**
+     * This method sets up the counts of the follower and followed 
+     */
     private void setCount(){
         this.followers.setText(this.currentUser.getFollowersCount()+" " +this.followers.getText());
         this.following.setText(this.currentUser.getFriendsCount() +" " + this.following.getText());
     }
     
-    
+    /**
+     * This method initilizes the button and checks if the user is following 
+     * the user being looked at, if so it says unfollow, if they are not follwoing 
+     * it says follow
+     * @throws TwitterException 
+     */
     private void initilizeFollowBtnStatus() throws TwitterException{
         User authenticated = twitter.showUser(twitter.getId());
         Relationship relation = twitter.showFriendship(authenticated.getScreenName(), this.currentUser.getScreenName());
@@ -152,6 +186,9 @@ public class UserProfileViewController {
         
     }
     
+    /**
+     * This method initilizes the dm view 
+     */
     private void initializeDmView(){
         try {
             FXMLLoader dmFxml = new FXMLLoader(getClass().getResource("/fxml/DmView.fxml"));
@@ -164,6 +201,13 @@ public class UserProfileViewController {
         }   
     }
     
+    /**
+     * This method sets up the pop up for loading the specific users profile
+     * @param info
+     * @return stage
+     * @throws IOException
+     * @throws TwitterException 
+     */
     public Stage loadUsersProfile(TwitterStatusInfo info) throws IOException, TwitterException {
         Stage popupStage = new Stage();
         popupStage.initModality(Modality.APPLICATION_MODAL);
@@ -187,6 +231,3 @@ public class UserProfileViewController {
         return popupStage;
     }
 }
-/**
- *         
- */

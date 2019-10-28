@@ -13,8 +13,7 @@ import twitter4j.TwitterException;
  * @author tomo
  */
 public class TwitterTimelineTask {
-
-    // Real programmers use logging, not System.out.println
+    
     private final static Logger LOG = LoggerFactory.getLogger(TwitterTimelineTask.class);
 
     private final ObservableList<TwitterStatusInfo> list;
@@ -49,15 +48,15 @@ public class TwitterTimelineTask {
         page += 1;
     }
     
+    /**
+     * Add new Status objects to the ObservableList. Additions occur at the end
+     * of the list of a specific search result.
+     *
+     * @throws Exception
+     */
+    
     public void fillSearchResult(String search) throws TwitterException{
         List<Status> searchResult = twitterEngine.searchtweets(search);
-        
-        searchResult.forEach((tweet) -> {
-            System.out.println("@" + tweet.getUser().getScreenName() + " - " + tweet.getText());
-        });
-        
-        
-        
         searchResult.forEach((status) -> {
             list.add(list.size(), new TwitterStatusInfo(status));
         });

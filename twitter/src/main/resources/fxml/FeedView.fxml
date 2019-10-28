@@ -12,7 +12,7 @@
    <top>
       <HBox prefHeight="28.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="refreshBtn" mnemonicParsing="false" onAction="#refreshClick" text="Refresh" />
+            <Button fx:id="refreshBtn" mnemonicParsing="false" onAction="#refreshClick" prefHeight="42.0" prefWidth="42.0" />
          </children>
       </HBox>
    </top>

@@ -120,6 +120,11 @@ public class TwitterEngine {
         });
     }
     
+        /**
+     * Utility Method to get time line
+     * 
+     * @param timeLine 
+     */
     public List<Status> getTimeLine(int page) throws TwitterException {
         LOG.debug("getTimeLine");
         Twitter twitter = getTwitterinstance();

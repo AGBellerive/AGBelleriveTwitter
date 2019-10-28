@@ -112,10 +112,7 @@ public class MainTwitterViewController {
     }
     /**
      * In the context of the dm icon is clicked 
-     * I decided to set all the other panes to be invisible
-     * to have the dm pane be the only visible pane at the moment
-     * as well as set the border color of the clicked button 
-     * to indicate that this icon was pressed
+     * I decided to place that current pane in the center
      * @param event 
      */
     @FXML
@@ -133,10 +130,7 @@ public class MainTwitterViewController {
     }
     /**
      * In the context of the home icon is clicked 
-     * I decided to set all the other panes to be invisible
-     * to have the home pane be the only visible pane at the moment
-     * as well as set the border color of the clicked button 
-     * to indicate that this icon was pressed
+     * I decided to place that current pane in the center
      * @param event 
      */
     @FXML
@@ -153,6 +147,12 @@ public class MainTwitterViewController {
         LOG.info("HomeIcon Clicked");
     }
     
+    /**
+     * In the context of the profile icon is clicked 
+     * I decided to place that current pane in the center
+     * @param event 
+     */
+    
     @FXML
     private void profileBtnClick(ActionEvent event) {
         this.mainPane.setCenter(this.profileView);
@@ -168,12 +168,9 @@ public class MainTwitterViewController {
     }
     
     
-     /**
+    /**
      * In the context of the tweet icon is clicked 
-     * I decided to set all the other panes to be invisible
-     * to have the tweet pane be the only visible pane at the moment
-     * as well as set the border color of the clicked button 
-     * to indicate that this icon was pressed
+     * I decided to place that current pane in the center
      * @param event 
      */
     @FXML
@@ -189,7 +186,11 @@ public class MainTwitterViewController {
        
        LOG.info("TweetIcon Clicked");
     }
-    
+        /**
+     * In the context of the search icon is clicked 
+     * I decided to place that current pane in the center
+     * @param event 
+     */
     @FXML
     private void searchClick(ActionEvent event) {
         
@@ -218,12 +219,10 @@ public class MainTwitterViewController {
          Platform.exit();
     }
     
-     /**
+    /**
      * In the context of the help icon is clicked 
-     * I decided to set all the other panes to be invisible
-     * to have the home pane be the only visible pane at the moment
-     * as well as set the border color of the clicked button 
-     * to indicate that this icon was pressed
+     * I decided to place that current pane in the center
+     * THIS IS NOT YET IMPLIMENED
      * @param event 
      */
     @FXML
@@ -242,7 +241,9 @@ public class MainTwitterViewController {
     public void setMainView(BorderPane mainPane){
         this.mainPane=mainPane;
     }
-    
+    /**
+     * This method creates the twitter view to be used later in switching
+     */
     private void createTwitterView(){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TweetView.fxml"));
@@ -256,7 +257,10 @@ public class MainTwitterViewController {
             Platform.exit();
         }
     }
-    
+
+    /**
+     * This method creates the dm view to be used later in switching
+     */
     private void createDmView(){
        try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DmView.fxml"));
@@ -270,7 +274,10 @@ public class MainTwitterViewController {
             Platform.exit();
         } 
     }
-    
+
+    /**
+     * This method creates the feed view to be used later in switching
+     */
     private void createFeedView(){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FeedView.fxml"));
@@ -285,6 +292,9 @@ public class MainTwitterViewController {
         }  
     }
     
+    /**
+     * This method creates the profile view to be used later in switching
+     */
     private void createProfileView() throws TwitterException{
         User loggedInUser = twitter.showUser(twitter.getId());
         url = loggedInUser.get400x400ProfileImageURL();
@@ -305,7 +315,9 @@ public class MainTwitterViewController {
         this.profileViewController.setUpView();
         
     }
-    
+    /**
+     * This method creates the search view to be used later in switching
+     */
     private void createSearchView(){
         try{
             FXMLLoader searchViewFXML = new FXMLLoader (getClass().getResource("/fxml/SearchView.fxml"));

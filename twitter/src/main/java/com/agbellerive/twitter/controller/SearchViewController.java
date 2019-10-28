@@ -49,7 +49,7 @@ public class SearchViewController {
     private TextField searchBox; // Value injected by FXMLLoader
 
     @FXML // fx:id="searchBtn"
-    private Button searchBtn; // Value injected by FXMLLoader
+    private Button searchTermBtn; // Value injected by FXMLLoader
 
     @FXML // fx:id="tweetDisplayArea"
     private ListView<TwitterStatusInfo> tweetDisplayArea; // Value injected by FXMLLoader
@@ -57,13 +57,18 @@ public class SearchViewController {
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert searchBox != null : "fx:id=\"searchBox\" was not injected: check your FXML file 'SearchView.fxml'.";
-        assert searchBtn != null : "fx:id=\"searchBtn\" was not injected: check your FXML file 'SearchView.fxml'.";
+        assert searchTermBtn != null : "fx:id=\"searchBtn\" was not injected: check your FXML file 'SearchView.fxml'.";
         assert tweetDisplayArea != null : "fx:id=\"tweetDisplayArea\" was not injected: check your FXML file 'SearchView.fxml'.";
         
         mainPane.setCenter(getHBoxView());
     }
+    /**
+     * This method is called when the user clicks on the search button
+     * @param event
+     * @throws TwitterException 
+     */
     @FXML
-    private void searchBtnClick(ActionEvent event) throws TwitterException {
+    private void searchTermClick(ActionEvent event) throws TwitterException {
         tweetDisplayArea.getItems().clear();
         if (timeLineTask == null) {
             timeLineTask = new TwitterTimelineTask(tweetDisplayArea.getItems());
@@ -77,7 +82,10 @@ public class SearchViewController {
         }
 
     }
-    
+    /**
+     * This method sets up the view for the search 
+     * @return 
+     */
     private Node getHBoxView() {
         HBox hBox = new HBox();
         

@@ -76,33 +76,50 @@ public class ProfileViewController {
         assert following != null : "fx:id=\"following\" was not injected: check your FXML file 'ProfileView.fxml'.";
     }
     
+    /**
+     * This method sets up the view of the specific user by calling helper methods
+     * @throws TwitterException 
+     */
     public void setUpView() throws TwitterException{
         loadMentionedView();
-        loadSelfMentioned();
         setProfilePicture();
         setDescription();
         setHandle();
         setCount();
     }
-    
+    /**
+     * This method gets the specific user that the porifle is going 
+     * to be on
+     * @throws TwitterException 
+     */
     public void setUser() throws TwitterException{
         this.authenticatedUser = twitter.showUser(twitter.getId());
     }
-    
+    /**
+     * This method sets the profile image of the user
+     */
     private void setProfilePicture(){
         Image image = new Image(this.authenticatedUser.get400x400ProfileImageURL());
         this.profileImageView.imageProperty().set(image);
     }
-    
+    /**
+     * This method sets the users description that is on their profile
+     */
     private void setDescription(){
         this.description.setText(this.authenticatedUser.getDescription());
     }
     
+    /**
+     * This method sets the handle of the user
+     */
     private void setHandle(){
         this.name.setText(this.authenticatedUser.getName());
         this.userName.setText("@"+this.authenticatedUser.getScreenName());
     }
     
+    /**
+     * This sets the count of the users followers and followed
+     */
     private void setCount(){
         this.authenticatedUser.getFavouritesCount();
         this.followers.setText(this.authenticatedUser.getFollowersCount()+" " +this.followers.getText());
@@ -110,17 +127,12 @@ public class ProfileViewController {
     }
     
     //https://github.com/Twitter4J/Twitter4J/blob/master/twitter4j-examples/src/main/java/twitter4j/examples/timeline/GetUserTimeline.java
-    private void setTweets() throws TwitterException{
-        List<Status> tweets = twitter.getUserTimeline();
-    }
-    
-    private void setMentioned() throws TwitterException{
-        Query search = new Query(this.authenticatedUser.getName());
-        QueryResult mentionsQuerry = twitter.search(search);
-        List<Status> mentions = mentionsQuerry.getTweets();
-    }
-    
-    private void loadMentionedView(){
+
+    /**
+     * This method loads the view to display the mentioned view
+     * @throws TwitterException 
+     */
+    private void loadMentionedView() throws TwitterException{
         try{
             FXMLLoader mentionedFXML = new FXMLLoader(getClass().getResource("/fxml/MentionedView.fxml"));
             mentionedFXML.setResources(ResourceBundle.getBundle("MessagesBundle"));
@@ -133,13 +145,13 @@ public class ProfileViewController {
             Platform.exit();
         }
     }
-    
-    private void loadSelfMentioned() throws TwitterException{
-        LOG.info(this.authenticatedUser.getName());
-    }
-    
+    /**
+     * This method sets the mentioned view as the center of the pane
+     * @param event
+     * @throws TwitterException 
+     */
     @FXML
-    private void mentionedClick(ActionEvent event) {
+    private void mentionedClick(ActionEvent event) throws TwitterException {
         lowerPane.setCenter(this.mentionedView);
         LOG.info("Mentioned Button Clicked");
     }

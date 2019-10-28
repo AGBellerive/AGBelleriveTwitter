@@ -111,6 +111,9 @@ public class TweetViewController {
             mainApp.startUpAlert();
         }
     }
+    /**
+     * This method sets up the listener on the textbox
+     */
      private void listenersSetUp(){
         tweetTextArea.textProperty().addListener((textAreaBeingObserved, oldValue, newValue)
                 -> {
@@ -120,6 +123,12 @@ public class TweetViewController {
         sendTweetBtn.setOnAction( event -> {sendTweet();});
         LOG.info("Tweet Listners assigned by ListenersSetUp");
     }
+     /**
+      * This method changes the view of the labels depending on 
+      * if it is called by retweet or reply
+      * @param user
+      * @param action 
+      */
      public void actionOnTweet(TwitterStatusInfo user,String action){
          if(action.equals("Retweet")){
              reTweeting(user);
@@ -129,13 +138,21 @@ public class TweetViewController {
          }
      }
      
+     /**
+      * This method sets up the view if it is a retweet
+      * @param user 
+      */
      public void reTweeting(TwitterStatusInfo user){
          this.tweetId = user.getTweetId();
          this.userInfo = user;
          this.tweetPrompt.setText("Enter Your Retweet Bellow");
          this.sendTweetBtn.setText("Retweet!");
      }
-     
+
+     /**
+      * This method sets up the view if it is a replying
+      * @param user 
+      */
      public void replying(TwitterStatusInfo user){
          this.tweetId = user.getTweetId();
          this.userInfo = user;
