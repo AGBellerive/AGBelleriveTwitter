@@ -1,11 +1,13 @@
 com\agbellerive\twitter\business\TwitterEngine.class
 com\agbellerive\twitter\controller\FeedViewController.class
+com\agbellerive\twitter\persistence\TwitterDAO.class
 com\agbellerive\twitter\controller\SearchViewController.class
 com\agbellerive\twitter\controller\UserProfileViewController.class
 com\agbellerive\twitter\business\TwitterTimelineTask.class
 com\agbellerive\twitter\controller\MentionedViewController.class
 com\agbellerive\twitter\controller\DmViewController.class
 com\agbellerive\twitter\controller\FormController.class
+com\agbellerive\twitter\business\TwitterInfoNoStatus.class
 com\agbellerive\twitter\controller\MainTwitterViewController.class
 com\agbellerive\twitter\controller\RetweetViewController.class
 com\agbellerive\twitter\business\TwitterStatusInfo.class
@@ -13,4 +15,5 @@ com\agbellerive\twitter\beans\TwitterProperties.class
 com\agbellerive\twitter\business\TwitterInfoCell.class
 com\agbellerive\twitter\presentation\MainApp.class
 com\agbellerive\twitter\controller\ProfileViewController.class
+com\agbellerive\twitter\persistence\TwitterDAOImpl.class
 com\agbellerive\twitter\controller\TweetViewController.class
