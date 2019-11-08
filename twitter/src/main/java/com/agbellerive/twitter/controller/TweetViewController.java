@@ -30,6 +30,7 @@ public class TweetViewController {
     private final MainApp mainApp = new MainApp();
     private static final int MAX_TWEET = 280;
     
+    private String currentAction;
     private TwitterStatusInfo userInfo;
     private Long tweetId;
 
@@ -57,7 +58,7 @@ public class TweetViewController {
         assert tweetTextArea != null : "fx:id=\"tweetTextArea\" was not injected: check your FXML file 'TweetView.fxml'.";
         assert sendTweetBtn != null : "fx:id=\"sendTweetBtn\" was not injected: check your FXML file 'TweetView.fxml'.";
         listenersSetUp();
-
+        this.currentAction = "Tweet";
     }
     
         /**
@@ -68,11 +69,11 @@ public class TweetViewController {
      */
     private void sendTweet(){
         try{
-            if(this.sendTweetBtn.getText().equals("Tweet!")){
+            if(this.currentAction.equals("Tweet")){
             LOG.info("TextArea result: "+tweetTextArea.getText() +" Has been tweeted");
             twitterEngine.createTweet(tweetTextArea.getText());
             }
-            else if(this.sendTweetBtn.getText().equals("Retweet!")){
+            else if(this.currentAction.equals("Retweet")){
                 if(this.tweetTextArea.getText().isEmpty()){
                     this.userInfo.reTweet();
                     LOG.info("TextArea result is empty so a regular retweet");
@@ -83,7 +84,7 @@ public class TweetViewController {
                    LOG.info("TextArea result: "+tweetTextArea.getText() +" Has been attached to the retweet");
                 }
             }
-            else if (this.sendTweetBtn.getText().equals("Reply!")){
+            else if (this.currentAction.equals("Reply")){
                 this.userInfo.makeComment(tweetTextArea.getText());
                 LOG.info("A reply has been made with the content: "+tweetTextArea.getText() );
             }
@@ -136,6 +137,7 @@ public class TweetViewController {
          else if(action.equals("Reply")){
              replying(user);
          }
+         this.currentAction = action;
      }
      
      /**
@@ -145,8 +147,8 @@ public class TweetViewController {
      public void reTweeting(TwitterStatusInfo user){
          this.tweetId = user.getTweetId();
          this.userInfo = user;
-         this.tweetPrompt.setText("Enter Your Retweet Bellow");
-         this.sendTweetBtn.setText("Retweet!");
+         this.tweetPrompt.setText(resources.getString("RetweetPrompt"));
+         this.sendTweetBtn.setText(resources.getString("Retweet"));
      }
 
      /**
@@ -156,8 +158,8 @@ public class TweetViewController {
      public void replying(TwitterStatusInfo user){
          this.tweetId = user.getTweetId();
          this.userInfo = user;
-         this.tweetPrompt.setText("Enter Your Reply Bellow");
-         this.sendTweetBtn.setText("Reply!");
+         this.tweetPrompt.setText(resources.getString("ReplyPrompt"));
+         this.sendTweetBtn.setText(resources.getString("Reply"));
      }     
 
 }

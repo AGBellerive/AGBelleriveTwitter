@@ -64,6 +64,12 @@ public class ProfileViewController {
     @FXML // fx:id="lowerPane"
     private BorderPane lowerPane; // Value injected by FXMLLoader
 
+    @FXML // fx:id="tweetsBtn"
+    private Button tweetsBtn; // Value injected by FXMLLoader
+
+    @FXML // fx:id="reTweetsBtn"
+    private Button reTweetsBtn; // Value injected by FXMLLoader
+
     @FXML // fx:id="mentionedBtn"
     private Button mentionedBtn; // Value injected by FXMLLoader
 

@@ -16,8 +16,8 @@ import java.util.List;
  */
 public interface TwitterDAO {
     
-    // Create
-    public int create(TwitterStatusInfo tweet) throws SQLException;
+    // Add To Db
+    public void create(TwitterStatusInfo tweet) throws SQLException;
 
     // Read
     public List<TwitterInfoNoStatus> findAll() throws SQLException;

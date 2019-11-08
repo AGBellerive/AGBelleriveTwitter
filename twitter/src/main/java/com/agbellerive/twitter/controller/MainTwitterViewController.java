@@ -201,7 +201,7 @@ public class MainTwitterViewController {
         tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
-        searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        searchBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
        
        LOG.info("SearchIcon Clicked");
     }

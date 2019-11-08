@@ -26,9 +26,25 @@ public class TwitterDAOImpl implements  TwitterDAO{
     private final static String PASSWORD = "ahhh";
 
     @Override
-    public int create(TwitterStatusInfo tweet) throws SQLException {
-         return 1;
+    public void create(TwitterStatusInfo tweet) throws SQLException {
+        String insertQuery = "INSERT INTO TWEETS VALUES(?,?,?,?,?,?,?,?)";
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+                PreparedStatement pStatement = connection.prepareStatement(insertQuery)) {
+                pStatement.setString(1, tweet.getName());
+                pStatement.setString(2, tweet.getHandle());
+                pStatement.setString(3, tweet.getPostedDate());
+                pStatement.setString(4,tweet.getText());
+                pStatement.setString(5, tweet.getImageURL());
+                pStatement.setInt(6, tweet.getRetweetCount());
+                pStatement.setInt(7,tweet.getLikeCount());
+                pStatement.setInt(7, tweet.getLikeCount());
+                pStatement.setString(8, Long.toString(tweet.getTweetId()));
+                
+                int res = pStatement.executeUpdate();
+                //Log the ammount of records created
+        }
     }
+    
     // Read
     @Override
     public List<TwitterInfoNoStatus> findAll() throws SQLException {  
@@ -45,6 +61,7 @@ public class TwitterDAOImpl implements  TwitterDAO{
         return rows;
     }
     
+    //Tweet id stored as varchar, rertived and converted into a long
     private TwitterInfoNoStatus createTweetData(ResultSet resultSet) throws SQLException{
         TwitterInfoNoStatus tweet = new TwitterInfoNoStatus();
         
@@ -55,7 +72,7 @@ public class TwitterDAOImpl implements  TwitterDAO{
         tweet.setImageURL((resultSet.getString("IMAGEURL")));
         tweet.setLikeCount((resultSet.getInt("LIKES")));
         tweet.setRetweetCount((resultSet.getInt("RETWEETS")));
-        tweet.setTweetId((resultSet.getLong("TWEETID")));
+        tweet.setTweetId(Long.parseLong((resultSet.getString("TWEETID"))));
         
         return tweet;
     }

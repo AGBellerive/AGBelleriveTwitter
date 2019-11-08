@@ -5,6 +5,6 @@
 
 <BorderPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agbellerive.twitter.controller.MentionedViewController">
    <center>
-      <ListView fx:id="mentionedList" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/twitterview.css" />
+      <ListView fx:id="mentionedList" stylesheets="@../styles/twitterview.css" BorderPane.alignment="CENTER"/>
    </center>
 </BorderPane>

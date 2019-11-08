@@ -6,7 +6,7 @@
 }
 
 /*https://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html#imageview*/
-#homeIconBtn,#tweetIconBtn,#dmIconBtn,#exitBtn,#helpBtn,#profileBtn,#reTweetBtn,#likeBtn,#replyBtn,#searchBtn,#refreshBtn{
+#homeIconBtn,#tweetIconBtn,#dmIconBtn,#exitBtn,#helpBtn,#profileBtn,#reTweetBtn,#likeBtn,#replyBtn,#searchBtn,#refreshBtn,#saveBtn{
     -fx-background-size:100% 100%;
     -fx-background-color: #15202b;
     -fx-background-radius: 10px;
@@ -54,6 +54,10 @@
 #refreshBtn{
      -fx-background-image: url("../images/refreshIconInverted.png");
 }
+#saveBtn{
+    -fx-background-image: url("../images/saveBtnIconInverted.png");
+    /*http://www.pngmart.com/image/126744*/
+}
 Label,TextField,ListView {
     -fx-text-fill:white;
     -fx-font-style:oblique;
@@ -71,7 +75,7 @@ TextArea{
     -fx-control-inner-background:#15202b;
 }
 
-#sendTweetBtn,#sendDmBtn,#searchTermBtn{
+#sendTweetBtn,#sendDmBtn,#searchTermBtn,#mentionedBtn,#reTweetsBtn,#tweetsBtn,#followBtn,#messageBtn{
     -fx-background-radius: 10px;
     -fx-background-color:#1da1f2;
     -fx-font-style:oblique;

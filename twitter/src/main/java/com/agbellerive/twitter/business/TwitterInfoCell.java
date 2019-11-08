@@ -3,7 +3,9 @@ package com.agbellerive.twitter.business;
 import com.agbellerive.twitter.controller.RetweetViewController;
 import com.agbellerive.twitter.controller.TweetViewController;
 import com.agbellerive.twitter.controller.UserProfileViewController;
+import com.agbellerive.twitter.persistence.TwitterDAOImpl;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import javafx.fxml.FXMLLoader;
@@ -112,8 +114,11 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
         like.setPrefSize(42, 42);
         like.setId("likeBtn");
         
+        Button save = new Button();
+        save.setPrefSize(21, 21);
+        save.setId("saveBtn");
         try {
-            listnerSetUp(info,reTweet,like,userImage,reply);
+            listnerSetUp(info,reTweet,like,userImage,reply,save);
         } catch (TwitterException ex) {
             java.util.logging.Logger.getLogger(TwitterInfoCell.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -122,7 +127,7 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
         
         VBox vbox = new VBox();
         vbox.getChildren().addAll(header, text,actions);
-        hBox.getChildren().addAll(userImage, vbox);
+        hBox.getChildren().addAll(userImage, vbox,save);
         
         return hBox;
     }
@@ -138,7 +143,7 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
      * @throws IOException
      * @throws TwitterException 
      */
-    private void listnerSetUp(TwitterStatusInfo info,Button reTweet,Button like,Button userImage,Button reply)throws IOException, TwitterException{
+    private void listnerSetUp(TwitterStatusInfo info,Button reTweet,Button like,Button userImage,Button reply,Button save)throws IOException, TwitterException{
         reTweet.setOnAction(event ->{
                 displayRetweet();
         });
@@ -161,9 +166,19 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
        userImage.setOnAction(event-> {
             displayUser();
         });
-        
+       
+       save.setOnAction(event ->{
+           TwitterDAOImpl dao = new TwitterDAOImpl();
+           
+            try {
+                dao.create(info);
+                save.setStyle("-fx-border-color:#1da1f2;");
+            } 
+            catch (SQLException ex) {
+                LOG.info("Tweet Cannot Be Saved");
+            }
+       });
     }
-    
     /**
      * This method displays the pop up window to show the user profile
      */
