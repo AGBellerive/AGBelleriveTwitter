@@ -4,6 +4,7 @@
 
 package com.agbellerive.twitter.controller;
 
+import com.agbellerive.twitter.business.TwitterInfoInterface;
 import com.agbellerive.twitter.business.TwitterStatusInfo;
 import com.sun.javafx.scene.shape.TextHelper;
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class RetweetViewController {
     
     private RetweetViewController retweetViewController;
     
-    private TwitterStatusInfo currentUser;
+    private TwitterInfoInterface currentUser;
     
     private TweetViewController tweetViewController;
     private BorderPane tweetView;
@@ -76,8 +77,14 @@ public class RetweetViewController {
     @FXML
     private void likeBtnClick(ActionEvent event) {
         try {
-            this.currentUser.likeTweet();
-            LOG.info("Tweet Liked");
+            if(this.currentUser instanceof TwitterStatusInfo){
+                TwitterStatusInfo userWithstatus = (TwitterStatusInfo)this.currentUser;
+                userWithstatus.likeTweet();
+                LOG.info("Tweet Liked");
+            }
+            else{
+                LOG.info("Can not like a Saved Tweet");
+            }
         } 
         catch (TwitterException ex) {
             LOG.info("Tweet Wasnt Liked");
@@ -100,7 +107,7 @@ public class RetweetViewController {
      * This method sets up the private variable of the current user
      * @param user 
      */
-    public void setUpUser(TwitterStatusInfo user){
+    public void setUpUser(TwitterInfoInterface user){
         this.currentUser = user;
     }
     
@@ -115,7 +122,7 @@ public class RetweetViewController {
      * This method sets up the text next to the users name
      */
     private void setHeader(){
-        this.headerLabel.setText(this.currentUser.getName() +"  @" +this.currentUser.getHandle() +" "+ this.currentUser.getPostedDate());
+        this.headerLabel.setText(this.currentUser.getName() +"  @" +this.currentUser.getScreenName()+" "+ this.currentUser.getPostedDate());
     }
     /**
      * This method sets the tweet of the user going to be retweeted
@@ -154,7 +161,7 @@ public class RetweetViewController {
      * @return
      * @throws IOException 
      */
-    public Stage loadRetweetView(TwitterStatusInfo info) throws IOException{
+    public Stage loadRetweetView(TwitterInfoInterface info) throws IOException{
         Stage popUpRetweet = new Stage();
         popUpRetweet.initModality(Modality.APPLICATION_MODAL);
         
@@ -182,7 +189,7 @@ public class RetweetViewController {
      * @return
      * @throws IOException 
      */
-    public Stage loadReplyView(TwitterStatusInfo info) throws IOException{
+    public Stage loadReplyView(TwitterInfoInterface info) throws IOException{
         Stage popUpReply = loadRetweetView(info);
         popUpReply.initModality(Modality.APPLICATION_MODAL);
         

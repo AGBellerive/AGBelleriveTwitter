@@ -6,6 +6,7 @@ package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterEngine;
 import com.agbellerive.twitter.business.TwitterInfoCell;
+import com.agbellerive.twitter.business.TwitterInfoInterface;
 import com.agbellerive.twitter.business.TwitterStatusInfo;
 import com.agbellerive.twitter.business.TwitterTimelineTask;
 import java.net.URL;
@@ -52,7 +53,7 @@ public class SearchViewController {
     private Button searchTermBtn; // Value injected by FXMLLoader
 
     @FXML // fx:id="tweetDisplayArea"
-    private ListView<TwitterStatusInfo> tweetDisplayArea; // Value injected by FXMLLoader
+    private ListView<TwitterInfoInterface> tweetDisplayArea; // Value injected by FXMLLoader
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -89,7 +90,7 @@ public class SearchViewController {
     private Node getHBoxView() {
         HBox hBox = new HBox();
         
-        ObservableList<TwitterStatusInfo> list = FXCollections.observableArrayList();
+        ObservableList<TwitterInfoInterface> list = FXCollections.observableArrayList();
         tweetDisplayArea.setItems(list);
         tweetDisplayArea.setPrefWidth(800);
         tweetDisplayArea.setCellFactory(p -> new TwitterInfoCell());

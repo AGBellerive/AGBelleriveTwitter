@@ -19,7 +19,7 @@ import twitter4j.TwitterException;
  * 
  * @author tomo
  */
-public class TwitterStatusInfo {
+public class TwitterStatusInfo implements TwitterInfoInterface{
     
     private final static TwitterEngine engine = new TwitterEngine();
     private final Twitter twitter;
@@ -38,6 +38,7 @@ public class TwitterStatusInfo {
      * This method returns the string of the users name
      * @return String
      */
+    @Override
     public String getName() {
         return status.getUser().getName();
     }
@@ -47,6 +48,7 @@ public class TwitterStatusInfo {
      * @UserName
      * @return String 
      */
+    @Override
     public String getScreenName(){
         return status.getUser().getScreenName();
     }
@@ -56,6 +58,7 @@ public class TwitterStatusInfo {
      * the user
      * @return String 
      */
+    @Override
     public String getDescription(){
         return status.getUser().getDescription();
     }
@@ -64,6 +67,7 @@ public class TwitterStatusInfo {
      * This method returns the follower count of the specific user
      * @return int 
      */
+    @Override
     public int getFollowersCount(){
         return status.getUser().getFollowersCount();
     }
@@ -72,6 +76,7 @@ public class TwitterStatusInfo {
      * This method returns the followed account of the specific user
      * @return int
      */
+    @Override
     public int getFriendsCount(){
         return status.getUser().getFriendsCount();
     }
@@ -79,6 +84,7 @@ public class TwitterStatusInfo {
      * This method returns the tweet of the user
      * @return 
      */
+    @Override
     public String getText(){
         return status.getText();
     }
@@ -87,6 +93,7 @@ public class TwitterStatusInfo {
      * This method returns the image url for the user
      * @return String
      */
+    @Override
     public String getImageURL(){
         return status.getUser().getProfileImageURL();
     }
@@ -96,6 +103,7 @@ public class TwitterStatusInfo {
      * higher density image
      * @return String
      */
+    @Override
     public String getLargeProfileImageURL(){
         return status.getUser().get400x400ProfileImageURL();
     }
@@ -112,6 +120,7 @@ public class TwitterStatusInfo {
      * This method returns a int of the like count
      * @return int
      */
+    @Override
     public int getLikeCount(){
         return status.getFavoriteCount();
     }
@@ -120,6 +129,7 @@ public class TwitterStatusInfo {
      * This method returns posted date 
      * @return int
      */
+    @Override
     public String getPostedDate(){
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         return df.format(status.getCreatedAt());
@@ -129,6 +139,7 @@ public class TwitterStatusInfo {
      * This method returns the tweet id of the specific status
      * @return 
      */
+    @Override
     public Long getTweetId(){
         return this.status.getId();
     }
@@ -146,6 +157,7 @@ public class TwitterStatusInfo {
      * This method returns a retweet count on the status
      * @return int
      */    
+    @Override
     public int getRetweetCount(){
        return status.getRetweetCount();
     }
@@ -156,14 +168,6 @@ public class TwitterStatusInfo {
      */
     public void reTweet() throws TwitterException{
         twitter.retweetStatus(status.getId());
-    }
-    
-    /**
-     * This method returns if the tweet is favorited already
-     * @return boolean
-     */
-    public boolean isFavorited(){
-        return this.status.isFavorited();
     }
     
     /**

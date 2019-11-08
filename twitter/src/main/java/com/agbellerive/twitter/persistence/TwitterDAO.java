@@ -5,6 +5,7 @@
  */
 package com.agbellerive.twitter.persistence;
 
+import com.agbellerive.twitter.business.TwitterInfoInterface;
 import com.agbellerive.twitter.business.TwitterInfoNoStatus;
 import com.agbellerive.twitter.business.TwitterStatusInfo;
 import java.sql.SQLException;

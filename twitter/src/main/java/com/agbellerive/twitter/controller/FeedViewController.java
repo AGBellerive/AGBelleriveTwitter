@@ -5,6 +5,7 @@
 package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterInfoCell;
+import com.agbellerive.twitter.business.TwitterInfoInterface;
 import com.agbellerive.twitter.business.TwitterStatusInfo;
 import com.agbellerive.twitter.business.TwitterTimelineTask;
 import java.net.URL;
@@ -37,7 +38,7 @@ public class FeedViewController {
     private BorderPane homePane; // Value injected by FXMLLoader
 
     @FXML // fx:id="tweetList"
-    private ListView<TwitterStatusInfo> tweetList; // Value injected by FXMLLoader
+    private ListView<TwitterInfoInterface> tweetList; // Value injected by FXMLLoader
     
     @FXML // fx:id="refreshBtn"
     private Button refreshBtn; // Value injected by FXMLLoader
@@ -87,7 +88,7 @@ public class FeedViewController {
     private Node getHBoxView() {
         HBox hBox = new HBox();
         
-        ObservableList<TwitterStatusInfo> list = FXCollections.observableArrayList();
+        ObservableList<TwitterInfoInterface> list = FXCollections.observableArrayList();
         tweetList.setItems(list);
         tweetList.setPrefWidth(800);
         tweetList.setCellFactory(p -> new TwitterInfoCell());

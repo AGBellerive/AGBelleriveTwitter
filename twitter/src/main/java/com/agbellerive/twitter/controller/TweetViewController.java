@@ -5,6 +5,7 @@
 package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterEngine;
+import com.agbellerive.twitter.business.TwitterInfoInterface;
 import com.agbellerive.twitter.business.TwitterStatusInfo;
 import com.agbellerive.twitter.presentation.MainApp;
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class TweetViewController {
     private static final int MAX_TWEET = 280;
     
     private String currentAction;
-    private TwitterStatusInfo userInfo;
+    private TwitterInfoInterface userInfo;
     private Long tweetId;
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -75,18 +76,31 @@ public class TweetViewController {
             }
             else if(this.currentAction.equals("Retweet")){
                 if(this.tweetTextArea.getText().isEmpty()){
-                    this.userInfo.reTweet();
+                     if(this.userInfo instanceof TwitterStatusInfo){
+                        TwitterStatusInfo userWithstatus = (TwitterStatusInfo)this.userInfo;
+                        userWithstatus.reTweet();
+                        LOG.info("Tweet Liked");
+                    }
+                    else{
+                        LOG.info("Can not Retweet a Saved Tweet");
+                    }
                     LOG.info("TextArea result is empty so a regular retweet");
                 }
                 else{
-                   String statusBeingRetweeted = "https://twitter.com/"+this.userInfo.getHandle()+"/status/"+this.userInfo.getTweetId();
+                   String statusBeingRetweeted = "https://twitter.com/"+this.userInfo.getScreenName()+"/status/"+this.userInfo.getTweetId();
                    twitterEngine.createTweet(tweetTextArea.getText() +" " +statusBeingRetweeted);
                    LOG.info("TextArea result: "+tweetTextArea.getText() +" Has been attached to the retweet");
                 }
             }
             else if (this.currentAction.equals("Reply")){
-                this.userInfo.makeComment(tweetTextArea.getText());
-                LOG.info("A reply has been made with the content: "+tweetTextArea.getText() );
+                if(this.userInfo instanceof TwitterStatusInfo){
+                        TwitterStatusInfo userWithstatus = (TwitterStatusInfo)this.userInfo;
+                        userWithstatus.makeComment(tweetTextArea.getText());
+                        LOG.info("A reply has been made with the content: "+tweetTextArea.getText() );
+                }
+                else{
+                     LOG.info("Can not Reply a Saved Tweet");
+                }
             }
 
         }
@@ -130,7 +144,7 @@ public class TweetViewController {
       * @param user
       * @param action 
       */
-     public void actionOnTweet(TwitterStatusInfo user,String action){
+     public void actionOnTweet(TwitterInfoInterface user,String action){
          if(action.equals("Retweet")){
              reTweeting(user);
          }
@@ -144,7 +158,7 @@ public class TweetViewController {
       * This method sets up the view if it is a retweet
       * @param user 
       */
-     public void reTweeting(TwitterStatusInfo user){
+     public void reTweeting(TwitterInfoInterface user){
          this.tweetId = user.getTweetId();
          this.userInfo = user;
          this.tweetPrompt.setText(resources.getString("RetweetPrompt"));
@@ -155,7 +169,7 @@ public class TweetViewController {
       * This method sets up the view if it is a replying
       * @param user 
       */
-     public void replying(TwitterStatusInfo user){
+     public void replying(TwitterInfoInterface user){
          this.tweetId = user.getTweetId();
          this.userInfo = user;
          this.tweetPrompt.setText(resources.getString("ReplyPrompt"));

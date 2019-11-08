@@ -16,6 +16,6 @@
       </HBox>
    </top>
    <center>
-      <ListView fx:id="tweetDisplayArea" BorderPane.alignment="CENTER" />
+      <ListView fx:id="tweetDisplayArea" BorderPane.alignment="CENTER" stylesheets="@../styles/twitterview.css"/>
    </center>
 </BorderPane>

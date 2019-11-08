@@ -7,12 +7,13 @@ package com.agbellerive.twitter.business;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import twitter4j.TwitterException;
 
 /**
  *
  * @author Alex Bellerive
  */
-public class TwitterInfoNoStatus {
+public class TwitterInfoNoStatus implements TwitterInfoInterface {
     
     private final static Logger LOG = LoggerFactory.getLogger(TwitterInfoNoStatus.class);
     
@@ -20,22 +21,27 @@ public class TwitterInfoNoStatus {
     private String handle;
     private String postedDate;
     private String text;
-    private String image;
+    private String imageSmall;
+    private String imageLarge;
     private int reTweetCount;
     private int likeCount;
+    private int followerCount;
+    private int followingCount;
     private Long tweetId;
+    private String description;
     
-
+/*
     public TwitterInfoNoStatus(String name,String handle,String date,String text, String img, int retweets, int likes, Long tweetid) {
         this.name = name;
         this.handle = handle;
         this.postedDate = date;
         this.text = text;
-        this.image = img;
+        this.imageSmall = img;
         this.reTweetCount = retweets;
         this.likeCount = likes;
         this.tweetId= tweetid;
     }
+*/
      public TwitterInfoNoStatus(){
          
      }
@@ -44,6 +50,7 @@ public class TwitterInfoNoStatus {
        this.name = givenName;
     }
     
+    @Override
     public String getName() {
        return this.name;
     }
@@ -52,6 +59,7 @@ public class TwitterInfoNoStatus {
         this.handle = screenName;
     }
     
+    @Override
     public String getScreenName(){
         return this.handle;
     }
@@ -60,6 +68,7 @@ public class TwitterInfoNoStatus {
         this.postedDate = date;
     }
 
+    @Override
     public String getPostedDate(){
         return this.postedDate;
     }
@@ -68,22 +77,25 @@ public class TwitterInfoNoStatus {
         this.text = text;
     }
 
+    @Override
     public String getText(){
         return this.text;
     }
     
     public void setImageURL(String imgurl){
-        this.image = imgurl;
+        this.imageSmall = imgurl;
     }
     
+    @Override
     public String getImageURL(){
-        return this.image;
+        return this.imageSmall;
     }
     
     public void setLikeCount(int likes){
         this.likeCount = likes;
     }
     
+    @Override
     public int getLikeCount(){
         return this.likeCount;
     }
@@ -92,6 +104,7 @@ public class TwitterInfoNoStatus {
         this.tweetId = tweetId;
     }
     
+    @Override
     public Long getTweetId(){
         return this.tweetId;
     }
@@ -100,7 +113,40 @@ public class TwitterInfoNoStatus {
         this.reTweetCount = reTweets;
     }
        
+    @Override
     public int getRetweetCount(){
         return this.reTweetCount;
+    }
+
+    public void setLargeProfileImageURL(String img){
+        this.imageLarge = img;
+    }
+    @Override
+    public String getLargeProfileImageURL() {
+        return this.imageLarge;
+    }
+
+    public void setDescription(String des){
+        this.description = des;
+    }
+    @Override
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setFollowersCount(int followers){
+        this.followerCount = followers;
+    }
+    @Override
+    public int getFollowersCount() {
+        return this.followerCount;
+    }
+
+    public void setFriendCount(int following){
+        this.followingCount = following;
+    }
+    @Override
+    public int getFriendsCount() {
+       return this.followingCount;
     }
 }

@@ -5,6 +5,7 @@
  */
 package com.agbellerive.twitter.persistence;
 
+import com.agbellerive.twitter.business.TwitterInfoInterface;
 import com.agbellerive.twitter.business.TwitterInfoNoStatus;
 import com.agbellerive.twitter.business.TwitterStatusInfo;
 import java.net.URL;
@@ -21,24 +22,26 @@ import java.util.List;
  * @author 1733565
  */
 public class TwitterDAOImpl implements  TwitterDAO{
-    private final static String URL = "jdbc:mysql://localhost:3306/AQUARIUM?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true";
+    private final static String URL = "jdbc:mysql://localhost:3306/TWITTER?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true";
     private final static String USER = "ahhhhh";
     private final static String PASSWORD = "ahhh";
 
     @Override
     public void create(TwitterStatusInfo tweet) throws SQLException {
-        String insertQuery = "INSERT INTO TWEETS VALUES(?,?,?,?,?,?,?,?)";
+        String insertQuery = "INSERT INTO TWEETS VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
                 PreparedStatement pStatement = connection.prepareStatement(insertQuery)) {
                 pStatement.setString(1, tweet.getName());
-                pStatement.setString(2, tweet.getHandle());
+                pStatement.setString(2, tweet.getScreenName());
                 pStatement.setString(3, tweet.getPostedDate());
                 pStatement.setString(4,tweet.getText());
                 pStatement.setString(5, tweet.getImageURL());
-                pStatement.setInt(6, tweet.getRetweetCount());
-                pStatement.setInt(7,tweet.getLikeCount());
-                pStatement.setInt(7, tweet.getLikeCount());
-                pStatement.setString(8, Long.toString(tweet.getTweetId()));
+                pStatement.setString(6, tweet.getLargeProfileImageURL());
+                pStatement.setInt(7, tweet.getRetweetCount());
+                pStatement.setInt(8,tweet.getLikeCount());
+                pStatement.setInt(9, tweet.getFollowersCount());
+                pStatement.setInt(10, tweet.getFriendsCount());
+                pStatement.setString(11, Long.toString(tweet.getTweetId()));
                 
                 int res = pStatement.executeUpdate();
                 //Log the ammount of records created

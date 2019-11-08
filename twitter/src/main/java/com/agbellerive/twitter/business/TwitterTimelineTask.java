@@ -16,7 +16,7 @@ public class TwitterTimelineTask {
     
     private final static Logger LOG = LoggerFactory.getLogger(TwitterTimelineTask.class);
 
-    private final ObservableList<TwitterStatusInfo> list;
+    private final ObservableList<TwitterInfoInterface> list;
     
 
     private final TwitterEngine twitterEngine;
@@ -28,7 +28,7 @@ public class TwitterTimelineTask {
      *
      * @param list
      */
-    public TwitterTimelineTask(ObservableList<TwitterStatusInfo> list) {
+    public TwitterTimelineTask(ObservableList<TwitterInfoInterface> list) {
         twitterEngine = new TwitterEngine();
         this.list = list;
         page = 1;
