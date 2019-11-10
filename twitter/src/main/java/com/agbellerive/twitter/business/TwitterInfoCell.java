@@ -3,7 +3,9 @@ package com.agbellerive.twitter.business;
 import com.agbellerive.twitter.controller.RetweetViewController;
 import com.agbellerive.twitter.controller.TweetViewController;
 import com.agbellerive.twitter.controller.UserProfileViewController;
+import com.agbellerive.twitter.persistence.TwitterDAOImpl;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import javafx.fxml.FXMLLoader;
@@ -31,11 +33,12 @@ import twitter4j.TwitterException;
  * @author tomo
  * @author Ken Fogel
  */
-public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
+public class TwitterInfoCell extends ListCell<TwitterInfoInterface> {
     
     private final static Logger LOG = LoggerFactory.getLogger(TwitterInfoCell.class);
-    private TweetViewController tweetViewController;
+    private final static TwitterEngine engine = new TwitterEngine();
     
+    private TweetViewController tweetViewController;
     private UserProfileViewController userProvileViewController;
     private RetweetViewController retweetViewController;
     
@@ -51,7 +54,7 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
     //http://twitter4j.org/en/code-examples.html
     
     @Override
-    protected void updateItem(TwitterStatusInfo item, boolean empty) {
+    protected void updateItem(TwitterInfoInterface item, boolean empty) {
         super.updateItem(item, empty);
 
         LOG.debug("updateItem");
@@ -76,7 +79,7 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
      * @param info
      * @return The node to be placed into the ListView
      */
-    private Node getTwitterInfoCell(TwitterStatusInfo info) throws IOException, TwitterException {
+    private Node getTwitterInfoCell(TwitterInfoInterface info) throws IOException, TwitterException {
         controllerLoader();
         this.popUpUser = userProvileViewController.loadUsersProfile(info);
         this.popUpRetweet = retweetViewController.loadRetweetView(info);
@@ -94,7 +97,7 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
         userImage.setStyle("-fx-background-image: url("+info.getImageURL()+");");
         userImage.setPrefSize(48, 48);
         
-        Label header = new Label(info.getName() +"  @" +info.getHandle() +" "+ info.getPostedDate());
+        Label header = new Label(info.getName() +"  @" +info.getScreenName()+" "+ info.getPostedDate());
         Text text = new Text(info.getText());
         text.setFill(Color.WHITE);
         
@@ -112,17 +115,26 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
         like.setPrefSize(42, 42);
         like.setId("likeBtn");
         
+        Button save = new Button();
+        save.setPrefSize(21, 21);
+        save.setId("saveBtn");
         try {
-            listnerSetUp(info,reTweet,like,userImage,reply);
+            listnerSetUp(info,reTweet,like,userImage,reply,save);
         } catch (TwitterException ex) {
-            java.util.logging.Logger.getLogger(TwitterInfoCell.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.warn("An Error occured "+ex);
+        }
+        
+        if(info instanceof TwitterInfoNoStatus){
+            //If the Tweet is a TwitterInfoNoStatus then 
+            //you wouldnt need to save it again
+            save.setId("saveBtnInDb");
         }
         
         actions.getChildren().addAll(reply,reTweet,like);
         
         VBox vbox = new VBox();
         vbox.getChildren().addAll(header, text,actions);
-        hBox.getChildren().addAll(userImage, vbox);
+        hBox.getChildren().addAll(userImage, vbox,save);
         
         return hBox;
     }
@@ -138,22 +150,20 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
      * @throws IOException
      * @throws TwitterException 
      */
-    private void listnerSetUp(TwitterStatusInfo info,Button reTweet,Button like,Button userImage,Button reply)throws IOException, TwitterException{
+    private void listnerSetUp(TwitterInfoInterface info,Button reTweet,Button like,Button userImage,Button reply,Button save)throws IOException, TwitterException{
         reTweet.setOnAction(event ->{
                 displayRetweet();
         });
         
-       like.setOnAction(event->{
+        like.setOnAction(event->{
             try {
-                info.likeTweet();
-                if(info.isFavorited()){
-                    like.setDisable(true);
-                }
-            } catch (TwitterException ex) {
+                this.engine.likeTweet(info.getTweetId());
+            } 
+            catch (TwitterException ex) {
                 LOG.info("Tweet Was Already liked");
             }
         });
-       
+            
        reply.setOnAction(event -> {
                 displayReply();
        });
@@ -161,9 +171,18 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
        userImage.setOnAction(event-> {
             displayUser();
         });
-        
+       
+       save.setOnAction(event ->{
+           TwitterDAOImpl dao = new TwitterDAOImpl();
+            try {
+                dao.create((TwitterStatusInfo)info);
+                save.setStyle("-fx-border-color:#1da1f2;");
+            } 
+            catch (SQLException ex) {
+                LOG.warn("Could not save tweet " + ex);
+            }
+       });
     }
-    
     /**
      * This method displays the pop up window to show the user profile
      */
@@ -203,8 +222,6 @@ public class TwitterInfoCell extends ListCell<TwitterStatusInfo> {
         
         BorderPane userProfile = (BorderPane)userFXML.load();
         this.userProvileViewController = userFXML.getController();
-        
-        
     }
     
 }

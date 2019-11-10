@@ -19,7 +19,7 @@ import twitter4j.TwitterException;
  * 
  * @author tomo
  */
-public class TwitterStatusInfo {
+public class TwitterStatusInfo implements TwitterInfoInterface{
     
     private final static TwitterEngine engine = new TwitterEngine();
     private final Twitter twitter;
@@ -38,8 +38,9 @@ public class TwitterStatusInfo {
      * This method returns the string of the users name
      * @return String
      */
+    @Override
     public String getName() {
-        return status.getUser().getName();
+        return this.status.getUser().getName();
     }
     
     /**
@@ -47,8 +48,9 @@ public class TwitterStatusInfo {
      * @UserName
      * @return String 
      */
+    @Override
     public String getScreenName(){
-        return status.getUser().getScreenName();
+        return this.status.getUser().getScreenName();
     }
     
     /**
@@ -56,39 +58,44 @@ public class TwitterStatusInfo {
      * the user
      * @return String 
      */
+    @Override
     public String getDescription(){
-        return status.getUser().getDescription();
+        return this.status.getUser().getDescription();
     }
     
     /**
      * This method returns the follower count of the specific user
      * @return int 
      */
+    @Override
     public int getFollowersCount(){
-        return status.getUser().getFollowersCount();
+        return this.status.getUser().getFollowersCount();
     }
     
     /**
      * This method returns the followed account of the specific user
      * @return int
      */
+    @Override
     public int getFriendsCount(){
-        return status.getUser().getFriendsCount();
+        return this.status.getUser().getFriendsCount();
     }
     /**
      * This method returns the tweet of the user
      * @return 
      */
+    @Override
     public String getText(){
-        return status.getText();
+        return this.status.getText();
     }
     
     /**
      * This method returns the image url for the user
      * @return String
      */
+    @Override
     public String getImageURL(){
-        return status.getUser().getProfileImageURL();
+        return this.status.getUser().getProfileImageURL();
     }
 
     /**
@@ -96,8 +103,9 @@ public class TwitterStatusInfo {
      * higher density image
      * @return String
      */
+    @Override
     public String getLargeProfileImageURL(){
-        return status.getUser().get400x400ProfileImageURL();
+        return this.status.getUser().get400x400ProfileImageURL();
     }
     
     /**
@@ -106,78 +114,43 @@ public class TwitterStatusInfo {
      * @return String 
      */
     public String getHandle() {
-      return status.getUser().getScreenName();
+      return this.status.getUser().getScreenName();
     }
     /**
      * This method returns a int of the like count
      * @return int
      */
+    @Override
     public int getLikeCount(){
-        return status.getFavoriteCount();
+        return this.status.getFavoriteCount();
     }
 
     /**
      * This method returns posted date 
      * @return int
      */
+    @Override
     public String getPostedDate(){
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        return df.format(status.getCreatedAt());
+        return df.format(this.status.getCreatedAt());
     }
     
     /**
      * This method returns the tweet id of the specific status
      * @return 
      */
+    @Override
     public Long getTweetId(){
         return this.status.getId();
     }
     
     /**
-     * This method likes a tweet
-     * inspired by:
-     * http://www.tothenew.com/blog/mark-tweet-as-favorite-using-twitter4j/
-     * @throws TwitterException 
-     */
-    public void likeTweet() throws TwitterException{
-        twitter.createFavorite(status.getId());
-    }
-    /**
      * This method returns a retweet count on the status
      * @return int
      */    
+    @Override
     public int getRetweetCount(){
-       return status.getRetweetCount();
-    }
-    /**
-     * This method retweets the specified status
-     * http://twitter4j.org/oldjavadocs/2.2.3/twitter4j/api/StatusMethods.html
-     * @throws TwitterException 
-     */
-    public void reTweet() throws TwitterException{
-        twitter.retweetStatus(status.getId());
-    }
-    
-    /**
-     * This method returns if the tweet is favorited already
-     * @return boolean
-     */
-    public boolean isFavorited(){
-        return this.status.isFavorited();
-    }
-    
-    /**
-     * This method creates a comment (reply) on the specific tweet
-     * @param reply
-     * @throws TwitterException 
-     */
-    public void makeComment(String reply) throws TwitterException{
-       StatusUpdate tweetReply = new StatusUpdate(reply);
-       tweetReply.inReplyToStatusId(this.status.getId());
-       
-       Status statusRepliedTo = twitter.updateStatus(tweetReply);
-       
-        //http://www.tothenew.com/blog/reply-to-a-user-tweet-using-twitter4j/
+       return this.status.getRetweetCount();
     }
 }
 //http://twitter4j.org/oldjavadocs/2.2.6/twitter4j/api/UserMethods.html

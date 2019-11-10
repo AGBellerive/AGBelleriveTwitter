@@ -7,7 +7,6 @@ package com.agbellerive.twitter.controller;
 import com.agbellerive.twitter.business.TwitterEngine;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -20,9 +19,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import twitter4j.Query;
-import twitter4j.QueryResult;
-import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.User;
@@ -64,6 +60,12 @@ public class ProfileViewController {
     @FXML // fx:id="lowerPane"
     private BorderPane lowerPane; // Value injected by FXMLLoader
 
+    @FXML // fx:id="tweetsBtn"
+    private Button tweetsBtn; // Value injected by FXMLLoader
+
+    @FXML // fx:id="reTweetsBtn"
+    private Button reTweetsBtn; // Value injected by FXMLLoader
+
     @FXML // fx:id="mentionedBtn"
     private Button mentionedBtn; // Value injected by FXMLLoader
 
@@ -93,7 +95,7 @@ public class ProfileViewController {
      * @throws TwitterException 
      */
     public void setUser() throws TwitterException{
-        this.authenticatedUser = twitter.showUser(twitter.getId());
+        this.authenticatedUser = this.twitter.showUser(this.twitter.getId());
     }
     /**
      * This method sets the profile image of the user
@@ -152,8 +154,9 @@ public class ProfileViewController {
      */
     @FXML
     private void mentionedClick(ActionEvent event) throws TwitterException {
-        lowerPane.setCenter(this.mentionedView);
-        LOG.info("Mentioned Button Clicked");
+        this.lowerPane.setCenter(this.mentionedView);
+        this.mentionedViewController.loadSelfMentionedList(this.authenticatedUser.getScreenName());
+        LOG.info("Mentioned Button Clicked" + this.authenticatedUser.getScreenName());
     }
     
 }

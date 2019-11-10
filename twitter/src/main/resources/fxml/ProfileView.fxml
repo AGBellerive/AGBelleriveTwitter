@@ -29,9 +29,9 @@
          <top>
             <HBox alignment="CENTER" prefHeight="42.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" text="Tweets" />
-                  <Button mnemonicParsing="false" text="Retweets" />
-                  <Button fx:id="mentionedBtn" mnemonicParsing="false" onAction="#mentionedClick" text="Mentioned" />
+                  <Button fx:id="tweetsBtn" mnemonicParsing="false" text="%Tweets" />
+                  <Button fx:id="reTweetsBtn" mnemonicParsing="false" text="%Retweets" />
+                  <Button fx:id="mentionedBtn" mnemonicParsing="false" onAction="#mentionedClick" text="%Mentions" />
                </children>
             </HBox>
          </top>

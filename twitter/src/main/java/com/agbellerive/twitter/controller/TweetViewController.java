@@ -5,20 +5,15 @@
 package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterEngine;
-import com.agbellerive.twitter.business.TwitterStatusInfo;
+import com.agbellerive.twitter.business.TwitterInfoInterface;
 import com.agbellerive.twitter.presentation.MainApp;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import twitter4j.TwitterException;
@@ -30,7 +25,8 @@ public class TweetViewController {
     private final MainApp mainApp = new MainApp();
     private static final int MAX_TWEET = 280;
     
-    private TwitterStatusInfo userInfo;
+    private String currentAction;
+    private TwitterInfoInterface userInfo;
     private Long tweetId;
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -57,7 +53,7 @@ public class TweetViewController {
         assert tweetTextArea != null : "fx:id=\"tweetTextArea\" was not injected: check your FXML file 'TweetView.fxml'.";
         assert sendTweetBtn != null : "fx:id=\"sendTweetBtn\" was not injected: check your FXML file 'TweetView.fxml'.";
         listenersSetUp();
-
+        this.currentAction = "Tweet";
     }
     
         /**
@@ -68,28 +64,29 @@ public class TweetViewController {
      */
     private void sendTweet(){
         try{
-            if(this.sendTweetBtn.getText().equals("Tweet!")){
+            if(this.currentAction.equals("Tweet")){
             LOG.info("TextArea result: "+tweetTextArea.getText() +" Has been tweeted");
             twitterEngine.createTweet(tweetTextArea.getText());
             }
-            else if(this.sendTweetBtn.getText().equals("Retweet!")){
+            else if(this.currentAction.equals("Retweet")){
                 if(this.tweetTextArea.getText().isEmpty()){
-                    this.userInfo.reTweet();
+                    twitterEngine.reTweet(this.userInfo.getTweetId());
+                    LOG.info("Tweet Retweeted" +this.userInfo.getTweetId());
                     LOG.info("TextArea result is empty so a regular retweet");
                 }
                 else{
-                   String statusBeingRetweeted = "https://twitter.com/"+this.userInfo.getHandle()+"/status/"+this.userInfo.getTweetId();
+                   String statusBeingRetweeted = "https://twitter.com/"+this.userInfo.getScreenName()+"/status/"+this.userInfo.getTweetId();
                    twitterEngine.createTweet(tweetTextArea.getText() +" " +statusBeingRetweeted);
                    LOG.info("TextArea result: "+tweetTextArea.getText() +" Has been attached to the retweet");
                 }
             }
-            else if (this.sendTweetBtn.getText().equals("Reply!")){
-                this.userInfo.makeComment(tweetTextArea.getText());
-                LOG.info("A reply has been made with the content: "+tweetTextArea.getText() );
+            
+            else if (this.currentAction.equals("Reply")){
+                        twitterEngine.makeComment(tweetTextArea.getText(), this.userInfo.getTweetId());
+                        LOG.info("A reply has been made with the content:"+tweetTextArea.getText() );
             }
 
         }
-        // Exception is a place holder for TwitterException
         catch (TwitterException ex){
             mainApp.startUpWarning();
             LOG.error("Unable to send Tweet",ex);
@@ -129,35 +126,36 @@ public class TweetViewController {
       * @param user
       * @param action 
       */
-     public void actionOnTweet(TwitterStatusInfo user,String action){
+     public void actionOnTweet(TwitterInfoInterface user,String action){
          if(action.equals("Retweet")){
              reTweeting(user);
          }
          else if(action.equals("Reply")){
              replying(user);
          }
+         this.currentAction = action;
      }
      
      /**
       * This method sets up the view if it is a retweet
       * @param user 
       */
-     public void reTweeting(TwitterStatusInfo user){
+     public void reTweeting(TwitterInfoInterface user){
          this.tweetId = user.getTweetId();
          this.userInfo = user;
-         this.tweetPrompt.setText("Enter Your Retweet Bellow");
-         this.sendTweetBtn.setText("Retweet!");
+         this.tweetPrompt.setText(resources.getString("RetweetPrompt"));
+         this.sendTweetBtn.setText(resources.getString("Retweet"));
      }
 
      /**
       * This method sets up the view if it is a replying
       * @param user 
       */
-     public void replying(TwitterStatusInfo user){
+     public void replying(TwitterInfoInterface user){
          this.tweetId = user.getTweetId();
          this.userInfo = user;
-         this.tweetPrompt.setText("Enter Your Reply Bellow");
-         this.sendTweetBtn.setText("Reply!");
+         LOG.info(""+user.getName());
+         this.tweetPrompt.setText(resources.getString("ReplyPrompt"));
+         this.sendTweetBtn.setText(resources.getString("Reply"));
      }     
-
 }

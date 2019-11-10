@@ -14,15 +14,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
-import java.nio.file.Files;
-import static java.nio.file.Files.newOutputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import static java.nio.file.Paths.get;
 import java.util.Properties;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -67,10 +60,10 @@ private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(FormControll
         try (OutputStream output = new FileOutputStream("twitter4j.properties")){
             Properties prop = new Properties();
             
-            prop.setProperty("oauth.consumerKey", consumerKey.getText().trim());
-            prop.setProperty("oauth.consumerSecret", consumerSecret.getText().trim());
-            prop.setProperty("oauth.acessToken", acessToken.getText().trim());
-            prop.setProperty("oauth.acessTokenSecret", acessTokenSecret.getText().trim());
+            prop.setProperty("oauth.consumerKey", this.consumerKey.getText().trim());
+            prop.setProperty("oauth.consumerSecret", this.consumerSecret.getText().trim());
+            prop.setProperty("oauth.acessToken", this.acessToken.getText().trim());
+            prop.setProperty("oauth.acessTokenSecret", this.acessTokenSecret.getText().trim());
             
             prop.store(output, "Twitter Properties file");
             switchScenes();
@@ -88,7 +81,7 @@ private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(FormControll
     private void switchScenes(){
         MainApp main = new MainApp();
             try {
-                Stage stage = (Stage) createFile.getScene().getWindow();
+                Stage stage = (Stage) this.createFile.getScene().getWindow();
                 stage.close();
                 main.start(new Stage());
             } catch (Exception ex) {

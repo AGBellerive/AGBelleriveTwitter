@@ -10,12 +10,12 @@
    <top>
       <HBox alignment="CENTER" prefHeight="49.0" prefWidth="200.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="searchBox" promptText="Enter Your Search Term" />
-            <Button fx:id="searchTermBtn" mnemonicParsing="false" onAction="#searchTermClick" text="Go!" />
+            <TextField fx:id="searchBox" promptText="%SearchPrompt" />
+            <Button fx:id="searchTermBtn" mnemonicParsing="false" onAction="#searchTermClick" text="%Go" />
          </children>
       </HBox>
    </top>
    <center>
-      <ListView fx:id="tweetDisplayArea" BorderPane.alignment="CENTER" />
+      <ListView fx:id="tweetDisplayArea" BorderPane.alignment="CENTER" stylesheets="@../styles/twitterview.css"/>
    </center>
 </BorderPane>

@@ -4,13 +4,13 @@
 
 package com.agbellerive.twitter.controller;
 
+import com.agbellerive.twitter.business.TwitterEngine;
+import com.agbellerive.twitter.business.TwitterInfoInterface;
 import com.agbellerive.twitter.business.TwitterStatusInfo;
-import com.sun.javafx.scene.shape.TextHelper;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +20,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -31,10 +30,12 @@ public class RetweetViewController {
     
     private RetweetViewController retweetViewController;
     
-    private TwitterStatusInfo currentUser;
+    private TwitterInfoInterface currentUser;
     
     private TweetViewController tweetViewController;
     private BorderPane tweetView;
+    
+    private final static TwitterEngine engine = new TwitterEngine();
     
     
     private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(RetweetViewController.class);
@@ -76,7 +77,7 @@ public class RetweetViewController {
     @FXML
     private void likeBtnClick(ActionEvent event) {
         try {
-            this.currentUser.likeTweet();
+            this.engine.likeTweet(this.currentUser.getTweetId());
             LOG.info("Tweet Liked");
         } 
         catch (TwitterException ex) {
@@ -100,7 +101,7 @@ public class RetweetViewController {
      * This method sets up the private variable of the current user
      * @param user 
      */
-    public void setUpUser(TwitterStatusInfo user){
+    public void setUpUser(TwitterInfoInterface user){
         this.currentUser = user;
     }
     
@@ -115,7 +116,7 @@ public class RetweetViewController {
      * This method sets up the text next to the users name
      */
     private void setHeader(){
-        this.headerLabel.setText(this.currentUser.getName() +"  @" +this.currentUser.getHandle() +" "+ this.currentUser.getPostedDate());
+        this.headerLabel.setText(this.currentUser.getName() +"  @" +this.currentUser.getScreenName()+" "+ this.currentUser.getPostedDate());
     }
     /**
      * This method sets the tweet of the user going to be retweeted
@@ -145,7 +146,7 @@ public class RetweetViewController {
             this.tweetViewController= tweetFxml.getController();
         } 
         catch (IOException ex) {
-            java.util.logging.Logger.getLogger(UserProfileViewController.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.info("IOException in initilizeTweetView");
         }   
     }
     /**
@@ -154,7 +155,7 @@ public class RetweetViewController {
      * @return
      * @throws IOException 
      */
-    public Stage loadRetweetView(TwitterStatusInfo info) throws IOException{
+    public Stage loadRetweetView(TwitterInfoInterface info) throws IOException{
         Stage popUpRetweet = new Stage();
         popUpRetweet.initModality(Modality.APPLICATION_MODAL);
         
@@ -175,6 +176,7 @@ public class RetweetViewController {
         popUpRetweet.setScene(scene);
         return popUpRetweet;
     }
+    
     /**
      * This method returns the reply view changing information to indicate the 
      * user is about to reply
@@ -182,11 +184,11 @@ public class RetweetViewController {
      * @return
      * @throws IOException 
      */
-    public Stage loadReplyView(TwitterStatusInfo info) throws IOException{
+    public Stage loadReplyView(TwitterInfoInterface info) throws IOException{
         Stage popUpReply = loadRetweetView(info);
         popUpReply.initModality(Modality.APPLICATION_MODAL);
         
-        retweetViewController.setUpView("Reply");
+        this.retweetViewController.setUpView("Reply");
         popUpReply.setTitle("Replying to "+info.getName());
         
         return popUpReply;

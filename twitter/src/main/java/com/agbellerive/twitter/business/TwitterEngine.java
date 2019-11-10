@@ -9,6 +9,7 @@ import twitter4j.Paging;
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Status;
+import twitter4j.StatusUpdate;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -133,6 +134,44 @@ public class TwitterEngine {
         paging.setPage(page);
         List<Status> statuses = twitter.getHomeTimeline(paging);
         return statuses;
+    }
+        /**
+     * This method likes a tweet given a tweetid
+     * inspired by:
+     * http://www.tothenew.com/blog/mark-tweet-as-favorite-using-twitter4j/
+     * @param tweetId
+     * @throws TwitterException 
+     */
+       public void likeTweet(Long tweetId) throws TwitterException{
+        Twitter twitter = getTwitterinstance();
+        twitter.createFavorite(tweetId);
+    }
+       
+    /**
+     * This method retweets the specified status
+     * http://twitter4j.org/oldjavadocs/2.2.3/twitter4j/api/StatusMethods.html
+     * @param tweetId
+     * @throws TwitterException 
+     */
+       public void reTweet(Long tweetId) throws TwitterException{
+           Twitter twitter = getTwitterinstance();
+            twitter.retweetStatus(tweetId);
+    }
+       
+    /**
+     * This method creates a comment (reply) on the specific tweet
+     * @param reply
+     * @param tweetid
+     * @throws TwitterException 
+     */
+    public void makeComment(String reply,Long tweetid) throws TwitterException{
+       Twitter twitter = getTwitterinstance();
+       StatusUpdate tweetReply = new StatusUpdate(reply);
+       tweetReply.inReplyToStatusId(tweetid);
+       
+       Status statusRepliedTo = twitter.updateStatus(tweetReply);
+       
+        //http://www.tothenew.com/blog/reply-to-a-user-tweet-using-twitter4j/
     }
 
 }

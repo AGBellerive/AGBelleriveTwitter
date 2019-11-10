@@ -6,7 +6,6 @@ import com.agbellerive.twitter.business.TwitterEngine;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,9 +15,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import twitter4j.AccountSettings;
-import twitter4j.ResponseList;
-import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.User;
@@ -39,6 +35,9 @@ public class MainTwitterViewController {
     
     private SearchViewController searchViewController;
     private BorderPane searchView;
+    
+    private DatabaseTweetController databaseTweetController;
+    private BorderPane dbTweetView;
     
     
     private final String BUTTON_BACKGROUND_COLOR = "#15202b";
@@ -81,6 +80,9 @@ public class MainTwitterViewController {
 
     @FXML // fx:id="searchBtn"
     private Button searchBtn; // Value injected by FXMLLoader
+    
+    @FXML // fx:id="savedTweetsBtn"
+    private Button savedTweetsBtn; // Value injected by FXMLLoader
 
     @FXML // fx:id="exitBtn"
     private Button exitBtn; // Value injected by FXMLLoader
@@ -106,6 +108,7 @@ public class MainTwitterViewController {
         createFeedView();
         createProfileView();
         createSearchView();
+        createDatabaseView();
         
         this.mainPane.setCenter(this.feedView);
         LOG.info("Class fully initialized");
@@ -125,6 +128,7 @@ public class MainTwitterViewController {
        helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
        searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+       savedTweetsBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        
        LOG.info("DmIcon Clicked");
     }
@@ -143,6 +147,7 @@ public class MainTwitterViewController {
         helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
         searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        savedTweetsBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         
         LOG.info("HomeIcon Clicked");
     }
@@ -163,6 +168,7 @@ public class MainTwitterViewController {
         helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         profileBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";-fx-background-image: url("+url+");");
         searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        savedTweetsBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         
         LOG.info("ProfileIcon Cliked");
     }
@@ -183,6 +189,7 @@ public class MainTwitterViewController {
        helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
        searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+       savedTweetsBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        
        LOG.info("TweetIcon Clicked");
     }
@@ -201,9 +208,26 @@ public class MainTwitterViewController {
         tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
-        searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        searchBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
+        savedTweetsBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        
        LOG.info("SearchIcon Clicked");
+    }
+    
+    @FXML
+    private void savedTweetsClick(ActionEvent event) {
+        this.mainPane.setCenter(this.dbTweetView);
+        
+        this.databaseTweetController.loadDbTweets();
+        dmIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        homeIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
+        searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        savedTweetsBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
+       
+       LOG.info("SavedTweetsIcon Clicked");
     }
     
     
@@ -296,8 +320,8 @@ public class MainTwitterViewController {
      * This method creates the profile view to be used later in switching
      */
     private void createProfileView() throws TwitterException{
-        User loggedInUser = twitter.showUser(twitter.getId());
-        url = loggedInUser.get400x400ProfileImageURL();
+        User loggedInUser = this.twitter.showUser(twitter.getId());
+        this.url = loggedInUser.get400x400ProfileImageURL();
         this.profileBtn.setStyle("-fx-background-image: url("+url+");");
         
         try{            
@@ -320,6 +344,20 @@ public class MainTwitterViewController {
      */
     private void createSearchView(){
         try{
+            FXMLLoader dbViewFXML = new FXMLLoader (getClass().getResource("/fxml/DatabaseTweets.fxml"));
+            dbViewFXML.setResources(ResourceBundle.getBundle("MessagesBundle"));
+            this.dbTweetView = (BorderPane) dbViewFXML.load();
+            this.databaseTweetController = dbViewFXML.getController();
+            
+            LOG.info("Database view Sucessfully created");
+        } 
+        catch (IOException ex) {
+            LOG.error("Could not load Database View",ex);
+        }
+    }
+    
+    private void createDatabaseView(){
+        try{
             FXMLLoader searchViewFXML = new FXMLLoader (getClass().getResource("/fxml/SearchView.fxml"));
             searchViewFXML.setResources(ResourceBundle.getBundle("MessagesBundle"));
             this.searchView = (BorderPane) searchViewFXML.load();
@@ -329,9 +367,6 @@ public class MainTwitterViewController {
         } 
         catch (IOException ex) {
             LOG.error("Could not load SearchView",ex);
-        }
+        } 
     }
-    
-    
-    
 }

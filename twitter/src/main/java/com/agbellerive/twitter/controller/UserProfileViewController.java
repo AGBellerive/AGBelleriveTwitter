@@ -5,12 +5,12 @@
 package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterEngine;
+import com.agbellerive.twitter.business.TwitterInfoInterface;
 import com.agbellerive.twitter.business.TwitterStatusInfo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,7 +31,7 @@ import twitter4j.User;
 
 public class UserProfileViewController {
     
-    private TwitterStatusInfo currentUser;
+    private TwitterInfoInterface currentUser;
     
     private DmViewController dmViewController;
     private BorderPane dmView;
@@ -103,7 +103,7 @@ public class UserProfileViewController {
      * This method sets up the user 
      * @param info 
      */
-    public void setUpUser(TwitterStatusInfo info){
+    public void setUpUser(TwitterInfoInterface info){
         this.currentUser = info;
         LOG.info("currentUser initilized");
     }
@@ -116,15 +116,15 @@ public class UserProfileViewController {
      */
     @FXML
     private void followClick(ActionEvent event) throws TwitterException {
-        if(followBtn.getText().equals("Follow")){
-            twitter.createFriendship(this.currentUser.getHandle());
-            followBtn.setText("Unfollow");
-            LOG.info("You Followed " +this.currentUser.getHandle());
+        if(this.followBtn.getText().equals("Follow")){
+            this.twitter.createFriendship(this.currentUser.getScreenName());
+            this.followBtn.setText("Unfollow");
+            LOG.info("You Followed " +this.currentUser.getScreenName());
         }
         else{
-            twitter.destroyFriendship(this.currentUser.getHandle());
-            followBtn.setText("Follow");
-            LOG.info("You Unfollowed " +this.currentUser.getHandle());
+            this.twitter.destroyFriendship(this.currentUser.getScreenName());
+            this.followBtn.setText("Follow");
+            LOG.info("You Unfollowed " +this.currentUser.getScreenName());
         }
     }
     
@@ -134,7 +134,7 @@ public class UserProfileViewController {
      */
     @FXML
     private void messageClick(ActionEvent event) {
-        this.dmViewController.presetDmName(this.currentUser.getHandle());
+        this.dmViewController.presetDmName(this.currentUser.getScreenName());
         this.displayPane.setCenter(this.dmView);
         LOG.info("Displaying Dm view");
     }
@@ -183,7 +183,6 @@ public class UserProfileViewController {
         if(relation.isSourceFollowingTarget()){
             followBtn.setText("Unfollow");
         }
-        
     }
     
     /**
@@ -208,7 +207,7 @@ public class UserProfileViewController {
      * @throws IOException
      * @throws TwitterException 
      */
-    public Stage loadUsersProfile(TwitterStatusInfo info) throws IOException, TwitterException {
+    public Stage loadUsersProfile(TwitterInfoInterface info) throws IOException, TwitterException {
         Stage popupStage = new Stage();
         popupStage.initModality(Modality.APPLICATION_MODAL);
         
