@@ -154,6 +154,7 @@ public class TweetViewController {
      public void replying(TwitterInfoInterface user){
          this.tweetId = user.getTweetId();
          this.userInfo = user;
+         LOG.info(""+user.getName());
          this.tweetPrompt.setText(resources.getString("ReplyPrompt"));
          this.sendTweetBtn.setText(resources.getString("Reply"));
      }     
