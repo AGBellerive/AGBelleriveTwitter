@@ -6,7 +6,6 @@
 package unittests;
 
 import com.agbellerive.twitter.business.TwitterInfoNoStatus;
-import com.agbellerive.twitter.persistence.TwitterDAO;
 import com.agbellerive.twitter.persistence.TwitterDAOImpl;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +18,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-import org.junit.After;
+import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import org.junit.Before;
@@ -38,10 +37,22 @@ public class TwitterTests {
     private final static String USER = "alex";
     private final static String PASSWORD = "agb";
     private TwitterInfoNoStatus tweetA;
-    private TwitterDAOImpl twitterdao;
-  
-    //Test getting data from database
+    private TwitterDAOImpl twitterdao;  
     
+    /**
+     * This method is ran after all the tests are done
+     * cleaning out the database for user use
+     */
+    @AfterClass
+    public static void seedAfterTestCompleted() {
+        LOG.info("@AfterClass seeding");
+        new TwitterTests().seedDatabase();
+    }
+
+    /**
+     * This method initilizes some twitter data that is going 
+     * to be used later 
+     */
     @Before
     public void initilizeTwitterData() {
         this.tweetA = new TwitterInfoNoStatus("Tester","testerHandle","11/09/2019","I hope this is a sucessful test", "", 
@@ -85,16 +96,23 @@ public class TwitterTests {
         this.twitterdao.create(tweetA);
         fail("The primary keys are the same this method needed to fail by SQLException");
     }
-    
+    /**
+     * This method tests that the retrived information from the database is 
+     * correct and not lost in translation
+     * @throws SQLException 
+     */
+    @Test
     public void testRetrevial() throws SQLException {
         LOG.info("testRetrevial test started");
         this.twitterdao.create(tweetA);
-        
-        
+        List<TwitterInfoNoStatus> tweetsFromDb = this.twitterdao.findAll();
+        assertEquals("testRetrevial: ", "I hope this is a sucessful test", tweetsFromDb.get(0).getText());
     }
     
-@Before
-@After
+    /**
+     * * Method inspired by https://gitlab.com/omniprof/jdbc_test_demo/blob/master/src/test/java/com/jdbc_test_demo/tests/TestDataBase.java
+     */
+    @Before
     public void seedDatabase() {
         LOG.info("Seeding Database");
         final String seedDataScript = loadAsString("createTweetTable.sql");
@@ -160,8 +178,4 @@ public class TwitterTests {
         return line.startsWith("--") || line.startsWith("//")
                 || line.startsWith("/*");
     }
-
-
-
-    
 }

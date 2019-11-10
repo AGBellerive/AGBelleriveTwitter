@@ -7,7 +7,6 @@ package com.agbellerive.twitter.persistence;
 
 import com.agbellerive.twitter.business.TwitterInfoInterface;
 import com.agbellerive.twitter.business.TwitterInfoNoStatus;
-import com.agbellerive.twitter.business.TwitterStatusInfo;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,10 +16,18 @@ import java.util.List;
  */
 public interface TwitterDAO {
     
-    // Add To Db
+    /**
+     * This method will add to the database 
+     * @param tweet
+     * @throws SQLException 
+     */
     public void create(TwitterInfoInterface tweet) throws SQLException;
 
-    // Read
+    /**
+     * This method will read from the database
+     * @return
+     * @throws SQLException 
+     */
     public List<TwitterInfoNoStatus> findAll() throws SQLException;
     
 }

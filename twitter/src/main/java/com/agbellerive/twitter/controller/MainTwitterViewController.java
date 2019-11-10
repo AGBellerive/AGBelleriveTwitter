@@ -6,7 +6,6 @@ import com.agbellerive.twitter.business.TwitterEngine;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,9 +15,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import twitter4j.AccountSettings;
-import twitter4j.ResponseList;
-import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.User;
@@ -221,6 +217,7 @@ public class MainTwitterViewController {
     @FXML
     private void savedTweetsClick(ActionEvent event) {
         this.mainPane.setCenter(this.dbTweetView);
+        
         this.databaseTweetController.loadDbTweets();
         dmIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         homeIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
@@ -323,8 +320,8 @@ public class MainTwitterViewController {
      * This method creates the profile view to be used later in switching
      */
     private void createProfileView() throws TwitterException{
-        User loggedInUser = twitter.showUser(twitter.getId());
-        url = loggedInUser.get400x400ProfileImageURL();
+        User loggedInUser = this.twitter.showUser(twitter.getId());
+        this.url = loggedInUser.get400x400ProfileImageURL();
         this.profileBtn.setStyle("-fx-background-image: url("+url+");");
         
         try{            

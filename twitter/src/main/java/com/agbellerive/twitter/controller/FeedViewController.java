@@ -6,16 +6,13 @@ package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterInfoCell;
 import com.agbellerive.twitter.business.TwitterInfoInterface;
-import com.agbellerive.twitter.business.TwitterStatusInfo;
 import com.agbellerive.twitter.business.TwitterTimelineTask;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -49,7 +46,7 @@ public class FeedViewController {
         assert tweetList != null : "fx:id=\"tweetList\" was not injected: check your FXML file 'FeedView.fxml'.";
         assert refreshBtn != null : "fx:id=\"refreshBtn\" was not injected: check your FXML file 'FeedView.fxml'.";
         
-        homePane.setCenter(getHBoxView());
+        this.homePane.setCenter(getHBoxView());
         loadTweets();
         LOG.info("FeedViewContoller Initilized, view has been loaded");
     }
@@ -69,13 +66,13 @@ public class FeedViewController {
      * tweets being displayed
      */
     private void loadTweets(){
-        tweetList.getItems().clear();
-        if (timeLineTask == null) {
-            timeLineTask = new TwitterTimelineTask(tweetList.getItems());
+        this.tweetList.getItems().clear();
+        if (this.timeLineTask == null) {
+            this.timeLineTask = new TwitterTimelineTask(this.tweetList.getItems());
             LOG.info("Tweets have been loaded");
         }
         try {
-            timeLineTask.fillTimeLine();
+            this.timeLineTask.fillTimeLine();
         } catch (Exception ex) {
             LOG.error("Unable to display timeline", ex);
         }
@@ -89,10 +86,10 @@ public class FeedViewController {
         HBox hBox = new HBox();
         
         ObservableList<TwitterInfoInterface> list = FXCollections.observableArrayList();
-        tweetList.setItems(list);
-        tweetList.setPrefWidth(800);
-        tweetList.setCellFactory(p -> new TwitterInfoCell());
-        hBox.getChildren().addAll(tweetList);
+        this.tweetList.setItems(list);
+        this.tweetList.setPrefWidth(800);
+        this.tweetList.setCellFactory(p -> new TwitterInfoCell());
+        hBox.getChildren().addAll(this.tweetList);
         LOG.info("getHBoxView Called ");
         return hBox;
     }

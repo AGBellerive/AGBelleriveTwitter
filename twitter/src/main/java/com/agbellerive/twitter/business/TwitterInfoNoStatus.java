@@ -47,8 +47,7 @@ public class TwitterInfoNoStatus implements TwitterInfoInterface {
         this.description = des;
     }
 
-     public TwitterInfoNoStatus(){
-         
+     public TwitterInfoNoStatus(){   
      }
     
     public void setName(String givenName) {

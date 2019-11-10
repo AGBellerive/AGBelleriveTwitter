@@ -56,11 +56,11 @@ public class DmViewController {
      * and classes to send the tweet
      */
     private void listenersSetUp(){        
-        dmTextArea.textProperty().addListener((textAreaBeingObserved, oldValue, newValue)
+        this.dmTextArea.textProperty().addListener((textAreaBeingObserved, oldValue, newValue)
                 -> {
                 checkCharacterCount(oldValue,MAX_TWEET);
         });
-        sendDmBtn.setOnAction(event->{sendDm();});
+        this.sendDmBtn.setOnAction(event->{sendDm();});
         LOG.info("Event Listeners for Dm initilized by ListenersSetUp");
     }
 
@@ -72,12 +72,12 @@ public class DmViewController {
      */
     private void sendDm(){
         try {
-            LOG.info("Direct Message result: Sent to : ||"+dmReciver.getText()+"|| with the message ||"+dmTextArea.getText()+"||");
-            twitterEngine.sendDirectMessage(dmReciver.getText(), dmTextArea.getText());
+            LOG.info("Direct Message result: Sent to : ||"+this.dmReciver.getText()+"|| with the message ||"+this.dmTextArea.getText()+"||");
+            this.twitterEngine.sendDirectMessage(this.dmReciver.getText(), this.dmTextArea.getText());
         }
         // Exception is a place holder for TwitterException
         catch (TwitterException ex) {
-            mainApp.startUpWarning();
+            this.mainApp.startUpWarning();
             LOG.error("Unable to send direct message", ex);
         }
     }
@@ -91,10 +91,10 @@ public class DmViewController {
      * @param limit 
      */
     private void checkCharacterCount(String oldText,int limit) {
-        int characters = dmTextArea.getLength();
+        int characters = this.dmTextArea.getLength();
         if (characters >= limit) {
-            dmTextArea.setText(oldText);
-            mainApp.startUpAlert();
+            this.dmTextArea.setText(oldText);
+            this.mainApp.startUpAlert();
         }
     }
     /**

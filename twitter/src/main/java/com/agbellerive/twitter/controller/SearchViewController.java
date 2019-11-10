@@ -7,10 +7,8 @@ package com.agbellerive.twitter.controller;
 import com.agbellerive.twitter.business.TwitterEngine;
 import com.agbellerive.twitter.business.TwitterInfoCell;
 import com.agbellerive.twitter.business.TwitterInfoInterface;
-import com.agbellerive.twitter.business.TwitterStatusInfo;
 import com.agbellerive.twitter.business.TwitterTimelineTask;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,9 +22,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import twitter4j.Query;
-import twitter4j.QueryResult;
-import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
@@ -70,12 +65,12 @@ public class SearchViewController {
      */
     @FXML
     private void searchTermClick(ActionEvent event) throws TwitterException {
-        tweetDisplayArea.getItems().clear();
-        if (timeLineTask == null) {
-            timeLineTask = new TwitterTimelineTask(tweetDisplayArea.getItems());
+        this.tweetDisplayArea.getItems().clear();
+        if (this.timeLineTask == null) {
+            this.timeLineTask = new TwitterTimelineTask(this.tweetDisplayArea.getItems());
         }
         try {
-            timeLineTask.fillSearchResult(searchBox.getText());
+            this.timeLineTask.fillSearchResult(this.searchBox.getText());
             LOG.info("Search Results Obtained");
             
         } catch (TwitterException ex) {
@@ -91,10 +86,10 @@ public class SearchViewController {
         HBox hBox = new HBox();
         
         ObservableList<TwitterInfoInterface> list = FXCollections.observableArrayList();
-        tweetDisplayArea.setItems(list);
-        tweetDisplayArea.setPrefWidth(800);
-        tweetDisplayArea.setCellFactory(p -> new TwitterInfoCell());
-        hBox.getChildren().addAll(tweetDisplayArea);
+        this.tweetDisplayArea.setItems(list);
+        this.tweetDisplayArea.setPrefWidth(800);
+        this.tweetDisplayArea.setCellFactory(p -> new TwitterInfoCell());
+        hBox.getChildren().addAll(this.tweetDisplayArea);
         return hBox;
     }
 }

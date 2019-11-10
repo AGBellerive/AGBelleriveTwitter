@@ -65,6 +65,11 @@ public class TwitterTimelineTask {
         page += 1;
     }
     
+    /**
+     * This method calls and creates the TwitterInfoNoStatus
+     * and inililizes each field
+     * @throws TwitterException 
+     */
     public void fillDatabaseTweets() throws TwitterException {
         TwitterDAOImpl twitterdao = new TwitterDAOImpl();
         List<TwitterInfoNoStatus> dbTweets = twitterdao.findAll();

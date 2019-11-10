@@ -40,7 +40,7 @@ public class TwitterStatusInfo implements TwitterInfoInterface{
      */
     @Override
     public String getName() {
-        return status.getUser().getName();
+        return this.status.getUser().getName();
     }
     
     /**
@@ -50,7 +50,7 @@ public class TwitterStatusInfo implements TwitterInfoInterface{
      */
     @Override
     public String getScreenName(){
-        return status.getUser().getScreenName();
+        return this.status.getUser().getScreenName();
     }
     
     /**
@@ -60,7 +60,7 @@ public class TwitterStatusInfo implements TwitterInfoInterface{
      */
     @Override
     public String getDescription(){
-        return status.getUser().getDescription();
+        return this.status.getUser().getDescription();
     }
     
     /**
@@ -69,7 +69,7 @@ public class TwitterStatusInfo implements TwitterInfoInterface{
      */
     @Override
     public int getFollowersCount(){
-        return status.getUser().getFollowersCount();
+        return this.status.getUser().getFollowersCount();
     }
     
     /**
@@ -78,7 +78,7 @@ public class TwitterStatusInfo implements TwitterInfoInterface{
      */
     @Override
     public int getFriendsCount(){
-        return status.getUser().getFriendsCount();
+        return this.status.getUser().getFriendsCount();
     }
     /**
      * This method returns the tweet of the user
@@ -86,7 +86,7 @@ public class TwitterStatusInfo implements TwitterInfoInterface{
      */
     @Override
     public String getText(){
-        return status.getText();
+        return this.status.getText();
     }
     
     /**
@@ -95,7 +95,7 @@ public class TwitterStatusInfo implements TwitterInfoInterface{
      */
     @Override
     public String getImageURL(){
-        return status.getUser().getProfileImageURL();
+        return this.status.getUser().getProfileImageURL();
     }
 
     /**
@@ -105,7 +105,7 @@ public class TwitterStatusInfo implements TwitterInfoInterface{
      */
     @Override
     public String getLargeProfileImageURL(){
-        return status.getUser().get400x400ProfileImageURL();
+        return this.status.getUser().get400x400ProfileImageURL();
     }
     
     /**
@@ -114,7 +114,7 @@ public class TwitterStatusInfo implements TwitterInfoInterface{
      * @return String 
      */
     public String getHandle() {
-      return status.getUser().getScreenName();
+      return this.status.getUser().getScreenName();
     }
     /**
      * This method returns a int of the like count
@@ -122,7 +122,7 @@ public class TwitterStatusInfo implements TwitterInfoInterface{
      */
     @Override
     public int getLikeCount(){
-        return status.getFavoriteCount();
+        return this.status.getFavoriteCount();
     }
 
     /**
@@ -132,7 +132,7 @@ public class TwitterStatusInfo implements TwitterInfoInterface{
     @Override
     public String getPostedDate(){
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        return df.format(status.getCreatedAt());
+        return df.format(this.status.getCreatedAt());
     }
     
     /**
@@ -150,29 +150,7 @@ public class TwitterStatusInfo implements TwitterInfoInterface{
      */    
     @Override
     public int getRetweetCount(){
-       return status.getRetweetCount();
-    }
-    /**
-     * This method retweets the specified status
-     * http://twitter4j.org/oldjavadocs/2.2.3/twitter4j/api/StatusMethods.html
-     * @throws TwitterException 
-     */
-    public void reTweet() throws TwitterException{
-        twitter.retweetStatus(status.getId());
-    }
-    
-    /**
-     * This method creates a comment (reply) on the specific tweet
-     * @param reply
-     * @throws TwitterException 
-     */
-    public void makeComment(String reply) throws TwitterException{
-       StatusUpdate tweetReply = new StatusUpdate(reply);
-       tweetReply.inReplyToStatusId(this.status.getId());
-       
-       Status statusRepliedTo = twitter.updateStatus(tweetReply);
-       
-        //http://www.tothenew.com/blog/reply-to-a-user-tweet-using-twitter4j/
+       return this.status.getRetweetCount();
     }
 }
 //http://twitter4j.org/oldjavadocs/2.2.6/twitter4j/api/UserMethods.html

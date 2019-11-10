@@ -19,6 +19,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -50,37 +51,57 @@ public class DatabaseTweetController {
         this.dbTweetView.setCenter(getHBoxView());
         LOG.info("DatabaseTweetController initilzied");
     }
-    
+    /**
+     * This method loads all the tweets from the database
+     * and if it is empty it will display a pop up so the 
+     * user knows that they have no tweets saved in the 
+     * database
+     */
     public void loadDbTweets(){
         TwitterDAOImpl twitterdao = new TwitterDAOImpl();
-        dbTweets = twitterdao.findAll();
+        this.dbTweets = twitterdao.findAll();
         LOG.info(dbTweets.size()+"");
+        if(this.dbTweets.isEmpty()){
+            noTweetsSavedPopUp();
+        }
         loadTweets();
+    }
+    
+    /**
+     * This pop up is inililized when there 
+     * is no tweets retrived from the datbase
+     */
+    private void noTweetsSavedPopUp(){
+        Alert warning = new Alert(Alert.AlertType.WARNING);
+        warning.getDialogPane().setMinWidth(500);
+        warning.setTitle("Error");
+        
+        warning.setHeaderText("Cannot complete your request");
+        warning.setContentText("You have not saved any Tweets into the database");
+        warning.showAndWait();
     }
     
     private Node getHBoxView() {
         HBox hBox = new HBox();
         
         ObservableList<TwitterInfoInterface> list = FXCollections.observableArrayList();
-        dbTweetList.setItems(list);
-        dbTweetList.setPrefWidth(800);
-        dbTweetList.setCellFactory(p -> new TwitterInfoCell());
-        hBox.getChildren().addAll(dbTweetList);
+        this.dbTweetList.setItems(list);
+        this.dbTweetList.setPrefWidth(800);
+        this.dbTweetList.setCellFactory(p -> new TwitterInfoCell());
+        hBox.getChildren().addAll(this.dbTweetList);
         return hBox;
     }
     
     private void loadTweets(){
-        dbTweetList.getItems().clear();
-        if (timeLineTask == null) {
-            timeLineTask = new TwitterTimelineTask(dbTweetList.getItems());
+        this.dbTweetList.getItems().clear();
+        if (this.timeLineTask == null) {
+            this.timeLineTask = new TwitterTimelineTask(this.dbTweetList.getItems());
             LOG.info("Tweets have been loaded");
         }
         try {
-            timeLineTask.fillDatabaseTweets();
+            this.timeLineTask.fillDatabaseTweets();
         } catch (Exception ex) {
             LOG.error("Unable to display timeline", ex);
         }
     }
-    
-    
 }

@@ -121,13 +121,14 @@ public class TwitterInfoCell extends ListCell<TwitterInfoInterface> {
         try {
             listnerSetUp(info,reTweet,like,userImage,reply,save);
         } catch (TwitterException ex) {
-            java.util.logging.Logger.getLogger(TwitterInfoCell.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.warn("An Error occured "+ex);
         }
         
         if(info instanceof TwitterInfoNoStatus){
+            //If the Tweet is a TwitterInfoNoStatus then 
+            //you wouldnt need to save it again
             save.setId("saveBtnInDb");
         }
-        
         
         actions.getChildren().addAll(reply,reTweet,like);
         
@@ -154,16 +155,15 @@ public class TwitterInfoCell extends ListCell<TwitterInfoInterface> {
                 displayRetweet();
         });
         
-            like.setOnAction(event->{
+        like.setOnAction(event->{
             try {
-                engine.likeTweet(info.getTweetId());
+                this.engine.likeTweet(info.getTweetId());
             } 
             catch (TwitterException ex) {
                 LOG.info("Tweet Was Already liked");
             }
         });
-        
-       
+            
        reply.setOnAction(event -> {
                 displayReply();
        });
@@ -177,12 +177,10 @@ public class TwitterInfoCell extends ListCell<TwitterInfoInterface> {
             try {
                 dao.create((TwitterStatusInfo)info);
                 save.setStyle("-fx-border-color:#1da1f2;");
-            } catch (SQLException ex) {
+            } 
+            catch (SQLException ex) {
                 LOG.warn("Could not save tweet " + ex);
             }
-                
-                
-             
        });
     }
     /**
@@ -224,8 +222,6 @@ public class TwitterInfoCell extends ListCell<TwitterInfoInterface> {
         
         BorderPane userProfile = (BorderPane)userFXML.load();
         this.userProvileViewController = userFXML.getController();
-        
-        
     }
     
 }

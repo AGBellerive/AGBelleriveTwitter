@@ -7,13 +7,11 @@ package com.agbellerive.twitter.controller;
 import com.agbellerive.twitter.business.TwitterEngine;
 import com.agbellerive.twitter.business.TwitterInfoCell;
 import com.agbellerive.twitter.business.TwitterInfoInterface;
-import com.agbellerive.twitter.business.TwitterStatusInfo;
 import com.agbellerive.twitter.business.TwitterTimelineTask;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
@@ -62,9 +60,9 @@ public class MentionedViewController {
         HBox hBox = new HBox();
         
         ObservableList<TwitterInfoInterface> list = FXCollections.observableArrayList();
-        mentionedList.setItems(list);
-        mentionedList.setPrefWidth(800);
-        mentionedList.setCellFactory(p -> new TwitterInfoCell());
+        this.mentionedList.setItems(list);
+        this.mentionedList.setPrefWidth(1000);
+        this.mentionedList.setCellFactory(p -> new TwitterInfoCell());
         hBox.getChildren().addAll(mentionedList);
         LOG.info("getHBoxView compleated");
         return hBox;
@@ -76,18 +74,17 @@ public class MentionedViewController {
      */
     public void loadSelfMentionedList(String user) throws TwitterException {
         LOG.info(user);
-        mentionedList.getItems().clear();
-        if (timeLineTask == null) {
-            timeLineTask = new TwitterTimelineTask(mentionedList.getItems());
+        this.mentionedList.getItems().clear();
+        if (this.timeLineTask == null) {
+            this.timeLineTask = new TwitterTimelineTask(this.mentionedList.getItems());
         }
         try {
-            timeLineTask.fillSearchResult(user);
+            this.timeLineTask.fillSearchResult(user);
             LOG.info("Search Results Obtained");
             
         } catch (TwitterException ex) {
             LOG.error("Unable to display Search", ex);
         }
-
     }
     
 }

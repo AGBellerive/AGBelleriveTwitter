@@ -7,12 +7,10 @@ package com.agbellerive.twitter.controller;
 import com.agbellerive.twitter.business.TwitterEngine;
 import com.agbellerive.twitter.business.TwitterInfoInterface;
 import com.agbellerive.twitter.business.TwitterStatusInfo;
-import com.sun.javafx.scene.shape.TextHelper;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +20,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -80,14 +77,8 @@ public class RetweetViewController {
     @FXML
     private void likeBtnClick(ActionEvent event) {
         try {
-            if(this.currentUser instanceof TwitterStatusInfo){
-                TwitterStatusInfo userWithstatus = (TwitterStatusInfo)this.currentUser;
-                engine.likeTweet(userWithstatus.getTweetId());
-                LOG.info("Tweet Liked");
-            }
-            else{
-                LOG.info("Can not like a Saved Tweet");
-            }
+            this.engine.likeTweet(this.currentUser.getTweetId());
+            LOG.info("Tweet Liked");
         } 
         catch (TwitterException ex) {
             LOG.info("Tweet Wasnt Liked");
@@ -155,7 +146,7 @@ public class RetweetViewController {
             this.tweetViewController= tweetFxml.getController();
         } 
         catch (IOException ex) {
-            java.util.logging.Logger.getLogger(UserProfileViewController.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.info("IOException in initilizeTweetView");
         }   
     }
     /**
@@ -185,6 +176,7 @@ public class RetweetViewController {
         popUpRetweet.setScene(scene);
         return popUpRetweet;
     }
+    
     /**
      * This method returns the reply view changing information to indicate the 
      * user is about to reply
@@ -196,7 +188,7 @@ public class RetweetViewController {
         Stage popUpReply = loadRetweetView(info);
         popUpReply.initModality(Modality.APPLICATION_MODAL);
         
-        retweetViewController.setUpView("Reply");
+        this.retweetViewController.setUpView("Reply");
         popUpReply.setTitle("Replying to "+info.getName());
         
         return popUpReply;

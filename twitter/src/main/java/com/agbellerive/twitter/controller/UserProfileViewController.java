@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -117,14 +116,14 @@ public class UserProfileViewController {
      */
     @FXML
     private void followClick(ActionEvent event) throws TwitterException {
-        if(followBtn.getText().equals("Follow")){
-            twitter.createFriendship(this.currentUser.getScreenName());
-            followBtn.setText("Unfollow");
+        if(this.followBtn.getText().equals("Follow")){
+            this.twitter.createFriendship(this.currentUser.getScreenName());
+            this.followBtn.setText("Unfollow");
             LOG.info("You Followed " +this.currentUser.getScreenName());
         }
         else{
-            twitter.destroyFriendship(this.currentUser.getScreenName());
-            followBtn.setText("Follow");
+            this.twitter.destroyFriendship(this.currentUser.getScreenName());
+            this.followBtn.setText("Follow");
             LOG.info("You Unfollowed " +this.currentUser.getScreenName());
         }
     }
@@ -184,7 +183,6 @@ public class UserProfileViewController {
         if(relation.isSourceFollowingTarget()){
             followBtn.setText("Unfollow");
         }
-        
     }
     
     /**

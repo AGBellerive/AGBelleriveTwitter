@@ -6,20 +6,14 @@ package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterEngine;
 import com.agbellerive.twitter.business.TwitterInfoInterface;
-import com.agbellerive.twitter.business.TwitterStatusInfo;
 import com.agbellerive.twitter.presentation.MainApp;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import twitter4j.TwitterException;
@@ -76,14 +70,8 @@ public class TweetViewController {
             }
             else if(this.currentAction.equals("Retweet")){
                 if(this.tweetTextArea.getText().isEmpty()){
-                     if(this.userInfo instanceof TwitterStatusInfo){
-                        TwitterStatusInfo userWithstatus = (TwitterStatusInfo)this.userInfo;
-                        userWithstatus.reTweet();
-                        LOG.info("Tweet Liked");
-                    }
-                    else{
-                        LOG.info("Can not Retweet a Saved Tweet");
-                    }
+                    twitterEngine.reTweet(this.userInfo.getTweetId());
+                    LOG.info("Tweet Retweeted" +this.userInfo.getTweetId());
                     LOG.info("TextArea result is empty so a regular retweet");
                 }
                 else{
@@ -92,19 +80,13 @@ public class TweetViewController {
                    LOG.info("TextArea result: "+tweetTextArea.getText() +" Has been attached to the retweet");
                 }
             }
+            
             else if (this.currentAction.equals("Reply")){
-                if(this.userInfo instanceof TwitterStatusInfo){
-                        TwitterStatusInfo userWithstatus = (TwitterStatusInfo)this.userInfo;
-                        userWithstatus.makeComment(tweetTextArea.getText());
-                        LOG.info("A reply has been made with the content: "+tweetTextArea.getText() );
-                }
-                else{
-                     LOG.info("Can not Reply a Saved Tweet");
-                }
+                        twitterEngine.makeComment(tweetTextArea.getText(), this.userInfo.getTweetId());
+                        LOG.info("A reply has been made with the content:"+tweetTextArea.getText() );
             }
 
         }
-        // Exception is a place holder for TwitterException
         catch (TwitterException ex){
             mainApp.startUpWarning();
             LOG.error("Unable to send Tweet",ex);
@@ -175,5 +157,4 @@ public class TweetViewController {
          this.tweetPrompt.setText(resources.getString("ReplyPrompt"));
          this.sendTweetBtn.setText(resources.getString("Reply"));
      }     
-
 }

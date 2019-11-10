@@ -95,7 +95,7 @@ public class ProfileViewController {
      * @throws TwitterException 
      */
     public void setUser() throws TwitterException{
-        this.authenticatedUser = twitter.showUser(twitter.getId());
+        this.authenticatedUser = this.twitter.showUser(this.twitter.getId());
     }
     /**
      * This method sets the profile image of the user
@@ -154,7 +154,7 @@ public class ProfileViewController {
      */
     @FXML
     private void mentionedClick(ActionEvent event) throws TwitterException {
-        lowerPane.setCenter(this.mentionedView);
+        this.lowerPane.setCenter(this.mentionedView);
         this.mentionedViewController.loadSelfMentionedList(this.authenticatedUser.getScreenName());
         LOG.info("Mentioned Button Clicked" + this.authenticatedUser.getScreenName());
     }

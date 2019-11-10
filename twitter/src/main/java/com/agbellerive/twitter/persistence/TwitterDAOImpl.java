@@ -7,9 +7,6 @@ package com.agbellerive.twitter.persistence;
 
 import com.agbellerive.twitter.business.TwitterInfoInterface;
 import com.agbellerive.twitter.business.TwitterInfoNoStatus;
-import com.agbellerive.twitter.business.TwitterStatusInfo;
-import com.agbellerive.twitter.business.TwitterTimelineTask;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import twitter4j.api.TweetsResources;
+
 
 /**
  *
@@ -31,11 +28,17 @@ public class TwitterDAOImpl implements  TwitterDAO{
     private final static String URL = "jdbc:mysql://localhost:3306/twitter?zeroDateTimeBehavior=convertToNull";
     private final static String USER = "alex";
     private final static String PASSWORD = "agb";
-
+    /**
+     * This method connects to the database and insert a value 
+     * with the provided input which is a TwitterInfoInterface which 
+     * is a TwitterInfo or TwitterInfoWithNoStatus
+     * @param tweet
+     * @throws SQLException 
+     */
     @Override
     public void create(TwitterInfoInterface tweet) throws SQLException {
         String insertQuery = "INSERT INTO TWEETS VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        try (Connection connection = DriverManager.getConnection(this.URL, this.USER, this.PASSWORD);
                 PreparedStatement pStatement = connection.prepareStatement(insertQuery)) {
                 pStatement.setString(1, tweet.getName());
                 pStatement.setString(2, tweet.getScreenName());
@@ -57,12 +60,16 @@ public class TwitterDAOImpl implements  TwitterDAO{
 
     }
     
-    // Read
+    /**
+     * This method connects to the database and retrives all rows of all
+     * tweets in the database and returns a list of the object
+     * @return List<TwitterInfoNoStatus>
+     */
     @Override
     public List<TwitterInfoNoStatus> findAll() {  
        List<TwitterInfoNoStatus> rows = new ArrayList<>();
          String selectQuery = "SELECT * FROM TWEETS";
-         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+         try (Connection connection = DriverManager.getConnection(this.URL, this.USER, this.PASSWORD);
                 PreparedStatement pStatement = connection.prepareStatement(selectQuery);
                 ResultSet resultSet = pStatement.executeQuery()) {
              
@@ -75,11 +82,16 @@ public class TwitterDAOImpl implements  TwitterDAO{
         }
         return rows;
     }
-    
-    //Tweet id stored as varchar, rertived and converted into a long
+    /**
+     * This method is called by the readAll method to create a specific 
+     * object of TwitterInfoNoStatus to be returned and added into a list
+     * @param resultSet
+     * @return
+     * @throws SQLException 
+     */
     private TwitterInfoNoStatus createTweetData(ResultSet resultSet) throws SQLException{
         TwitterInfoNoStatus tweet = new TwitterInfoNoStatus();
-        
+        //Tweet id stored as varchar, rertived and converted into a long
         tweet.setName((resultSet.getString("USERNAME")));
         tweet.setScreenName((resultSet.getString("HANDLE")));
         tweet.setPostedDate((resultSet.getString("DATEPOSTED")));
