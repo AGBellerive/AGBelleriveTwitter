@@ -7,7 +7,6 @@ package com.agbellerive.twitter.controller;
 import com.agbellerive.twitter.business.TwitterEngine;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -20,9 +19,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import twitter4j.Query;
-import twitter4j.QueryResult;
-import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.User;
@@ -159,7 +155,8 @@ public class ProfileViewController {
     @FXML
     private void mentionedClick(ActionEvent event) throws TwitterException {
         lowerPane.setCenter(this.mentionedView);
-        LOG.info("Mentioned Button Clicked");
+        this.mentionedViewController.loadSelfMentionedList(this.authenticatedUser.getScreenName());
+        LOG.info("Mentioned Button Clicked" + this.authenticatedUser.getScreenName());
     }
     
 }

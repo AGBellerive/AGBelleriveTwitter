@@ -36,8 +36,9 @@ import twitter4j.TwitterException;
 public class TwitterInfoCell extends ListCell<TwitterInfoInterface> {
     
     private final static Logger LOG = LoggerFactory.getLogger(TwitterInfoCell.class);
-    private TweetViewController tweetViewController;
+    private final static TwitterEngine engine = new TwitterEngine();
     
+    private TweetViewController tweetViewController;
     private UserProfileViewController userProvileViewController;
     private RetweetViewController retweetViewController;
     
@@ -123,6 +124,11 @@ public class TwitterInfoCell extends ListCell<TwitterInfoInterface> {
             java.util.logging.Logger.getLogger(TwitterInfoCell.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        if(info instanceof TwitterInfoNoStatus){
+            save.setId("saveBtnInDb");
+        }
+        
+        
         actions.getChildren().addAll(reply,reTweet,like);
         
         VBox vbox = new VBox();
@@ -147,17 +153,16 @@ public class TwitterInfoCell extends ListCell<TwitterInfoInterface> {
         reTweet.setOnAction(event ->{
                 displayRetweet();
         });
-        if(info instanceof TwitterStatusInfo){
-            TwitterStatusInfo infoWithstatus = (TwitterStatusInfo)info;
+        
             like.setOnAction(event->{
             try {
-                infoWithstatus.likeTweet();
+                engine.likeTweet(info.getTweetId());
             } 
             catch (TwitterException ex) {
                 LOG.info("Tweet Was Already liked");
             }
         });
-        }
+        
        
        reply.setOnAction(event -> {
                 displayReply();
@@ -169,14 +174,15 @@ public class TwitterInfoCell extends ListCell<TwitterInfoInterface> {
        
        save.setOnAction(event ->{
            TwitterDAOImpl dao = new TwitterDAOImpl();
-           
             try {
                 dao.create((TwitterStatusInfo)info);
                 save.setStyle("-fx-border-color:#1da1f2;");
-            } 
-            catch (SQLException ex) {
-                LOG.info("Tweet Cannot Be Saved");
+            } catch (SQLException ex) {
+                LOG.warn("Could not save tweet " + ex);
             }
+                
+                
+             
        });
     }
     /**

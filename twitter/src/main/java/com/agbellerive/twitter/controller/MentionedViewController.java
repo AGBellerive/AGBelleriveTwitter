@@ -49,7 +49,7 @@ public class MentionedViewController {
         assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file 'MentionedView.fxml'.";
         assert mentionedList != null : "fx:id=\"mentionedList\" was not injected: check your FXML file 'MentionedView.fxml'.";
         this.mainPane.setCenter(getHBoxView());
-        loadSelfMentionedList(twitter.showUser(twitter.getId()).getScreenName());
+        //loadSelfMentionedList(twitter.showUser(twitter.getId()).getScreenName());
         LOG.info("MentionedView initilized");
     }
     
@@ -75,6 +75,7 @@ public class MentionedViewController {
      * @throws TwitterException 
      */
     public void loadSelfMentionedList(String user) throws TwitterException {
+        LOG.info(user);
         mentionedList.getItems().clear();
         if (timeLineTask == null) {
             timeLineTask = new TwitterTimelineTask(mentionedList.getItems());

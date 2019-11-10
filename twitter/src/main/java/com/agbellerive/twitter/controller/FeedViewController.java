@@ -93,6 +93,7 @@ public class FeedViewController {
         tweetList.setPrefWidth(800);
         tweetList.setCellFactory(p -> new TwitterInfoCell());
         hBox.getChildren().addAll(tweetList);
+        LOG.info("getHBoxView Called ");
         return hBox;
     }
 }

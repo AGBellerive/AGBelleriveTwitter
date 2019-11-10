@@ -4,6 +4,7 @@
 
 package com.agbellerive.twitter.controller;
 
+import com.agbellerive.twitter.business.TwitterEngine;
 import com.agbellerive.twitter.business.TwitterInfoInterface;
 import com.agbellerive.twitter.business.TwitterStatusInfo;
 import com.sun.javafx.scene.shape.TextHelper;
@@ -36,6 +37,8 @@ public class RetweetViewController {
     
     private TweetViewController tweetViewController;
     private BorderPane tweetView;
+    
+    private final static TwitterEngine engine = new TwitterEngine();
     
     
     private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(RetweetViewController.class);
@@ -79,7 +82,7 @@ public class RetweetViewController {
         try {
             if(this.currentUser instanceof TwitterStatusInfo){
                 TwitterStatusInfo userWithstatus = (TwitterStatusInfo)this.currentUser;
-                userWithstatus.likeTweet();
+                engine.likeTweet(userWithstatus.getTweetId());
                 LOG.info("Tweet Liked");
             }
             else{

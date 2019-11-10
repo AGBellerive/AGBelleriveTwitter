@@ -145,15 +145,6 @@ public class TwitterStatusInfo implements TwitterInfoInterface{
     }
     
     /**
-     * This method likes a tweet
-     * inspired by:
-     * http://www.tothenew.com/blog/mark-tweet-as-favorite-using-twitter4j/
-     * @throws TwitterException 
-     */
-    public void likeTweet() throws TwitterException{
-        twitter.createFavorite(status.getId());
-    }
-    /**
      * This method returns a retweet count on the status
      * @return int
      */    

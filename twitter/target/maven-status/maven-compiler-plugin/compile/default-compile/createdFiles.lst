@@ -1,4 +1,5 @@
 com\agbellerive\twitter\business\TwitterEngine.class
+com\agbellerive\twitter\controller\DatabaseTweetController.class
 com\agbellerive\twitter\business\TwitterInfoInterface.class
 com\agbellerive\twitter\controller\FeedViewController.class
 com\agbellerive\twitter\persistence\TwitterDAO.class

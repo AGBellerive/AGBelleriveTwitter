@@ -134,5 +134,15 @@ public class TwitterEngine {
         List<Status> statuses = twitter.getHomeTimeline(paging);
         return statuses;
     }
+        /**
+     * This method likes a tweet
+     * inspired by:
+     * http://www.tothenew.com/blog/mark-tweet-as-favorite-using-twitter4j/
+     * @throws TwitterException 
+     */
+       public void likeTweet(Long tweetId) throws TwitterException{
+        Twitter twitter = getTwitterinstance();
+        twitter.createFavorite(tweetId);
+    }
 
 }

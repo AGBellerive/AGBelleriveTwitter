@@ -6,7 +6,7 @@
 }
 
 /*https://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html#imageview*/
-#homeIconBtn,#tweetIconBtn,#dmIconBtn,#exitBtn,#helpBtn,#profileBtn,#reTweetBtn,#likeBtn,#replyBtn,#searchBtn,#refreshBtn,#saveBtn{
+#homeIconBtn,#tweetIconBtn,#dmIconBtn,#exitBtn,#helpBtn,#profileBtn,#reTweetBtn,#likeBtn,#replyBtn,#searchBtn,#refreshBtn,#saveBtn,#savedTweetsBtn,#saveBtnInDb{
     -fx-background-size:100% 100%;
     -fx-background-color: #15202b;
     -fx-background-radius: 10px;
@@ -54,9 +54,12 @@
 #refreshBtn{
      -fx-background-image: url("../images/refreshIconInverted.png");
 }
-#saveBtn{
+#saveBtn,#savedTweetsBtn{
     -fx-background-image: url("../images/saveBtnIconInverted.png");
     /*http://www.pngmart.com/image/126744*/
+}
+#saveBtnInDb{
+    -fx-background-image: url("");
 }
 Label,TextField,ListView {
     -fx-text-fill:white;

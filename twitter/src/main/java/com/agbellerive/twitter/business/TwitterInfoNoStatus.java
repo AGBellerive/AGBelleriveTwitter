@@ -30,18 +30,23 @@ public class TwitterInfoNoStatus implements TwitterInfoInterface {
     private Long tweetId;
     private String description;
     
-/*
-    public TwitterInfoNoStatus(String name,String handle,String date,String text, String img, int retweets, int likes, Long tweetid) {
+
+    public TwitterInfoNoStatus(String name,String handle,String date,String text, String img, 
+                String largeImg, int retweets, int likes,int followers,int following, Long tweetid,String des) {
         this.name = name;
         this.handle = handle;
         this.postedDate = date;
         this.text = text;
         this.imageSmall = img;
+        this.imageLarge = largeImg;
         this.reTweetCount = retweets;
         this.likeCount = likes;
+        this.followerCount = followers;
+        this.followingCount = following;
         this.tweetId= tweetid;
+        this.description = des;
     }
-*/
+
      public TwitterInfoNoStatus(){
          
      }
