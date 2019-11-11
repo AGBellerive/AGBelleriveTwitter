@@ -48,7 +48,6 @@ public class FeedViewController {
         
         this.homePane.setCenter(getHBoxView());
         loadTweets();
-        LOG.info("FeedViewContoller Initilized, view has been loaded");
     }
     /**
      * This method gets called when the user clicks on the refresh button
@@ -69,7 +68,6 @@ public class FeedViewController {
         this.tweetList.getItems().clear();
         if (this.timeLineTask == null) {
             this.timeLineTask = new TwitterTimelineTask(this.tweetList.getItems());
-            LOG.info("Tweets have been loaded");
         }
         try {
             this.timeLineTask.fillTimeLine();
@@ -90,7 +88,7 @@ public class FeedViewController {
         this.tweetList.setPrefWidth(800);
         this.tweetList.setCellFactory(p -> new TwitterInfoCell());
         hBox.getChildren().addAll(this.tweetList);
-        LOG.info("getHBoxView Called ");
+       
         return hBox;
     }
 }

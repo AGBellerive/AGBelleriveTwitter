@@ -96,7 +96,6 @@ public class UserProfileViewController {
         setDescription();
         setHandle();
         setCount();
-        LOG.info("UserProfileViewController set up");
     }
     
     /**
@@ -105,7 +104,6 @@ public class UserProfileViewController {
      */
     public void setUpUser(TwitterInfoInterface info){
         this.currentUser = info;
-        LOG.info("currentUser initilized");
     }
     
     /**
@@ -196,7 +194,7 @@ public class UserProfileViewController {
             this.dmViewController= dmFxml.getController();
         } 
         catch (IOException ex) {
-            java.util.logging.Logger.getLogger(UserProfileViewController.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.error("Dm View could not be initilized");
         }   
     }
     

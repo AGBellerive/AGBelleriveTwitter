@@ -69,7 +69,7 @@ private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(FormControll
             switchScenes();
         }
         catch(IOException io){
-            LOG.info("Try catch failed in createFileClick");
+            LOG.error("Try catch failed in createFileClick");
         }
     }
     
@@ -85,9 +85,8 @@ private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(FormControll
                 stage.close();
                 main.start(new Stage());
             } catch (Exception ex) {
-               LOG.info("Scence wasnt able to be built in switchScenes");
+               LOG.error("Scence wasnt able to be built in switchScenes");
             }
-       
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

@@ -89,7 +89,7 @@ public class TweetViewController {
         }
         catch (TwitterException ex){
             mainApp.startUpWarning();
-            LOG.error("Unable to send Tweet",ex);
+            LOG.error("Unable to Tweet",ex);
         }
     }
     
@@ -118,7 +118,6 @@ public class TweetViewController {
         });
         
         sendTweetBtn.setOnAction( event -> {sendTweet();});
-        LOG.info("Tweet Listners assigned by ListenersSetUp");
     }
      /**
       * This method changes the view of the labels depending on 
@@ -154,7 +153,6 @@ public class TweetViewController {
      public void replying(TwitterInfoInterface user){
          this.tweetId = user.getTweetId();
          this.userInfo = user;
-         LOG.info(""+user.getName());
          this.tweetPrompt.setText(resources.getString("ReplyPrompt"));
          this.sendTweetBtn.setText(resources.getString("Reply"));
      }     

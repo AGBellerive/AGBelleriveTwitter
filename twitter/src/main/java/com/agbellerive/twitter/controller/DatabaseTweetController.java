@@ -49,7 +49,6 @@ public class DatabaseTweetController {
         assert dbTweetView != null : "fx:id=\"dbTweetView\" was not injected: check your FXML file 'DatabaseTweets.fxml'.";
         assert dbTweetList != null : "fx:id=\"dbTweetList\" was not injected: check your FXML file 'DatabaseTweets.fxml'.";
         this.dbTweetView.setCenter(getHBoxView());
-        LOG.info("DatabaseTweetController initilzied");
     }
     /**
      * This method loads all the tweets from the database
@@ -60,7 +59,7 @@ public class DatabaseTweetController {
     public void loadDbTweets(){
         TwitterDAOImpl twitterdao = new TwitterDAOImpl();
         this.dbTweets = twitterdao.findAll();
-        LOG.info(dbTweets.size()+"");
+        LOG.info("In the database there is "+dbTweets.size() +" saved tweets");
         if(this.dbTweets.isEmpty()){
             noTweetsSavedPopUp();
         }
@@ -100,7 +99,8 @@ public class DatabaseTweetController {
         }
         try {
             this.timeLineTask.fillDatabaseTweets();
-        } catch (Exception ex) {
+        } 
+        catch (Exception ex) {
             LOG.error("Unable to display timeline", ex);
         }
     }

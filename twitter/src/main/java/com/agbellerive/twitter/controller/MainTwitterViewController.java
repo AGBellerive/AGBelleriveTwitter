@@ -111,7 +111,6 @@ public class MainTwitterViewController {
         createDatabaseView();
         
         this.mainPane.setCenter(this.feedView);
-        LOG.info("Class fully initialized");
     }
     /**
      * In the context of the dm icon is clicked 

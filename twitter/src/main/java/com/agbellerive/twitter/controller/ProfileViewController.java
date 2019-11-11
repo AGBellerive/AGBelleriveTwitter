@@ -140,7 +140,6 @@ public class ProfileViewController {
             mentionedFXML.setResources(ResourceBundle.getBundle("MessagesBundle"));
             this.mentionedView = (BorderPane) mentionedFXML.load();
             this.mentionedViewController = mentionedFXML.getController();
-            LOG.info("MentionedView sucessfully created");
         }
         catch(IOException ex){
             LOG.error("Could not load MentionedView",ex);
@@ -156,7 +155,6 @@ public class ProfileViewController {
     private void mentionedClick(ActionEvent event) throws TwitterException {
         this.lowerPane.setCenter(this.mentionedView);
         this.mentionedViewController.loadSelfMentionedList(this.authenticatedUser.getScreenName());
-        LOG.info("Mentioned Button Clicked" + this.authenticatedUser.getScreenName());
     }
     
 }

@@ -68,7 +68,6 @@ public class RetweetViewController {
         assert headerLabel != null : "fx:id=\"headerLabel\" was not injected: check your FXML file 'RetweetView.fxml'.";
         assert tweetText != null : "fx:id=\"tweetText\" was not injected: check your FXML file 'RetweetView.fxml'.";
         assert likeBtn != null : "fx:id=\"likeBtn\" was not injected: check your FXML file 'RetweetView.fxml'.";
-
     }
     /**
      * This method gets launched when the user clicks the like button

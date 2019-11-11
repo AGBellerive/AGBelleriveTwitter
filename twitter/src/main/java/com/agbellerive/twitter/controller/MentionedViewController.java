@@ -47,8 +47,6 @@ public class MentionedViewController {
         assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file 'MentionedView.fxml'.";
         assert mentionedList != null : "fx:id=\"mentionedList\" was not injected: check your FXML file 'MentionedView.fxml'.";
         this.mainPane.setCenter(getHBoxView());
-        //loadSelfMentionedList(twitter.showUser(twitter.getId()).getScreenName());
-        LOG.info("MentionedView initilized");
     }
     
     /**
@@ -64,7 +62,6 @@ public class MentionedViewController {
         this.mentionedList.setPrefWidth(1000);
         this.mentionedList.setCellFactory(p -> new TwitterInfoCell());
         hBox.getChildren().addAll(mentionedList);
-        LOG.info("getHBoxView compleated");
         return hBox;
     }
     /**
@@ -73,14 +70,12 @@ public class MentionedViewController {
      * @throws TwitterException 
      */
     public void loadSelfMentionedList(String user) throws TwitterException {
-        LOG.info(user);
         this.mentionedList.getItems().clear();
         if (this.timeLineTask == null) {
             this.timeLineTask = new TwitterTimelineTask(this.mentionedList.getItems());
         }
         try {
             this.timeLineTask.fillSearchResult(user);
-            LOG.info("Search Results Obtained");
             
         } catch (TwitterException ex) {
             LOG.error("Unable to display Search", ex);

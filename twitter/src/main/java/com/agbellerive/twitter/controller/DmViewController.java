@@ -61,7 +61,6 @@ public class DmViewController {
                 checkCharacterCount(oldValue,MAX_TWEET);
         });
         this.sendDmBtn.setOnAction(event->{sendDm();});
-        LOG.info("Event Listeners for Dm initilized by ListenersSetUp");
     }
 
     /**
