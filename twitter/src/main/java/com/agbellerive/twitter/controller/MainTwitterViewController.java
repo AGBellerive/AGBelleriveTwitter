@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.slf4j.Logger;
@@ -87,21 +88,33 @@ public class MainTwitterViewController {
     @FXML // fx:id="exitBtn"
     private Button exitBtn; // Value injected by FXMLLoader
 
-    @FXML // fx:id="helpPane"
-    private BorderPane helpPane; // Value injected by FXMLLoader
-
-    @FXML 
+    
     /**
      * This method is called by the FXMLLoader when initialization is complete 
      * and it sets the initial visibility of the panes
      */
+    @FXML 
     void initialize() throws TwitterException {
         assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
         assert buttonLayoutHbox != null : "fx:id=\"buttonLayoutHbox\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
-        assert homeIconBtn != null : "fx:id=\"homeBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
-        assert tweetIconBtn != null : "fx:id=\"tweetBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
-        assert dmIconBtn != null : "fx:id=\"dmBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+        assert homeIconBtn != null : "fx:id=\"homeIconBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+        assert tweetIconBtn != null : "fx:id=\"tweetIconBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+        assert dmIconBtn != null : "fx:id=\"dmIconBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+        assert profileBtn != null : "fx:id=\"profileBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+        assert searchBtn != null : "fx:id=\"searchBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+        assert savedTweetsBtn != null : "fx:id=\"savedTweetsBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
         assert helpBtn != null : "fx:id=\"helpBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+        assert exitBtn != null : "fx:id=\"exitBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+        
+        this.homeIconBtn.setTooltip(new Tooltip("Home"));
+        this.tweetIconBtn.setTooltip(new Tooltip("Tweet"));
+        this.dmIconBtn.setTooltip(new Tooltip("Direct Message"));
+        this.profileBtn.setTooltip(new Tooltip("Your Profile!"));
+        this.searchBtn.setTooltip(new Tooltip("Search"));
+        this.savedTweetsBtn.setTooltip(new Tooltip("Saved Tweets"));
+        this.helpBtn.setTooltip(new Tooltip("Help"));
+        this.exitBtn.setTooltip(new Tooltip("Exit"));
+        
         
         createTwitterView();
         createDmView();

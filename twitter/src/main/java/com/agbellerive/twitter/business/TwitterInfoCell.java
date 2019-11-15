@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -96,6 +97,7 @@ public class TwitterInfoCell extends ListCell<TwitterInfoInterface> {
         Button userImage = new Button();
         userImage.setStyle("-fx-background-image: url("+info.getImageURL()+");");
         userImage.setPrefSize(48, 48);
+        userImage.setTooltip(new Tooltip(info.getScreenName()));
         
         Label header = new Label(info.getName() +"  @" +info.getScreenName()+" "+ info.getPostedDate());
         Text text = new Text(info.getText());
@@ -106,18 +108,23 @@ public class TwitterInfoCell extends ListCell<TwitterInfoInterface> {
         Button reTweet = new Button(""+info.getRetweetCount());
         reTweet.setId("reTweetBtn");
         reTweet.setPrefSize(42, 42);
+        reTweet.setTooltip(new Tooltip("Retweet"));
         
         Button reply = new Button();
         reply.setPrefSize(42, 42);
         reply.setId("replyBtn");
+        reply.setTooltip(new Tooltip("Reply"));
         
         Button like = new Button(""+info.getLikeCount());
         like.setPrefSize(42, 42);
         like.setId("likeBtn");
+        like.setTooltip(new Tooltip("Like"));
         
         Button save = new Button();
         save.setPrefSize(21, 21);
         save.setId("saveBtn");
+        save.setTooltip(new Tooltip("Save Tweet"));
+        
         try {
             listnerSetUp(info,reTweet,like,userImage,reply,save);
         } catch (TwitterException ex) {
