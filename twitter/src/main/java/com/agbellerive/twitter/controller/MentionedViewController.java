@@ -75,11 +75,19 @@ public class MentionedViewController {
             this.timeLineTask = new TwitterTimelineTask(this.mentionedList.getItems());
         }
         try {
-            this.timeLineTask.fillSearchResult(user);
+            this.timeLineTask.fillSearchResult("@"+user);
             
         } catch (TwitterException ex) {
-            LOG.error("Unable to display Search", ex);
+            LOG.error("Unable to display Your own retweets", ex);
         }
+    }
+    
+        public void loadTweetsRetweeted() throws TwitterException{
+        this.mentionedList.getItems().clear();
+        if (this.timeLineTask == null) {
+            this.timeLineTask = new TwitterTimelineTask(this.mentionedList.getItems());
+        }
+        this.timeLineTask.fillTweetsRetweeted();
     }
     
 }

@@ -42,6 +42,7 @@ public class TwitterInfoCell extends ListCell<TwitterInfoInterface> {
     private TweetViewController tweetViewController;
     private UserProfileViewController userProvileViewController;
     private RetweetViewController retweetViewController;
+    private ResourceBundle resource;
     
     private Stage popUpUser;
     private Stage popUpRetweet;
@@ -108,22 +109,22 @@ public class TwitterInfoCell extends ListCell<TwitterInfoInterface> {
         Button reTweet = new Button(""+info.getRetweetCount());
         reTweet.setId("reTweetBtn");
         reTweet.setPrefSize(42, 42);
-        reTweet.setTooltip(new Tooltip("Retweet"));
+        reTweet.setTooltip(new Tooltip(resource.getString("retweetToolTip")));
         
         Button reply = new Button();
         reply.setPrefSize(42, 42);
         reply.setId("replyBtn");
-        reply.setTooltip(new Tooltip("Reply"));
+        reply.setTooltip(new Tooltip(resource.getString("replyToolTip")));
         
         Button like = new Button(""+info.getLikeCount());
         like.setPrefSize(42, 42);
         like.setId("likeBtn");
-        like.setTooltip(new Tooltip("Like"));
+        like.setTooltip(new Tooltip(resource.getString("likeToolTip")));
         
         Button save = new Button();
         save.setPrefSize(21, 21);
         save.setId("saveBtn");
-        save.setTooltip(new Tooltip("Save Tweet"));
+        save.setTooltip(new Tooltip(resource.getString("saveToolTip")));
         
         try {
             listnerSetUp(info,reTweet,like,userImage,reply,save);
@@ -220,6 +221,8 @@ public class TwitterInfoCell extends ListCell<TwitterInfoInterface> {
     private void controllerLoader() throws IOException{
         FXMLLoader retweetFXML = new FXMLLoader(getClass().getResource("/fxml/RetweetView.fxml"));
         retweetFXML.setResources(ResourceBundle.getBundle("MessagesBundle"));
+        
+        this.resource = ResourceBundle.getBundle("MessagesBundle");
         
         BorderPane reTweetView = (BorderPane)retweetFXML.load();
         this.retweetViewController = retweetFXML.getController();

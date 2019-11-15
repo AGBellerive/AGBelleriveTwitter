@@ -1,10 +1,11 @@
 Thank you for using AGBTwitter.
-To use this application you can acess everything needed on the top tool bar. The first icon is a house,this is the home page. This indicates where you can find
-your twitter feed. In the Twitter feed you can like,retweet, reply, and save tweets to your personal database. When clicking on the reply button or retweet button
-you will be redirected to another page where you can enter your reply or retweet you want to write. In this feed you can also click on the users profile and this 
-will redirect you to their profile where you can follow/unfollow or message them. Moving onto the second icon on the top tool bar, this is where you can send out
-your 260 character length tweet by typing it out and clicking "Tweet!". The third icon is an envelope to indicate messages. Here you can send a message by entering 
-the users handle and writing out your message and clicking "Send!". The third icon is your profile picture. Here you can see your own profile. You can see you followers 
-count and following count as well as your description. Here you can see your retwets, tweets, and mentions. The fourth icon is search. Here you can search a tweet in twitter
-and here you also have the same functionality as the feed, you can like,reply,retweet, follow, unfollow or message the person who tweeted that tweet.The fifth icon is where all 
+To first get started you have to get your 4 twitter keys and insert them in a file called twitter4j.properties. To use this application you can acess everything 
+needed on the top tool bar. The first icon is a house,this is the home page. This indicates where you can find your twitter feed. In the Twitter feed you can 
+like,retweet, reply, and save tweets to your personal database. When clicking on the reply button or retweet button you will be redirected to another page 
+where you can enter your reply or retweet you want to write. In this feed you can also click on the users profile and this will redirect you to their profile 
+where you can follow/unfollow or message them. Moving onto the second icon on the top tool bar, this is where you can send out your 260 character length tweet by 
+typing it out and clicking "Tweet!". The third icon is an envelope to indicate messages. Here you can send a message by entering the users handle and writing out 
+your message and clicking "Send!". The third icon is your profile picture. Here you can see your own profile. You can see you followers count and following count 
+as well as your description. Here you can see your retwets, tweets, and mentions. The fourth icon is search. Here you can search a tweet in twitter and here you also 
+have the same functionality as the feed, you can like,reply,retweet, follow, unfollow or message the person who tweeted that tweet.The fifth icon is where all 
 your saved tweets personally are stored. The sixth icon is this! The seventh icon is an icon to exit the application. Hope this enhances your AGBTwitter expierence.   

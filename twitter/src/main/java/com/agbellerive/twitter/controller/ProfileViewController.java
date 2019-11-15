@@ -30,6 +30,9 @@ public class ProfileViewController {
     
     private MentionedViewController mentionedViewController;
     private BorderPane mentionedView;
+    
+    private YourRetweetsController retweetController;
+    private BorderPane retweetsView;
 
     private final static Logger LOG = LoggerFactory.getLogger(ProfileViewController.class);
     
@@ -84,6 +87,7 @@ public class ProfileViewController {
      */
     public void setUpView() throws TwitterException{
         loadMentionedView();
+        loadRetweetsView();
         setProfilePicture();
         setDescription();
         setHandle();
@@ -146,6 +150,19 @@ public class ProfileViewController {
             Platform.exit();
         }
     }
+    
+    private void loadRetweetsView() throws TwitterException{
+        try{
+            FXMLLoader retweetsFXML = new FXMLLoader(getClass().getResource("/fxml/YourRetweetsView.fxml"));
+            retweetsFXML.setResources(ResourceBundle.getBundle("MessagesBundle"));
+            this.retweetsView = (BorderPane) retweetsFXML.load();
+            this.retweetController = retweetsFXML.getController();
+        }
+        catch(IOException ex){
+            LOG.error("Could not load Retweet View",ex);
+            Platform.exit();
+        }
+    }
     /**
      * This method sets the mentioned view as the center of the pane
      * @param event
@@ -155,6 +172,20 @@ public class ProfileViewController {
     private void mentionedClick(ActionEvent event) throws TwitterException {
         this.lowerPane.setCenter(this.mentionedView);
         this.mentionedViewController.loadSelfMentionedList(this.authenticatedUser.getScreenName());
+    }
+    
+    @FXML
+    private void retweetsClick(ActionEvent event) throws TwitterException {
+        this.lowerPane.setCenter(this.retweetsView);
+        this.retweetController.loadOwnRetweets();
+    }
+    
+    @FXML
+    private void yourTweetsRetweetedClick(ActionEvent event) throws TwitterException {
+        this.lowerPane.setCenter(this.retweetsView);
+        //this.lowerPane.setCenter(this.mentionedView);        
+        this.retweetController.loadTweetsRetweeted();
+        //this.mentionedViewController.loadTweetsRetweeted();
     }
     
 }

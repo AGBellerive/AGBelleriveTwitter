@@ -80,4 +80,20 @@ public class TwitterTimelineTask {
         });
         page += 1;
     }
+    
+    public void fillOwnRetweets() throws TwitterException{
+        List<Status> homeline = twitterEngine.retweetsByMe();
+        homeline.forEach((status) -> {
+            list.add(list.size(), new TwitterStatusInfo(status));
+        });
+        page += 1;
+    }
+    
+    public void fillTweetsRetweeted() throws TwitterException{
+        List<Status> timeline = twitterEngine.retweetsByOthers();
+        timeline.forEach((status) -> {
+            list.add(list.size(), new TwitterStatusInfo(status));
+        });
+        page += 1;
+    }
 }

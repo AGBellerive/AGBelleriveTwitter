@@ -1,5 +1,6 @@
 package com.agbellerive.twitter.business;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -172,6 +173,31 @@ public class TwitterEngine {
        Status statusRepliedTo = twitter.updateStatus(tweetReply);
        
         //http://www.tothenew.com/blog/reply-to-a-user-tweet-using-twitter4j/
+    }
+    /**
+     * This method obtains the users timeline and 
+     * finds which is a retweet and returns it to be 
+     * displayed
+     * @return List <Status>
+     * @throws TwitterException 
+     */
+    public List <Status> retweetsByMe() throws TwitterException{
+        Twitter twitter = getTwitterinstance();
+        List<Status> timeline= twitter.getHomeTimeline();
+        List<Status>retweets = new ArrayList();
+        for (Status stat : timeline){
+            if(stat.isRetweetedByMe()){
+                retweets.add(stat);
+            }
+        }
+        return retweets;
+    }
+    
+    public List<Status> retweetsByOthers() throws TwitterException{
+        Twitter twitter = getTwitterinstance();
+        List<Status> timeline = twitter.getUserTimeline();
+        List<Status>retweted = twitter.getRetweetsOfMe();
+        return retweted;
     }
 
 }

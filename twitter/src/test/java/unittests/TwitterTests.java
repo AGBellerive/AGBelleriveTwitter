@@ -22,6 +22,7 @@ import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +45,7 @@ public class TwitterTests {
      * cleaning out the database for user use
      */
     @AfterClass
+    @Ignore
     public static void seedAfterTestCompleted() {
         LOG.info("@AfterClass seeding");
         new TwitterTests().seedDatabase();
@@ -54,6 +56,7 @@ public class TwitterTests {
      * to be used later 
      */
     @Before
+    @Ignore
     public void initilizeTwitterData() {
         this.tweetA = new TwitterInfoNoStatus("Tester","testerHandle","11/09/2019","I hope this is a sucessful test", "", 
                 "", 10000 , 10000 ,99999 ,1, (Long.MAX_VALUE),"I am a Twitter Handle");
@@ -64,6 +67,7 @@ public class TwitterTests {
      * the size of the list from the db should be 0
      */
     @Test
+    @Ignore
     public void testFindAll() {
         LOG.info("findAll test started");
         List<TwitterInfoNoStatus> tweetsFromDb = this.twitterdao.findAll();
@@ -76,6 +80,7 @@ public class TwitterTests {
      * @throws java.sql.SQLException
      */
     @Test
+    @Ignore
     public void testInsert() throws SQLException{
         LOG.info("testInsert test started");
         this.twitterdao.create(tweetA);
@@ -90,6 +95,7 @@ public class TwitterTests {
      * @throws java.sql.SQLException
      */
     @Test (expected = SQLException.class)
+    @Ignore
     public void testDuplications() throws SQLException{
         LOG.info("testDuplications test started");
         this.twitterdao.create(tweetA);
@@ -102,6 +108,7 @@ public class TwitterTests {
      * @throws SQLException 
      */
     @Test
+    @Ignore
     public void testRetrevial() throws SQLException {
         LOG.info("testRetrevial test started");
         this.twitterdao.create(tweetA);
@@ -113,6 +120,7 @@ public class TwitterTests {
      * * Method inspired by https://gitlab.com/omniprof/jdbc_test_demo/blob/master/src/test/java/com/jdbc_test_demo/tests/TestDataBase.java
      */
     @Before
+    @Ignore
     public void seedDatabase() {
         LOG.info("Seeding Database");
         final String seedDataScript = loadAsString("createTweetTable.sql");

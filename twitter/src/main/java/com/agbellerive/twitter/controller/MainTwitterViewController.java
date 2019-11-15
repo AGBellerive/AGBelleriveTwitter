@@ -5,6 +5,7 @@ package com.agbellerive.twitter.controller;
 import com.agbellerive.twitter.business.TwitterEngine;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -16,6 +17,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import twitter4j.DirectMessage;
+import twitter4j.DirectMessageList;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.User;
@@ -39,6 +42,9 @@ public class MainTwitterViewController {
     
     private DatabaseTweetController databaseTweetController;
     private BorderPane dbTweetView;
+    
+    private HelpViewController helpViewController;
+    private BorderPane helpView;
     
     
     private final String BUTTON_BACKGROUND_COLOR = "#15202b";
@@ -105,15 +111,15 @@ public class MainTwitterViewController {
         assert savedTweetsBtn != null : "fx:id=\"savedTweetsBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
         assert helpBtn != null : "fx:id=\"helpBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
         assert exitBtn != null : "fx:id=\"exitBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
-        
-        this.homeIconBtn.setTooltip(new Tooltip("Home"));
-        this.tweetIconBtn.setTooltip(new Tooltip("Tweet"));
-        this.dmIconBtn.setTooltip(new Tooltip("Direct Message"));
-        this.profileBtn.setTooltip(new Tooltip("Your Profile!"));
-        this.searchBtn.setTooltip(new Tooltip("Search"));
-        this.savedTweetsBtn.setTooltip(new Tooltip("Saved Tweets"));
-        this.helpBtn.setTooltip(new Tooltip("Help"));
-        this.exitBtn.setTooltip(new Tooltip("Exit"));
+                
+        this.homeIconBtn.setTooltip(new Tooltip(resources.getString("homeTooltip")));
+        this.tweetIconBtn.setTooltip(new Tooltip(resources.getString("tweetTooltip")));
+        this.dmIconBtn.setTooltip(new Tooltip(resources.getString("dmToolTip")));
+        this.profileBtn.setTooltip(new Tooltip(resources.getString("profileToolTip")));
+        this.searchBtn.setTooltip(new Tooltip(resources.getString("searchToolTip")));
+        this.savedTweetsBtn.setTooltip(new Tooltip(resources.getString("savedToolTip")));
+        this.helpBtn.setTooltip(new Tooltip(resources.getString("helpToolTip")));
+        this.exitBtn.setTooltip(new Tooltip(resources.getString("exitToolTip")));
         
         
         createTwitterView();
@@ -122,6 +128,7 @@ public class MainTwitterViewController {
         createProfileView();
         createSearchView();
         createDatabaseView();
+        createHelpView();
         
         this.mainPane.setCenter(this.feedView);
     }
@@ -131,7 +138,10 @@ public class MainTwitterViewController {
      * @param event 
      */
     @FXML
-    private void dmIconBtnClick(ActionEvent event) {
+    private void dmIconBtnClick(ActionEvent event) throws TwitterException {
+       DirectMessageList messages = twitter.getDirectMessages(5);
+       LOG.info(messages.toString());
+       
        this.mainPane.setCenter(this.dmView);
        
        dmIconBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
@@ -263,6 +273,7 @@ public class MainTwitterViewController {
      */
     @FXML
     private void helpBtnClick(ActionEvent event) {
+        this.mainPane.setCenter(this.helpView);
         
         dmIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         homeIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
@@ -379,6 +390,20 @@ public class MainTwitterViewController {
         } 
         catch (IOException ex) {
             LOG.error("Could not load SearchView",ex);
+        } 
+    }
+    
+    private void createHelpView(){
+        try{
+            FXMLLoader helpViewFXML = new FXMLLoader (getClass().getResource("/fxml/HelpView.fxml"));
+            helpViewFXML.setResources(ResourceBundle.getBundle("MessagesBundle"));
+            this.helpView = (BorderPane) helpViewFXML.load();
+            this.helpViewController = helpViewFXML.getController();
+            
+            LOG.info("Help view Sucessfully created");
+        } 
+        catch (IOException ex) {
+            LOG.error("Could not load HelpView",ex);
         } 
     }
 }
