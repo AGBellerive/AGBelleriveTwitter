@@ -5,6 +5,7 @@ com\agbellerive\twitter\controller\FeedViewController.class
 com\agbellerive\twitter\persistence\TwitterDAO.class
 com\agbellerive\twitter\controller\SearchViewController.class
 com\agbellerive\twitter\controller\UserProfileViewController.class
+com\agbellerive\twitter\controller\ConversationController.class
 com\agbellerive\twitter\business\TwitterTimelineTask.class
 com\agbellerive\twitter\controller\MentionedViewController.class
 com\agbellerive\twitter\controller\DmViewController.class

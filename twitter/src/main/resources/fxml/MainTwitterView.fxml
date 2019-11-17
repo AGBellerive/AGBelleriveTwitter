@@ -12,6 +12,7 @@
             <Button fx:id="homeIconBtn" mnemonicParsing="false" onAction="#homeIconBtnClick" prefHeight="40.0" prefWidth="50.0" />
             <Button fx:id="tweetIconBtn" mnemonicParsing="false" onAction="#tweetIconBtnClick" prefHeight="50.0" prefWidth="50.0" />
             <Button fx:id="dmIconBtn" mnemonicParsing="false" onAction="#dmIconBtnClick" prefHeight="50.0" prefWidth="50.0" />
+            <Button fx:id="dmConvo" mnemonicParsing="false" onAction="#dmMessagesClick" prefHeight="50.0" prefWidth="50.0" />
             <Button fx:id="profileBtn" mnemonicParsing="false" onAction="#profileBtnClick" prefHeight="50.0" prefWidth="50.0" />
             <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#searchClick" prefHeight="50.0" prefWidth="50.0" />
             <Button fx:id="savedTweetsBtn" mnemonicParsing="false" onAction="#savedTweetsClick" prefHeight="50.0" prefWidth="50.0" />

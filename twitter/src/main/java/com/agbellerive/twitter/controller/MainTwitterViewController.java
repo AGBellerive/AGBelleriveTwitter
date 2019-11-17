@@ -46,6 +46,9 @@ public class MainTwitterViewController {
     private HelpViewController helpViewController;
     private BorderPane helpView;
     
+    private ConversationController conversationController;
+    private BorderPane convoView;
+    
     
     private final String BUTTON_BACKGROUND_COLOR = "#15202b";
     private final String BUTTON_OUTLINE_COLOR = "#1da1f2";
@@ -94,6 +97,9 @@ public class MainTwitterViewController {
     @FXML // fx:id="exitBtn"
     private Button exitBtn; // Value injected by FXMLLoader
 
+    @FXML // fx:id="dmMessagesTest"
+    private Button dmConvo; // Value injected by FXMLLoader    
+
     
     /**
      * This method is called by the FXMLLoader when initialization is complete 
@@ -111,6 +117,8 @@ public class MainTwitterViewController {
         assert savedTweetsBtn != null : "fx:id=\"savedTweetsBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
         assert helpBtn != null : "fx:id=\"helpBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
         assert exitBtn != null : "fx:id=\"exitBtn\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+         assert dmConvo != null : "fx:id=\"dmMessagesTest\" was not injected: check your FXML file 'MainTwitterView.fxml'.";
+
                 
         this.homeIconBtn.setTooltip(new Tooltip(resources.getString("homeTooltip")));
         this.tweetIconBtn.setTooltip(new Tooltip(resources.getString("tweetTooltip")));
@@ -129,6 +137,7 @@ public class MainTwitterViewController {
         createSearchView();
         createDatabaseView();
         createHelpView();
+        createConversationView();
         
         this.mainPane.setCenter(this.feedView);
     }
@@ -139,8 +148,8 @@ public class MainTwitterViewController {
      */
     @FXML
     private void dmIconBtnClick(ActionEvent event) throws TwitterException {
-       DirectMessageList messages = twitter.getDirectMessages(5);
-       LOG.info(messages.toString());
+       
+       //LOG.info(messages.toString());
        
        this.mainPane.setCenter(this.dmView);
        
@@ -151,6 +160,7 @@ public class MainTwitterViewController {
        profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
        searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        savedTweetsBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+       dmConvo.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        
        LOG.info("DmIcon Clicked");
     }
@@ -170,6 +180,7 @@ public class MainTwitterViewController {
         profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
         searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         savedTweetsBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        dmConvo.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         
         LOG.info("HomeIcon Clicked");
     }
@@ -191,6 +202,7 @@ public class MainTwitterViewController {
         profileBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";-fx-background-image: url("+url+");");
         searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         savedTweetsBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        dmConvo.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         
         LOG.info("ProfileIcon Cliked");
     }
@@ -212,6 +224,7 @@ public class MainTwitterViewController {
        profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
        searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        savedTweetsBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+       dmConvo.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        
        LOG.info("TweetIcon Clicked");
     }
@@ -232,6 +245,7 @@ public class MainTwitterViewController {
         profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
         searchBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
         savedTweetsBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        dmConvo.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        
        LOG.info("SearchIcon Clicked");
     }
@@ -248,6 +262,7 @@ public class MainTwitterViewController {
         profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
         searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
         savedTweetsBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
+        dmConvo.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        
        LOG.info("SavedTweetsIcon Clicked");
     }
@@ -281,8 +296,25 @@ public class MainTwitterViewController {
         helpBtn.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
         profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
         searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        savedTweetsBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        dmConvo.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
        
         LOG.info("HelpIcon Clicked");
+    }
+    
+    @FXML
+    private void dmMessagesClick(ActionEvent event) {
+        this.mainPane.setCenter(this.convoView);
+        
+        dmIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        homeIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        tweetIconBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        helpBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        profileBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";-fx-background-image: url("+url+");");
+        searchBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        savedTweetsBtn.setStyle("-fx-border-color:"+BUTTON_BACKGROUND_COLOR+";");
+        dmConvo.setStyle("-fx-border-color:"+BUTTON_OUTLINE_COLOR+";");
+
     }
     
     public void setMainView(BorderPane mainPane){
@@ -404,6 +436,20 @@ public class MainTwitterViewController {
         } 
         catch (IOException ex) {
             LOG.error("Could not load HelpView",ex);
+        } 
+    }
+    
+    private void createConversationView(){
+        try{
+            FXMLLoader helpViewFXML = new FXMLLoader (getClass().getResource("/fxml/DmConvoView.fxml"));
+            helpViewFXML.setResources(ResourceBundle.getBundle("MessagesBundle"));
+            this.convoView = (BorderPane) helpViewFXML.load();
+            this.conversationController = helpViewFXML.getController();
+            
+            LOG.info("Conversation view Sucessfully created");
+        } 
+        catch (IOException ex) {
+            LOG.error("Could not load ConversationView",ex);
         } 
     }
 }

@@ -1,4 +1,88 @@
 -------------------------------------------------------------------------------
 Test set: unittests.TwitterTests
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 0.003 s - in unittests.TwitterTests
+Tests run: 5, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 12.706 s <<< FAILURE! - in unittests.TwitterTests
+testFindAll  Time elapsed: 2.39 s  <<< ERROR!
+java.lang.RuntimeException: Failed seeding database
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:125)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: 
+Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: 
+Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+
+testRetrevial  Time elapsed: 2.062 s  <<< ERROR!
+java.lang.RuntimeException: Failed seeding database
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:125)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: 
+Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: 
+Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+
+testInsert  Time elapsed: 2.062 s  <<< ERROR!
+java.lang.RuntimeException: Failed seeding database
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:125)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: 
+Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: 
+Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+
+testDuplications  Time elapsed: 2.053 s  <<< ERROR!
+java.lang.RuntimeException: Failed seeding database
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:125)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: 
+Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: 
+Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+
+unittests.TwitterTests  Time elapsed: 4.115 s  <<< ERROR!
+java.lang.RuntimeException: Failed seeding database
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:125)
+	at unittests.TwitterTests.seedAfterTestCompleted(TwitterTests.java:50)
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: 
+Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+	at unittests.TwitterTests.seedAfterTestCompleted(TwitterTests.java:50)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: 
+Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+	at unittests.TwitterTests.seedAfterTestCompleted(TwitterTests.java:50)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
+	at unittests.TwitterTests.seedAfterTestCompleted(TwitterTests.java:50)
+
