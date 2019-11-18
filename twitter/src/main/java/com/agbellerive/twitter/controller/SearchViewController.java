@@ -1,7 +1,6 @@
 /**
  * Sample Skeleton for 'SearchView.fxml' Controller Class
  */
-
 package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterEngine;
@@ -26,11 +25,11 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
 public class SearchViewController {
-    
+
     private TwitterTimelineTask timeLineTask;
     private final static Logger LOG = LoggerFactory.getLogger(SearchViewController.class);
     private final static TwitterEngine engine = new TwitterEngine();
-    
+
     private final Twitter twitter = engine.getTwitterinstance();
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -38,7 +37,7 @@ public class SearchViewController {
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
-    
+
     @FXML // fx:id="mainPane"
     private BorderPane mainPane; // Value injected by FXMLLoader
     @FXML // fx:id="searchBox"
@@ -55,13 +54,15 @@ public class SearchViewController {
         assert searchBox != null : "fx:id=\"searchBox\" was not injected: check your FXML file 'SearchView.fxml'.";
         assert searchTermBtn != null : "fx:id=\"searchBtn\" was not injected: check your FXML file 'SearchView.fxml'.";
         assert tweetDisplayArea != null : "fx:id=\"tweetDisplayArea\" was not injected: check your FXML file 'SearchView.fxml'.";
-        
+
         mainPane.setCenter(getHBoxView());
     }
+
     /**
      * This method is called when the user clicks on the search button
+     *
      * @param event
-     * @throws TwitterException 
+     * @throws TwitterException
      */
     @FXML
     private void searchTermClick(ActionEvent event) throws TwitterException {
@@ -72,19 +73,21 @@ public class SearchViewController {
         try {
             this.timeLineTask.fillSearchResult(this.searchBox.getText());
             LOG.info("Search Results Obtained");
-            
+
         } catch (TwitterException ex) {
             LOG.error("Unable to display Search", ex);
         }
 
     }
+
     /**
-     * This method sets up the view for the search 
-     * @return 
+     * This method sets up the view for the search
+     *
+     * @return
      */
     private Node getHBoxView() {
         HBox hBox = new HBox();
-        
+
         ObservableList<TwitterInfoInterface> list = FXCollections.observableArrayList();
         this.tweetDisplayArea.setItems(list);
         this.tweetDisplayArea.setPrefWidth(800);

@@ -1,7 +1,6 @@
 /**
  * Sample Skeleton for 'UserProfileView.fxml' Controller Class
  */
-
 package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterEngine;
@@ -10,7 +9,6 @@ import com.agbellerive.twitter.business.TwitterStatusInfo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,17 +28,18 @@ import twitter4j.TwitterException;
 import twitter4j.User;
 
 public class UserProfileViewController {
-    
+
     private TwitterInfoInterface currentUser;
-    
+
     private DmViewController dmViewController;
     private BorderPane dmView;
-    
+
     private final static TwitterEngine engine = new TwitterEngine();
-    private final Twitter twitter=engine.getTwitterinstance();;
+    private final Twitter twitter = engine.getTwitterinstance();
+    ;
     
     private final static Logger LOG = LoggerFactory.getLogger(TwitterStatusInfo.class);
-    
+
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -64,7 +63,7 @@ public class UserProfileViewController {
 
     @FXML // fx:id="description"
     private Label description; // Value injected by FXMLLoader
-    
+
     @FXML // fx:id="displayPane"
     private BorderPane displayPane; // Value injected by FXMLLoader
 
@@ -85,52 +84,54 @@ public class UserProfileViewController {
         assert followBtn != null : "fx:id=\"followBtn\" was not injected: check your FXML file 'UserProfileView.fxml'.";
         assert messageBtn != null : "fx:id=\"messageBtn\" was not injected: check your FXML file 'UserProfileView.fxml'.";
     }
+
     /**
      * This method sets up the view for the user youre looking at
-     * @throws TwitterException 
+     *
+     * @throws TwitterException
      */
-    public void setUpView() throws TwitterException{
+    public void setUpView() throws TwitterException {
         initilizeFollowBtnStatus();
         initializeDmView();
         setProfilePicture();
         setDescription();
         setHandle();
         setCount();
-        LOG.info("UserProfileViewController set up");
     }
-    
+
     /**
-     * This method sets up the user 
-     * @param info 
+     * This method sets up the user
+     *
+     * @param info
      */
-    public void setUpUser(TwitterInfoInterface info){
+    public void setUpUser(TwitterInfoInterface info) {
         this.currentUser = info;
-        LOG.info("currentUser initilized");
     }
-    
+
     /**
-     * This method is called when the user clicks on the follow button
-     * following or unfollowing that specific user
+     * This method is called when the user clicks on the follow button following
+     * or unfollowing that specific user
+     *
      * @param event
-     * @throws TwitterException 
+     * @throws TwitterException
      */
     @FXML
     private void followClick(ActionEvent event) throws TwitterException {
-        if(this.followBtn.getText().equals("Follow")){
+        if (this.followBtn.getText().equals("Follow")) {
             this.twitter.createFriendship(this.currentUser.getScreenName());
             this.followBtn.setText("Unfollow");
-            LOG.info("You Followed " +this.currentUser.getScreenName());
-        }
-        else{
+            LOG.info("You Followed " + this.currentUser.getScreenName());
+        } else {
             this.twitter.destroyFriendship(this.currentUser.getScreenName());
             this.followBtn.setText("Follow");
-            LOG.info("You Unfollowed " +this.currentUser.getScreenName());
+            LOG.info("You Unfollowed " + this.currentUser.getScreenName());
         }
     }
-    
+
     /**
      * This method is called when the user clicks on message
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void messageClick(ActionEvent event) {
@@ -138,95 +139,96 @@ public class UserProfileViewController {
         this.displayPane.setCenter(this.dmView);
         LOG.info("Displaying Dm view");
     }
-    
+
     /**
      * This method sets up the users profile
      */
-    private void setProfilePicture(){
+    private void setProfilePicture() {
         Image image = new Image(this.currentUser.getLargeProfileImageURL());
         this.profileImageView.imageProperty().set(image);
     }
-    
+
     /**
      * This method sets up the users description
      */
-    private void setDescription(){
+    private void setDescription() {
         this.description.setText(this.currentUser.getDescription());
     }
-    
+
     /**
      * This method sets the users handle
      */
-    private void setHandle(){
+    private void setHandle() {
         this.name.setText(this.currentUser.getName());
-        this.userName.setText("@"+this.currentUser.getScreenName());
+        this.userName.setText("@" + this.currentUser.getScreenName());
     }
-    
+
     /**
-     * This method sets up the counts of the follower and followed 
+     * This method sets up the counts of the follower and followed
      */
-    private void setCount(){
-        this.followers.setText(this.currentUser.getFollowersCount()+" " +this.followers.getText());
-        this.following.setText(this.currentUser.getFriendsCount() +" " + this.following.getText());
+    private void setCount() {
+        this.followers.setText(this.currentUser.getFollowersCount() + " " + this.followers.getText());
+        this.following.setText(this.currentUser.getFriendsCount() + " " + this.following.getText());
     }
-    
+
     /**
-     * This method initilizes the button and checks if the user is following 
-     * the user being looked at, if so it says unfollow, if they are not follwoing 
+     * This method initilizes the button and checks if the user is following the
+     * user being looked at, if so it says unfollow, if they are not follwoing
      * it says follow
-     * @throws TwitterException 
+     *
+     * @throws TwitterException
      */
-    private void initilizeFollowBtnStatus() throws TwitterException{
+    private void initilizeFollowBtnStatus() throws TwitterException {
         User authenticated = twitter.showUser(twitter.getId());
         Relationship relation = twitter.showFriendship(authenticated.getScreenName(), this.currentUser.getScreenName());
         // relation.isSourceFollowedByTarget();
-        if(relation.isSourceFollowingTarget()){
+        if (relation.isSourceFollowingTarget()) {
             followBtn.setText("Unfollow");
         }
     }
-    
+
     /**
-     * This method initilizes the dm view 
+     * This method initilizes the dm view
      */
-    private void initializeDmView(){
+    private void initializeDmView() {
         try {
             FXMLLoader dmFxml = new FXMLLoader(getClass().getResource("/fxml/DmView.fxml"));
             dmFxml.setResources(ResourceBundle.getBundle("MessagesBundle"));
             this.dmView = (BorderPane) dmFxml.load();
-            this.dmViewController= dmFxml.getController();
-        } 
-        catch (IOException ex) {
-            java.util.logging.Logger.getLogger(UserProfileViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+            this.dmViewController = dmFxml.getController();
+        } catch (IOException ex) {
+            LOG.error("Dm View could not be initilized");
+        }
     }
-    
+
     /**
      * This method sets up the pop up for loading the specific users profile
+     *
      * @param info
      * @return stage
      * @throws IOException
-     * @throws TwitterException 
+     * @throws TwitterException
      */
     public Stage loadUsersProfile(TwitterInfoInterface info) throws IOException, TwitterException {
         Stage popupStage = new Stage();
         popupStage.initModality(Modality.APPLICATION_MODAL);
-        
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserProfileView.fxml"));
         loader.setResources(ResourceBundle.getBundle("MessagesBundle"));
-        
-        BorderPane userProfile = (BorderPane)loader.load();
+
+        BorderPane userProfile = (BorderPane) loader.load();
         UserProfileViewController userProfileViewController = loader.getController();
-        
+
         userProfileViewController.setUpUser(info);
         userProfileViewController.setUpView();
-        
+
         Scene scene = new Scene(userProfile);
-        
+
         popupStage.getIcons().add(new Image("/images/Twitter_Logo_Blue.png"));
         popupStage.setTitle("Twitter Profile Of " + info.getName());
-        
+
         popupStage.setScene(scene);
-        
+
         return popupStage;
     }
 }
