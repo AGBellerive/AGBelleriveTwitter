@@ -1,7 +1,6 @@
 /**
  * Sample Skeleton for 'FeedView.fxml' Controller Class
  */
-
 package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterInfoCell;
@@ -22,9 +21,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class FeedViewController {
+
     private final static Logger LOG = LoggerFactory.getLogger(FeedViewController.class);
     private TwitterTimelineTask timeLineTask;
-    
+
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -36,7 +36,7 @@ public class FeedViewController {
 
     @FXML // fx:id="tweetList"
     private ListView<TwitterInfoInterface> tweetList; // Value injected by FXMLLoader
-    
+
     @FXML // fx:id="refreshBtn"
     private Button refreshBtn; // Value injected by FXMLLoader
 
@@ -45,26 +45,27 @@ public class FeedViewController {
         assert homePane != null : "fx:id=\"homePane\" was not injected: check your FXML file 'FeedView.fxml'.";
         assert tweetList != null : "fx:id=\"tweetList\" was not injected: check your FXML file 'FeedView.fxml'.";
         assert refreshBtn != null : "fx:id=\"refreshBtn\" was not injected: check your FXML file 'FeedView.fxml'.";
-        
+
         this.homePane.setCenter(getHBoxView());
         loadTweets();
     }
+
     /**
      * This method gets called when the user clicks on the refresh button
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void refreshClick(ActionEvent event) {
         loadTweets();
         LOG.info("Refresh button clicked");
     }
-    
+
     /**
-     * This method is called when the view is loaded and it 
-     * displays all the tweets and when this is called it removes the old 
-     * tweets being displayed
+     * This method is called when the view is loaded and it displays all the
+     * tweets and when this is called it removes the old tweets being displayed
      */
-    private void loadTweets(){
+    private void loadTweets() {
         this.tweetList.getItems().clear();
         if (this.timeLineTask == null) {
             this.timeLineTask = new TwitterTimelineTask(this.tweetList.getItems());
@@ -75,20 +76,21 @@ public class FeedViewController {
             LOG.error("Unable to display timeline", ex);
         }
     }
-    
+
     /**
      * This method creates the Hbox view for all the tweets
+     *
      * @return Node
      */
     private Node getHBoxView() {
         HBox hBox = new HBox();
-        
+
         ObservableList<TwitterInfoInterface> list = FXCollections.observableArrayList();
         this.tweetList.setItems(list);
         this.tweetList.setPrefWidth(800);
         this.tweetList.setCellFactory(p -> new TwitterInfoCell());
         hBox.getChildren().addAll(this.tweetList);
-       
+
         return hBox;
     }
 }

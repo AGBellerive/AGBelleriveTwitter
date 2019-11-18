@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="unittests.TwitterTests" time="12.706" tests="5" errors="5" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="unittests.TwitterTests" time="0" tests="4" errors="0" skipped="4" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -17,7 +17,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-12.0.2\bin"/>
-    <property name="sun.java.command" value="C:\Users\Alex\AppData\Local\Temp\surefire16129023169628023939\surefirebooter5456999771181567680.jar C:\Users\Alex\AppData\Local\Temp\surefire16129023169628023939 2019-11-16T19-36-07_720-jvmRun1 surefire9100975071176015556tmp surefire_06459449514304956231tmp"/>
+    <property name="sun.java.command" value="C:\Users\Alex\AppData\Local\Temp\surefire4706946733713033220\surefirebooter7541633958365422030.jar C:\Users\Alex\AppData\Local\Temp\surefire4706946733713033220 2019-11-17T20-40-52_619-jvmRun1 surefire16718850903032717667tmp surefire_010111867611548999421tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\target\test-classes;C:\Users\Alex\School\5th semester\Java iii\Projects\agbellerivetwitter\twitter\target\classes;C:\Users\Alex\.m2\repository\org\twitter4j\twitter4j-stream\4.0.7\twitter4j-stream-4.0.7.jar;C:\Users\Alex\.m2\repository\org\twitter4j\twitter4j-core\4.0.7\twitter4j-core-4.0.7.jar;C:\Users\Alex\.m2\repository\mysql\mysql-connector-java\8.0.18\mysql-connector-java-8.0.18.jar;C:\Users\Alex\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\Alex\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\Alex\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Alex\.m2\repository\org\slf4j\slf4j-api\1.7.26\slf4j-api-1.7.26.jar;C:\Users\Alex\.m2\repository\org\apache\logging\log4j\log4j-slf4j-impl\2.12.0\log4j-slf4j-impl-2.12.0.jar;C:\Users\Alex\.m2\repository\org\apache\logging\log4j\log4j-api\2.12.0\log4j-api-2.12.0.jar;C:\Users\Alex\.m2\repository\org\apache\logging\log4j\log4j-core\2.12.0\log4j-core-2.12.0.jar;C:\Users\Alex\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.5.1\junit-jupiter-engine-5.5.1.jar;C:\Users\Alex\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Alex\.m2\repository\org\junit\platform\junit-platform-engine\1.5.1\junit-platform-engine-1.5.1.jar;C:\Users\Alex\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Alex\.m2\repository\org\junit\platform\junit-platform-commons\1.5.1\junit-platform-commons-1.5.1.jar;C:\Users\Alex\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.1\junit-jupiter-api-5.5.1.jar;C:\Users\Alex\.m2\repository\org\junit\vintage\junit-vintage-engine\5.5.1\junit-vintage-engine-5.5.1.jar;C:\Users\Alex\.m2\repository\org\openjfx\javafx-graphics\12.0.2\javafx-graphics-12.0.2-win.jar;C:\Users\Alex\.m2\repository\org\openjfx\javafx-base\12.0.2\javafx-base-12.0.2.jar;C:\Users\Alex\.m2\repository\org\openjfx\javafx-base\12.0.2\javafx-base-12.0.2-win.jar;C:\Users\Alex\.m2\repository\org\openjfx\javafx-controls\12.0.2\javafx-controls-12.0.2.jar;C:\Users\Alex\.m2\repository\org\openjfx\javafx-controls\12.0.2\javafx-controls-12.0.2-win.jar;C:\Users\Alex\.m2\repository\org\openjfx\javafx-graphics\12.0.2\javafx-graphics-12.0.2.jar;C:\Users\Alex\.m2\repository\org\openjfx\javafx-fxml\12.0.2\javafx-fxml-12.0.2.jar;C:\Users\Alex\.m2\repository\org\openjfx\javafx-fxml\12.0.2\javafx-fxml-12.0.2-win.jar;C:\Users\Alex\.m2\repository\org\openjfx\javafx-web\12.0.2\javafx-web-12.0.2.jar;C:\Users\Alex\.m2\repository\org\openjfx\javafx-web\12.0.2\javafx-web-12.0.2-win.jar;C:\Users\Alex\.m2\repository\org\openjfx\javafx-media\12.0.2\javafx-media-12.0.2.jar;C:\Users\Alex\.m2\repository\org\openjfx\javafx-media\12.0.2\javafx-media-12.0.2-win.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -33,7 +33,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\Alex\AppData\Local\Temp\surefire16129023169628023939\surefirebooter5456999771181567680.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Alex\AppData\Local\Temp\surefire4706946733713033220\surefirebooter7541633958365422030.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="12.0.2+10"/>
@@ -59,104 +59,16 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="56.0"/>
   </properties>
-  <testcase name="testFindAll" classname="unittests.TwitterTests" time="2.39">
-    <error message="Failed seeding database" type="java.lang.RuntimeException">java.lang.RuntimeException: Failed seeding database
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:125)
-Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: 
-Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: 
-Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-</error>
-    <system-out><![CDATA[[INFO ] 2019-11-16 19:36:13.975 [main] TwitterTests - Seeding Database
-]]></system-out>
+  <testcase name="testFindAll" classname="unittests.TwitterTests" time="0">
+    <skipped/>
   </testcase>
-  <testcase name="testRetrevial" classname="unittests.TwitterTests" time="2.062">
-    <error message="Failed seeding database" type="java.lang.RuntimeException">java.lang.RuntimeException: Failed seeding database
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:125)
-Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: 
-Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: 
-Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-</error>
-    <system-out><![CDATA[[INFO ] 2019-11-16 19:36:16.349 [main] TwitterTests - Seeding Database
-]]></system-out>
+  <testcase name="testRetrevial" classname="unittests.TwitterTests" time="0">
+    <skipped/>
   </testcase>
-  <testcase name="testInsert" classname="unittests.TwitterTests" time="2.062">
-    <error message="Failed seeding database" type="java.lang.RuntimeException">java.lang.RuntimeException: Failed seeding database
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:125)
-Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: 
-Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: 
-Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-</error>
-    <system-out><![CDATA[[INFO ] 2019-11-16 19:36:18.411 [main] TwitterTests - Seeding Database
-]]></system-out>
+  <testcase name="testInsert" classname="unittests.TwitterTests" time="0">
+    <skipped/>
   </testcase>
-  <testcase name="testDuplications" classname="unittests.TwitterTests" time="2.053">
-    <error message="Failed seeding database" type="java.lang.RuntimeException">java.lang.RuntimeException: Failed seeding database
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:125)
-Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: 
-Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: 
-Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-</error>
-    <system-out><![CDATA[[INFO ] 2019-11-16 19:36:20.473 [main] TwitterTests - Seeding Database
-]]></system-out>
-  </testcase>
-  <testcase name="unittests.TwitterTests" classname="unittests.TwitterTests" time="4.115">
-    <error message="Failed seeding database" type="java.lang.RuntimeException">java.lang.RuntimeException: Failed seeding database
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:125)
-	at unittests.TwitterTests.seedAfterTestCompleted(TwitterTests.java:50)
-Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: 
-Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-	at unittests.TwitterTests.seedAfterTestCompleted(TwitterTests.java:50)
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: 
-Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-	at unittests.TwitterTests.seedAfterTestCompleted(TwitterTests.java:50)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at unittests.TwitterTests.seedDatabase(TwitterTests.java:120)
-	at unittests.TwitterTests.seedAfterTestCompleted(TwitterTests.java:50)
-</error>
-    <system-out><![CDATA[[INFO ] 2019-11-16 19:36:22.526 [main] TwitterTests - @AfterClass seeding
-[INFO ] 2019-11-16 19:36:22.526 [main] TwitterTests - Seeding Database
-]]></system-out>
+  <testcase name="testDuplications" classname="unittests.TwitterTests" time="0">
+    <skipped/>
   </testcase>
 </testsuite>

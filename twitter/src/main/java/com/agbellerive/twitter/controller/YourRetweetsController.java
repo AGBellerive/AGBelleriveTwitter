@@ -1,7 +1,6 @@
 /**
  * Sample Skeleton for 'YourRetweetsView.fxml' Controller Class
  */
-
 package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterEngine;
@@ -14,25 +13,26 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
 public class YourRetweetsController {
+
     private TwitterTimelineTask timeLineTask;
     private final static Logger LOG = LoggerFactory.getLogger(YourRetweetsController.class);
-    
+
     private final static TwitterEngine engine = new TwitterEngine();
     private final Twitter twitter = engine.getTwitterinstance();
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
-    
+
     @FXML // fx:id="mainPane"
     private BorderPane mainPane; // Value injected by FXMLLoader
 
@@ -48,10 +48,10 @@ public class YourRetweetsController {
         assert retweetsList != null : "fx:id=\"retweetsList\" was not injected: check your FXML file 'YourRetweetsView.fxml'.";
         this.mainPane.setCenter(getHBoxView());
     }
-    
+
     private Node getHBoxView() {
         HBox hBox = new HBox();
-        
+
         ObservableList<TwitterInfoInterface> list = FXCollections.observableArrayList();
         this.retweetsList.setItems(list);
         this.retweetsList.setPrefWidth(1000);
@@ -59,7 +59,7 @@ public class YourRetweetsController {
         hBox.getChildren().addAll(retweetsList);
         return hBox;
     }
-    
+
     public void loadOwnRetweets() throws TwitterException {
         this.retweetsList.getItems().clear();
         if (this.timeLineTask == null) {
@@ -67,12 +67,22 @@ public class YourRetweetsController {
         }
         this.timeLineTask.fillOwnRetweets();
     }
-    
-    public void loadTweetsRetweeted() throws TwitterException{
+
+    public void loadTweetsRetweeted() throws TwitterException {
         this.retweetsList.getItems().clear();
         if (this.timeLineTask == null) {
             this.timeLineTask = new TwitterTimelineTask(this.retweetsList.getItems());
         }
         this.timeLineTask.fillTweetsRetweeted();
+    }
+    
+    public void noTweetsPopUp() {
+        Alert warning = new Alert(Alert.AlertType.WARNING);
+        warning.getDialogPane().setMinWidth(500);
+        warning.setTitle("Error");
+
+        warning.setHeaderText("Cannot complete your request");
+        warning.setContentText("There Were No Tweets Found");
+        warning.showAndWait();
     }
 }

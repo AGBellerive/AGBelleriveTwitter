@@ -1,7 +1,6 @@
 /**
  * Sample Skeleton for 'DmConvoView.fxml' Controller Class
  */
-
 package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterEngine;
@@ -26,14 +25,14 @@ import twitter4j.TwitterException;
 import twitter4j.User;
 
 public class ConversationController {
+
     private final TwitterEngine twitterEngine = new TwitterEngine();
     private final Twitter twitter = twitterEngine.getTwitterinstance();
     private final static Logger LOG = LoggerFactory.getLogger(ConversationController.class);
     private List<DirectMessage> dms;
     private List<String> friends = new ArrayList();
-    HashMap<String, Long> friendsId = new HashMap<String,Long>();
+    HashMap<String, Long> friendsId = new HashMap<String, Long>();
     private final MainApp mainApp = new MainApp();
-    
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -46,10 +45,10 @@ public class ConversationController {
 
     @FXML // fx:id="messagesList"
     private ListView<String> messagesList; // Value injected by FXMLLoader
-    
+
     @FXML // fx:id="textArea"
     private TextArea textArea; // Value injected by FXMLLoader
-    
+
     @FXML // fx:id="sendDmBtn"
     private Button sendDmBtn; // Value injected by FXMLLoader
 
@@ -65,59 +64,65 @@ public class ConversationController {
         getChat();
 
     }
-    
-    private void getConvoList(){
+
+    /**
+     * This method loops through all the direct mesages and displays the users
+     * name acordingly
+     */
+    public void getConvoList() {
         User person = null;
-        try{
+        try {
             this.dms = twitter.getDirectMessages(50);
-            
-            for(DirectMessage dm : this.dms){
+
+            for (DirectMessage dm : this.dms) {
                 person = twitter.showUser(dm.getSenderId());
-                if(!(this.friends.contains(person.getScreenName())) && person.getId() != twitter.getId()){
+                if (!(this.friends.contains(person.getScreenName())) && person.getId() != twitter.getId()) {
                     this.friends.add(person.getScreenName());
-                    this.friendsId.put(person.getScreenName(),person.getId());
+                    this.friendsId.put(person.getScreenName(), person.getId());
                     this.chatsList.getItems().add(person.getScreenName());
                 }
             }
-        }
-        catch(TwitterException ex){
-            LOG.info("Cannot load the conversation list " +ex);
+        } catch (TwitterException ex) {
+            LOG.info("Cannot load the conversation list " + ex);
         }
     }
-    
-    private void getChat(){
-        chatsList.getSelectionModel().selectedItemProperty().addListener((o,s,sl) ->{
+
+    /**
+     * This method loops through all the direct mesages and displays them
+     * acoridngly
+     */
+    public void getChat() {
+        chatsList.getSelectionModel().selectedItemProperty().addListener((o, s, sl) -> {
             messagesList.getItems().clear();
-            for(DirectMessage mess : this.dms){
-             if(mess.getSenderId() == this.friendsId.get(this.chatsList.getSelectionModel().getSelectedItem())
-                        || mess.getRecipientId() == this.friendsId.get(this.chatsList.getSelectionModel().getSelectedItem())){
-                    if(mess.getSenderId() == this.friendsId.get(this.chatsList.getSelectionModel().getSelectedItem())){
-                        messagesList.getItems().add("Sender :"+mess.getText());
-                    }
-                    else{
-                        messagesList.getItems().add("You :"+mess.getText());
+            for (DirectMessage mess : this.dms) {
+                if (mess.getSenderId() == this.friendsId.get(this.chatsList.getSelectionModel().getSelectedItem())
+                        || mess.getRecipientId() == this.friendsId.get(this.chatsList.getSelectionModel().getSelectedItem())) {
+                    if (mess.getSenderId() == this.friendsId.get(this.chatsList.getSelectionModel().getSelectedItem())) {
+                        messagesList.getItems().add("Sender :" + mess.getText());
+                    } else {
+                        messagesList.getItems().add("You :" + mess.getText());
                     }
                 }
             }
-    });
+        });
     }
-    
+
     @FXML
     private void sendBtnClick(ActionEvent event) {
         try {
             String reciver = this.dmReciver.getText();
-            if(reciver.isBlank()){
+            if (reciver.isBlank()) {
                 reciver = this.chatsList.getSelectionModel().getSelectedItem();
             }
-            LOG.info("Direct Message result: Sent to : ||"+reciver+"|| with the message ||"+this.textArea.getText()+"||");
+            LOG.info("Direct Message result: Sent to : ||" + reciver + "|| with the message ||" + this.textArea.getText() + "||");
             this.twitterEngine.sendDirectMessage(reciver, this.textArea.getText());
             this.textArea.clear();
-        }
-        
-        //Exception is a place holder for TwitterException
+            getChat();
+            getConvoList();
+        } //Exception is a place holder for TwitterException
         catch (TwitterException ex) {
             this.mainApp.startUpWarning();
             LOG.error("Unable to send direct message", ex);
         }
-    } 
+    }
 }

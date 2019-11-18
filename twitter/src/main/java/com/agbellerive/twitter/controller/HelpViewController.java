@@ -1,7 +1,6 @@
 /**
  * Sample Skeleton for 'HelpView.fxml' Controller Class
  */
-
 package com.agbellerive.twitter.controller;
 
 import java.net.URL;

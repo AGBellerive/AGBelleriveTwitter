@@ -109,8 +109,8 @@ public class TwitterEngine {
 
     /**
      * Utility Method to display status
-     * 
-     * @param timeLine 
+     *
+     * @param timeLine
      */
     public void displayTimeLine(List<Status> timeLine) {
         System.out.println("Length of timeline: " + timeLine.size());
@@ -121,11 +121,11 @@ public class TwitterEngine {
             System.out.println("Text: " + s.getSource());
         });
     }
-    
-        /**
+
+    /**
      * Utility Method to get time line
-     * 
-     * @param timeLine 
+     *
+     * @param timeLine
      */
     public List<Status> getTimeLine(int page) throws TwitterException {
         LOG.debug("getTimeLine");
@@ -136,67 +136,77 @@ public class TwitterEngine {
         List<Status> statuses = twitter.getHomeTimeline(paging);
         return statuses;
     }
-        /**
-     * This method likes a tweet given a tweetid
-     * inspired by:
+
+    /**
+     * This method likes a tweet given a tweetid inspired by:
      * http://www.tothenew.com/blog/mark-tweet-as-favorite-using-twitter4j/
+     *
      * @param tweetId
-     * @throws TwitterException 
+     * @throws TwitterException
      */
-       public void likeTweet(Long tweetId) throws TwitterException{
+    public void likeTweet(Long tweetId) throws TwitterException {
         Twitter twitter = getTwitterinstance();
         twitter.createFavorite(tweetId);
     }
-       
+
     /**
      * This method retweets the specified status
      * http://twitter4j.org/oldjavadocs/2.2.3/twitter4j/api/StatusMethods.html
+     *
      * @param tweetId
-     * @throws TwitterException 
+     * @throws TwitterException
      */
-       public void reTweet(Long tweetId) throws TwitterException{
-           Twitter twitter = getTwitterinstance();
-            twitter.retweetStatus(tweetId);
+    public void reTweet(Long tweetId) throws TwitterException {
+        Twitter twitter = getTwitterinstance();
+        twitter.retweetStatus(tweetId);
     }
-       
+
     /**
      * This method creates a comment (reply) on the specific tweet
+     *
      * @param reply
      * @param tweetid
-     * @throws TwitterException 
+     * @throws TwitterException
      */
-    public void makeComment(String reply,Long tweetid) throws TwitterException{
-       Twitter twitter = getTwitterinstance();
-       StatusUpdate tweetReply = new StatusUpdate(reply);
-       tweetReply.inReplyToStatusId(tweetid);
-       
-       Status statusRepliedTo = twitter.updateStatus(tweetReply);
-       
+    public void makeComment(String reply, Long tweetid) throws TwitterException {
+        Twitter twitter = getTwitterinstance();
+        StatusUpdate tweetReply = new StatusUpdate(reply);
+        tweetReply.inReplyToStatusId(tweetid);
+
+        Status statusRepliedTo = twitter.updateStatus(tweetReply);
+
         //http://www.tothenew.com/blog/reply-to-a-user-tweet-using-twitter4j/
     }
+
     /**
-     * This method obtains the users timeline and 
-     * finds which is a retweet and returns it to be 
-     * displayed
+     * This method obtains the users timeline and finds which is a retweet and
+     * returns it to be displayed
+     *
      * @return List <Status>
-     * @throws TwitterException 
+     * @throws TwitterException
      */
-    public List <Status> retweetsByMe() throws TwitterException{
+    public List<Status> retweetsByMe() throws TwitterException {
         Twitter twitter = getTwitterinstance();
-        List<Status> timeline= twitter.getHomeTimeline();
-        List<Status>retweets = new ArrayList();
-        for (Status stat : timeline){
-            if(stat.isRetweetedByMe()){
+        List<Status> timeline = twitter.getHomeTimeline();
+        List<Status> retweets = new ArrayList();
+        for (Status stat : timeline) {
+            if (stat.isRetweetedByMe()) {
                 retweets.add(stat);
             }
         }
         return retweets;
     }
-    
-    public List<Status> retweetsByOthers() throws TwitterException{
+
+    /**
+     * This method obtains the retweets that are retweted by others
+     *
+     * @return List <Status>
+     * @throws TwitterException
+     */
+    public List<Status> retweetsByOthers() throws TwitterException {
         Twitter twitter = getTwitterinstance();
         List<Status> timeline = twitter.getUserTimeline();
-        List<Status>retweted = twitter.getRetweetsOfMe();
+        List<Status> retweted = twitter.getRetweetsOfMe();
         return retweted;
     }
 

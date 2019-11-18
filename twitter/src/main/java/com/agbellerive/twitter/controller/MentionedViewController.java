@@ -1,7 +1,6 @@
 /**
  * Sample Skeleton for 'MentionedView.fxml' Controller Class
  */
-
 package com.agbellerive.twitter.controller;
 
 import com.agbellerive.twitter.business.TwitterEngine;
@@ -23,13 +22,13 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
 public class MentionedViewController {
+
     private TwitterTimelineTask timeLineTask;
     private final static Logger LOG = LoggerFactory.getLogger(MentionedViewController.class);
-    
+
     private final static TwitterEngine engine = new TwitterEngine();
     private final Twitter twitter = engine.getTwitterinstance();
-    
-    
+
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -48,15 +47,15 @@ public class MentionedViewController {
         assert mentionedList != null : "fx:id=\"mentionedList\" was not injected: check your FXML file 'MentionedView.fxml'.";
         this.mainPane.setCenter(getHBoxView());
     }
-    
+
     /**
      * This method creates the Hbox view for all the tweets
+     *
      * @return Node
      */
-    
     private Node getHBoxView() {
         HBox hBox = new HBox();
-        
+
         ObservableList<TwitterInfoInterface> list = FXCollections.observableArrayList();
         this.mentionedList.setItems(list);
         this.mentionedList.setPrefWidth(1000);
@@ -64,10 +63,12 @@ public class MentionedViewController {
         hBox.getChildren().addAll(mentionedList);
         return hBox;
     }
+
     /**
      * This method loads all the mentions of the specific users handle
+     *
      * @param user
-     * @throws TwitterException 
+     * @throws TwitterException
      */
     public void loadSelfMentionedList(String user) throws TwitterException {
         this.mentionedList.getItems().clear();
@@ -75,19 +76,19 @@ public class MentionedViewController {
             this.timeLineTask = new TwitterTimelineTask(this.mentionedList.getItems());
         }
         try {
-            this.timeLineTask.fillSearchResult("@"+user);
-            
+            this.timeLineTask.fillSearchResult("@" + user);
+
         } catch (TwitterException ex) {
             LOG.error("Unable to display Your own retweets", ex);
         }
     }
-    
-        public void loadTweetsRetweeted() throws TwitterException{
+
+    public void loadTweetsRetweeted() throws TwitterException {
         this.mentionedList.getItems().clear();
         if (this.timeLineTask == null) {
             this.timeLineTask = new TwitterTimelineTask(this.mentionedList.getItems());
         }
         this.timeLineTask.fillTweetsRetweeted();
     }
-    
+
 }

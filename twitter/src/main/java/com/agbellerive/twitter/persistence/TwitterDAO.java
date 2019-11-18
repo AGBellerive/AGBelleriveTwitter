@@ -12,22 +12,24 @@ import java.util.List;
 
 /**
  *
- * @author 1733565
+ * @author Alex Bellerive
  */
 public interface TwitterDAO {
-    
+
     /**
-     * This method will add to the database 
+     * This method will add to the database
+     *
      * @param tweet
-     * @throws SQLException 
+     * @throws SQLException
      */
     public void create(TwitterInfoInterface tweet) throws SQLException;
 
     /**
      * This method will read from the database
+     *
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public List<TwitterInfoNoStatus> findAll() throws SQLException;
-    
+
 }
